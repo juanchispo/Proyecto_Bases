@@ -151,6 +151,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
         lblPrincipal.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
         lblPrincipal.setText("Principal");
 
+        tbServRec.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         tbServRec.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -172,10 +173,13 @@ public class FrmAdministrador extends javax.swing.JFrame {
         });
         scTablaServRec.setViewportView(tbServRec);
 
+        lblServRec.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         lblServRec.setText("Servicios Recientes");
 
+        lblClienServ.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         lblClienServ.setText("Clientes con mas servicios");
 
+        tbClienServ.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         tbClienServ.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -197,6 +201,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
         });
         scTablaClienServ.setViewportView(tbClienServ);
 
+        tbConduServ.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         tbConduServ.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -218,6 +223,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
         });
         scTablaConduServ.setViewportView(tbConduServ);
 
+        lblConduServ.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         lblConduServ.setText("Conductores con mas servicios");
 
         javax.swing.GroupLayout pnlGananciasLayout = new javax.swing.GroupLayout(pnlGanancias);
@@ -231,14 +237,19 @@ public class FrmAdministrador extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        lblGanancias.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         lblGanancias.setText("Ganancias");
 
+        lblRecaudoUMes.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         lblRecaudoUMes.setText("Recaudado el ultimo mes:");
 
+        txtRecaudoUMes.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         txtRecaudoUMes.setText("2.415.035 $");
 
+        lblGananciasAnio.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         lblGananciasAnio.setText("Mes con mas ganancia de 2025");
 
+        txtGanaciasAnio.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         txtGanaciasAnio.setText("Marzo");
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
@@ -1066,10 +1077,13 @@ public class FrmAdministrador extends javax.swing.JFrame {
         lblConfiguracion.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
         lblConfiguracion.setText("Configuración");
 
+        lblUbicacion.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         lblUbicacion.setText("Ubicación base de datos");
 
+        txtUbicacion.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         txtUbicacion.setText("C:\\Users\\Usuario\\.PgAdmin\\");
 
+            btnBuscarUbicacion.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
             btnBuscarUbicacion.setText("Buscar");
 
             javax.swing.GroupLayout pnlConfiguracionLayout = new javax.swing.GroupLayout(pnlConfiguracion);
@@ -1258,42 +1272,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmAdministrador().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSeparator SeparadorPanel;
