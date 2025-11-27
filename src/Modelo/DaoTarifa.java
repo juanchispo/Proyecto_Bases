@@ -1,5 +1,6 @@
-package Modelo_Uber;
+package Modelo;
 
+import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,11 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
-public class DaoTarifa extends Conexion {
+/**
+ *
+ * @author juanc
+ */
+public class DaoTarifa extends Conexion  {
 
     // AGREGAR → INSERT
     public boolean agregar(Tarifa t) {

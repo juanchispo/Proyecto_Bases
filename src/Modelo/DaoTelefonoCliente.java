@@ -1,5 +1,6 @@
-package Modelo_Uber;
+package Modelo;
 
+import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

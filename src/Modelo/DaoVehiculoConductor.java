@@ -1,29 +1,25 @@
-package Modelo_Uber;
+package Modelo;
 
+import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class DaoVehiculo extends Conexion {
+public class DaoVehiculoConductor extends Conexion {
 
-    // AGREGAR → INSERT
-    public boolean agregar(Vehiculo v) {
+    // AGREGAR: INSERT correcto
+    public boolean agregar(VehiculoConductor vc) {
         Connection cnx = getConexion();
-        String stc = "INSERT INTO Vehiculo (placa, modelo, marca, tipo_servicio) "
-                   + "VALUES (?, ?, ?, ?)";
+        String stc = "INSERT INTO VehiculoConductor (id_placa, id_conductor) VALUES (?,?)";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, v.getPlaca());
-            pst.setString(2, v.getModelo());
-            pst.setString(3, v.getMarca());
-            pst.setString(4, v.getTipo_servicio());
-
+            pst.setInt(1, vc.getId_placa());
+            pst.setInt(2, vc.getId_conductor());
             pst.executeUpdate();
             return true;
-
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el INSERT -> " + ex);
             mensaje("Error al ejecutar el INSERT", "Agregar!!!");
@@ -31,18 +27,17 @@ public class DaoVehiculo extends Conexion {
         return false;
     }
 
-    // ELIMINAR → DELETE
-    public boolean eliminar(int placa) {
+    // ELIMINAR: Debe borrar por id_placa E id_conductor
+    public boolean eliminar(VehiculoConductor m) {
         Connection cnx = getConexion();
-        String stc = "DELETE FROM Vehiculo WHERE placa = ?";
+        String stc = "DELETE FROM VehiculoConductor WHERE id_placa = ? AND id_conductor = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, placa);
-
+            pst.setInt(1, m.getId_placa());
+            pst.setInt(2, m.getId_conductor());
             pst.executeUpdate();
             return true;
-
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el DELETE -> " + ex);
             mensaje("Error al ejecutar el DELETE", "Eliminar!!!");
@@ -50,22 +45,17 @@ public class DaoVehiculo extends Conexion {
         return false;
     }
 
-    // ACTUALIZAR → UPDATE
-    public boolean actualizar(Vehiculo v) {
+    // ACTUALIZAR: Actualiza la relación placa-conductor
+    public boolean actualizarVehiculoConductor(VehiculoConductor m) {
         Connection cnx = getConexion();
-        String stc = "UPDATE Vehiculo SET modelo = ?, marca = ?, tipo_servicio = ? "
-                   + "WHERE placa = ?";
+        String stc = "UPDATE VehiculoConductor SET id_conductor = ? WHERE id_placa = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setString(1, v.getModelo());
-            pst.setString(2, v.getMarca());
-            pst.setString(3, v.getTipo_servicio());
-            pst.setInt(4, v.getPlaca());
-
+            pst.setInt(1, m.getId_conductor());
+            pst.setInt(2, m.getId_placa());
             pst.executeUpdate();
             return true;
-
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el UPDATE -> " + ex);
             mensaje("Error al ejecutar el UPDATE", "Actualizar!!!");
@@ -73,22 +63,19 @@ public class DaoVehiculo extends Conexion {
         return false;
     }
 
-    // CONSULTAR → SELECT
-    public boolean consultar(Vehiculo v) {
+    // CONSULTAR: Consulta la relación por id_placa
+    public boolean consultar(VehiculoConductor m) {
         Connection cnx = getConexion();
-        String stc = "SELECT * FROM Vehiculo WHERE placa = ?";
+        String stc = "SELECT * FROM VehiculoConductor WHERE id_placa = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, v.getPlaca());
+            pst.setInt(1, m.getId_placa());
 
             ResultSet rst = pst.executeQuery();
-
             if (rst.next()) {
-                v.setPlaca(rst.getInt("placa"));
-                v.setModelo(rst.getString("modelo"));
-                v.setMarca(rst.getString("marca"));
-                v.setTipo_servicio(rst.getString("tipo_servicio"));
+                m.setId_placa(rst.getInt("id_placa"));
+                m.setId_conductor(rst.getInt("id_conductor"));
                 return true;
             }
 

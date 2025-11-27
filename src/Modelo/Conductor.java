@@ -1,5 +1,5 @@
 
-package Modelo_Uber;
+package Modelo;
 
 public class Conductor {
     private int id_conductor;

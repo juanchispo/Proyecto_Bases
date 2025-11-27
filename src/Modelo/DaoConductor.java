@@ -1,24 +1,32 @@
-package Modelo_Uber;
+package Modelo;
 
+import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class DaoVehiculoConductor extends Conexion {
+public class DaoConductor extends Conexion {
 
-    // AGREGAR: INSERT correcto
-    public boolean agregar(VehiculoConductor vc) {
+    // AGREGAR → INSERT
+    public boolean agregar(Conductor c) {
         Connection cnx = getConexion();
-        String stc = "INSERT INTO VehiculoConductor (id_placa, id_conductor) VALUES (?,?)";
+        String stc = "INSERT INTO Conductor (id_conductor, direccion, fotografia, nacionalidad, genero, nombre) "
+                   + "VALUES (?,?,?,?,?,?)";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, vc.getId_placa());
-            pst.setInt(2, vc.getId_conductor());
+            pst.setInt(1, c.getId());
+            pst.setString(2, c.getDireccion());
+            pst.setString(3, c.getFotografia());
+            pst.setString(4, c.getNacionalidad());
+            pst.setString(5, c.getGenero());
+            pst.setString(6, c.getNombre());
+
             pst.executeUpdate();
             return true;
+
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el INSERT -> " + ex);
             mensaje("Error al ejecutar el INSERT", "Agregar!!!");
@@ -26,17 +34,18 @@ public class DaoVehiculoConductor extends Conexion {
         return false;
     }
 
-    // ELIMINAR: Debe borrar por id_placa E id_conductor
-    public boolean eliminar(VehiculoConductor m) {
+    // ELIMINAR → DELETE
+    public boolean eliminar(int idConductor) {
         Connection cnx = getConexion();
-        String stc = "DELETE FROM VehiculoConductor WHERE id_placa = ? AND id_conductor = ?";
+        String stc = "DELETE FROM Conductor WHERE id_conductor = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, m.getId_placa());
-            pst.setInt(2, m.getId_conductor());
+            pst.setInt(1, idConductor);
+
             pst.executeUpdate();
             return true;
+
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el DELETE -> " + ex);
             mensaje("Error al ejecutar el DELETE", "Eliminar!!!");
@@ -44,17 +53,24 @@ public class DaoVehiculoConductor extends Conexion {
         return false;
     }
 
-    // ACTUALIZAR: Actualiza la relación placa-conductor
-    public boolean actualizarVehiculoConductor(VehiculoConductor m) {
+    // ACTUALIZAR → UPDATE
+    public boolean actualizar(Conductor c) {
         Connection cnx = getConexion();
-        String stc = "UPDATE VehiculoConductor SET id_conductor = ? WHERE id_placa = ?";
+        String stc = "UPDATE Conductor SET direccion = ?, fotografia = ?, nacionalidad = ?, genero = ?, nombre = ? "
+                   + "WHERE id_conductor = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, m.getId_conductor());
-            pst.setInt(2, m.getId_placa());
+            pst.setString(1, c.getDireccion());
+            pst.setString(2, c.getFotografia());
+            pst.setString(3, c.getNacionalidad());
+            pst.setString(4, c.getGenero());
+            pst.setString(5, c.getNombre());
+            pst.setInt(6, c.getId());
+
             pst.executeUpdate();
             return true;
+
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el UPDATE -> " + ex);
             mensaje("Error al ejecutar el UPDATE", "Actualizar!!!");
@@ -62,19 +78,24 @@ public class DaoVehiculoConductor extends Conexion {
         return false;
     }
 
-    // CONSULTAR: Consulta la relación por id_placa
-    public boolean consultar(VehiculoConductor m) {
+    // CONSULTAR → SELECT
+    public boolean consultar(Conductor c) {
         Connection cnx = getConexion();
-        String stc = "SELECT * FROM VehiculoConductor WHERE id_placa = ?";
+        String stc = "SELECT * FROM Conductor WHERE id_conductor = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, m.getId_placa());
+            pst.setInt(1, c.getId());
 
             ResultSet rst = pst.executeQuery();
+
             if (rst.next()) {
-                m.setId_placa(rst.getInt("id_placa"));
-                m.setId_conductor(rst.getInt("id_conductor"));
+                c.setId(rst.getInt("id_conductor"));
+                c.setDireccion(rst.getString("direccion"));
+                c.setFotografia(rst.getString("fotografia"));
+                c.setNacionalidad(rst.getString("nacionalidad"));
+                c.setGenero(rst.getString("genero"));
+                c.setNombre(rst.getString("nombre"));
                 return true;
             }
 

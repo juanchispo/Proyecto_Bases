@@ -1,5 +1,5 @@
 
-package Modelo_Uber;
+package Modelo;
 
 
 public class TipoServicio {

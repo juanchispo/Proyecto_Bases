@@ -1,27 +1,23 @@
-package Modelo_Uber;
+package Modelo;
 
+import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class DaoConductor extends Conexion {
+public class DaoTipoServicio extends Conexion {
 
     // AGREGAR → INSERT
-    public boolean agregar(Conductor c) {
+    public boolean agregar(TipoServicio ts) {
         Connection cnx = getConexion();
-        String stc = "INSERT INTO Conductor (id_conductor, direccion, fotografia, nacionalidad, genero, nombre) "
-                   + "VALUES (?,?,?,?,?,?)";
+        String stc = "INSERT INTO tipo_servicio (id_conductor, telefono) VALUES (?, ?)";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, c.getId());
-            pst.setString(2, c.getDireccion());
-            pst.setString(3, c.getFotografia());
-            pst.setString(4, c.getNacionalidad());
-            pst.setString(5, c.getGenero());
-            pst.setString(6, c.getNombre());
+            pst.setInt(1, ts.getId_conductor());
+            pst.setString(2, ts.getTelefono());
 
             pst.executeUpdate();
             return true;
@@ -34,13 +30,13 @@ public class DaoConductor extends Conexion {
     }
 
     // ELIMINAR → DELETE
-    public boolean eliminar(int idConductor) {
+    public boolean eliminar(int id_conductor) {
         Connection cnx = getConexion();
-        String stc = "DELETE FROM Conductor WHERE id_conductor = ?";
+        String stc = "DELETE FROM tipo_servicio WHERE id_conductor = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, idConductor);
+            pst.setInt(1, id_conductor);
 
             pst.executeUpdate();
             return true;
@@ -53,19 +49,15 @@ public class DaoConductor extends Conexion {
     }
 
     // ACTUALIZAR → UPDATE
-    public boolean actualizar(Conductor c) {
+    public boolean actualizar(TipoServicio ts) {
         Connection cnx = getConexion();
-        String stc = "UPDATE Conductor SET direccion = ?, fotografia = ?, nacionalidad = ?, genero = ?, nombre = ? "
+        String stc = "UPDATE tipo_servicio SET telefono = ? "
                    + "WHERE id_conductor = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setString(1, c.getDireccion());
-            pst.setString(2, c.getFotografia());
-            pst.setString(3, c.getNacionalidad());
-            pst.setString(4, c.getGenero());
-            pst.setString(5, c.getNombre());
-            pst.setInt(6, c.getId());
+            pst.setString(1, ts.getTelefono());
+            pst.setInt(2, ts.getId_conductor());
 
             pst.executeUpdate();
             return true;
@@ -78,23 +70,19 @@ public class DaoConductor extends Conexion {
     }
 
     // CONSULTAR → SELECT
-    public boolean consultar(Conductor c) {
+    public boolean consultar(TipoServicio ts) {
         Connection cnx = getConexion();
-        String stc = "SELECT * FROM Conductor WHERE id_conductor = ?";
+        String stc = "SELECT * FROM tipo_servicio WHERE id_conductor = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, c.getId());
+            pst.setInt(1, ts.getId_conductor());
 
             ResultSet rst = pst.executeQuery();
 
             if (rst.next()) {
-                c.setId(rst.getInt("id_conductor"));
-                c.setDireccion(rst.getString("direccion"));
-                c.setFotografia(rst.getString("fotografia"));
-                c.setNacionalidad(rst.getString("nacionalidad"));
-                c.setGenero(rst.getString("genero"));
-                c.setNombre(rst.getString("nombre"));
+                ts.setId_conductor(rst.getInt("id_conductor"));
+                ts.setTelefono(rst.getString("telefono"));
                 return true;
             }
 
@@ -104,7 +92,6 @@ public class DaoConductor extends Conexion {
         }
         return false;
     }
-
     public void mensaje(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title, 1);
     }

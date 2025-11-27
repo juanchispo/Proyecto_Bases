@@ -1,22 +1,26 @@
-package Modelo_Uber;
+package Modelo;
 
+import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class DaoTipoServicio extends Conexion {
+public class DaoVehiculo extends Conexion {
 
     // AGREGAR → INSERT
-    public boolean agregar(TipoServicio ts) {
+    public boolean agregar(Vehiculo v) {
         Connection cnx = getConexion();
-        String stc = "INSERT INTO tipo_servicio (id_conductor, telefono) VALUES (?, ?)";
+        String stc = "INSERT INTO Vehiculo (placa, modelo, marca, tipo_servicio) "
+                   + "VALUES (?, ?, ?, ?)";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, ts.getId_conductor());
-            pst.setString(2, ts.getTelefono());
+            pst.setInt(1, v.getPlaca());
+            pst.setString(2, v.getModelo());
+            pst.setString(3, v.getMarca());
+            pst.setString(4, v.getTipo_servicio());
 
             pst.executeUpdate();
             return true;
@@ -29,13 +33,13 @@ public class DaoTipoServicio extends Conexion {
     }
 
     // ELIMINAR → DELETE
-    public boolean eliminar(int id_conductor) {
+    public boolean eliminar(int placa) {
         Connection cnx = getConexion();
-        String stc = "DELETE FROM tipo_servicio WHERE id_conductor = ?";
+        String stc = "DELETE FROM Vehiculo WHERE placa = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, id_conductor);
+            pst.setInt(1, placa);
 
             pst.executeUpdate();
             return true;
@@ -48,15 +52,17 @@ public class DaoTipoServicio extends Conexion {
     }
 
     // ACTUALIZAR → UPDATE
-    public boolean actualizar(TipoServicio ts) {
+    public boolean actualizar(Vehiculo v) {
         Connection cnx = getConexion();
-        String stc = "UPDATE tipo_servicio SET telefono = ? "
-                   + "WHERE id_conductor = ?";
+        String stc = "UPDATE Vehiculo SET modelo = ?, marca = ?, tipo_servicio = ? "
+                   + "WHERE placa = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setString(1, ts.getTelefono());
-            pst.setInt(2, ts.getId_conductor());
+            pst.setString(1, v.getModelo());
+            pst.setString(2, v.getMarca());
+            pst.setString(3, v.getTipo_servicio());
+            pst.setInt(4, v.getPlaca());
 
             pst.executeUpdate();
             return true;
@@ -69,19 +75,21 @@ public class DaoTipoServicio extends Conexion {
     }
 
     // CONSULTAR → SELECT
-    public boolean consultar(TipoServicio ts) {
+    public boolean consultar(Vehiculo v) {
         Connection cnx = getConexion();
-        String stc = "SELECT * FROM tipo_servicio WHERE id_conductor = ?";
+        String stc = "SELECT * FROM Vehiculo WHERE placa = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, ts.getId_conductor());
+            pst.setInt(1, v.getPlaca());
 
             ResultSet rst = pst.executeQuery();
 
             if (rst.next()) {
-                ts.setId_conductor(rst.getInt("id_conductor"));
-                ts.setTelefono(rst.getString("telefono"));
+                v.setPlaca(rst.getInt("placa"));
+                v.setModelo(rst.getString("modelo"));
+                v.setMarca(rst.getString("marca"));
+                v.setTipo_servicio(rst.getString("tipo_servicio"));
                 return true;
             }
 
@@ -91,6 +99,7 @@ public class DaoTipoServicio extends Conexion {
         }
         return false;
     }
+
     public void mensaje(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title, 1);
     }
