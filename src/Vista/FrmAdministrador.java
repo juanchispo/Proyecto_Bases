@@ -29,6 +29,24 @@ public class FrmAdministrador extends javax.swing.JFrame {
         pnlFondo = new javax.swing.JPanel();
         TabPane = new javax.swing.JTabbedPane();
         pnlPrincipal = new javax.swing.JPanel();
+        separadorPrincipal = new javax.swing.JSeparator();
+        lblPrincipal = new javax.swing.JLabel();
+        SeparadorTPrincipal = new javax.swing.JSeparator();
+        scTablaServRec = new javax.swing.JScrollPane();
+        tbServRec = new javax.swing.JTable();
+        lblServRec = new javax.swing.JLabel();
+        lblClienServ = new javax.swing.JLabel();
+        scTablaClienServ = new javax.swing.JScrollPane();
+        tbClienServ = new javax.swing.JTable();
+        scTablaConduServ = new javax.swing.JScrollPane();
+        tbConduServ = new javax.swing.JTable();
+        lblConduServ = new javax.swing.JLabel();
+        pnlGanancias = new javax.swing.JPanel();
+        lblGanancias = new javax.swing.JLabel();
+        lblRecaudoUMes = new javax.swing.JLabel();
+        txtRecaudoUMes = new javax.swing.JTextField();
+        lblGananciasAnio = new javax.swing.JLabel();
+        txtGanaciasAnio = new javax.swing.JTextField();
         pnlClientes = new javax.swing.JPanel();
         scTablaClientes = new javax.swing.JScrollPane();
         tbClientes = new javax.swing.JTable();
@@ -87,17 +105,32 @@ public class FrmAdministrador extends javax.swing.JFrame {
         SeparadorTServicios = new javax.swing.JSeparator();
         btnMasDetallesServicios = new javax.swing.JButton();
         pnlBusquedaAvanzada = new javax.swing.JPanel();
+        btnAnteriorCliente1 = new javax.swing.JButton();
+        btnSiguienteCliente1 = new javax.swing.JButton();
+        separadorCliente1 = new javax.swing.JSeparator();
+        scTablaClientes1 = new javax.swing.JScrollPane();
+        tbClientes1 = new javax.swing.JTable();
+        lblCliente1 = new javax.swing.JLabel();
+        SeparadorTCliente1 = new javax.swing.JSeparator();
+        btnTelefonosCliente1 = new javax.swing.JButton();
+        txtMostrandoClientes1 = new javax.swing.JLabel();
+        cmbBusquedas = new javax.swing.JComboBox<>();
+        rdbFrecuentes = new javax.swing.JRadioButton();
+        rdbAvanzadas = new javax.swing.JRadioButton();
+        txtSQL = new javax.swing.JTextField();
         pnlConfiguracion = new javax.swing.JPanel();
         separadorConfiguracion = new javax.swing.JSeparator();
         lblConfiguracion = new javax.swing.JLabel();
         SeparadorTConfiguracion = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        lblUbicacion = new javax.swing.JLabel();
+        txtUbicacion = new javax.swing.JTextField();
+        btnBuscarUbicacion = new javax.swing.JButton();
         pnlInferior = new javax.swing.JPanel();
         SeparadorPanel = new javax.swing.JSeparator();
         btnCerrarSesion = new javax.swing.JButton();
         SeparadorPanelT = new javax.swing.JSeparator();
+        btnCerrarSesion1 = new javax.swing.JButton();
+        SeparadorPanel1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -113,15 +146,180 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
+        separadorPrincipal.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        lblPrincipal.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
+        lblPrincipal.setText("Principal");
+
+        tbServRec.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Conductor", "Cliente", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scTablaServRec.setViewportView(tbServRec);
+
+        lblServRec.setText("Servicios Recientes");
+
+        lblClienServ.setText("Clientes con mas servicios");
+
+        tbClienServ.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Cant Servicios"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scTablaClienServ.setViewportView(tbClienServ);
+
+        tbConduServ.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Cant Servicios"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scTablaConduServ.setViewportView(tbConduServ);
+
+        lblConduServ.setText("Conductores con mas servicios");
+
+        javax.swing.GroupLayout pnlGananciasLayout = new javax.swing.GroupLayout(pnlGanancias);
+        pnlGanancias.setLayout(pnlGananciasLayout);
+        pnlGananciasLayout.setHorizontalGroup(
+            pnlGananciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pnlGananciasLayout.setVerticalGroup(
+            pnlGananciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        lblGanancias.setText("Ganancias");
+
+        lblRecaudoUMes.setText("Recaudado el ultimo mes:");
+
+        txtRecaudoUMes.setText("2.415.035 $");
+
+        lblGananciasAnio.setText("Mes con mas ganancia de 2025");
+
+        txtGanaciasAnio.setText("Marzo");
+
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1026, Short.MAX_VALUE)
+            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                .addComponent(separadorPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SeparadorTPrincipal)
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblServRec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                            .addComponent(scTablaServRec, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                .addComponent(lblClienServ, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                                .addGap(229, 229, 229))
+                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblConduServ, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(scTablaConduServ, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(scTablaClienServ, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                        .addComponent(lblGananciasAnio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtGanaciasAnio))
+                                    .addComponent(pnlGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                        .addComponent(lblRecaudoUMes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtRecaudoUMes)))))
+                        .addContainerGap())))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 372, Short.MAX_VALUE)
+            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(lblPrincipal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SeparadorTPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblServRec)
+                            .addComponent(lblClienServ)
+                            .addComponent(lblGanancias))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scTablaServRec, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                        .addComponent(scTablaClienServ, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(pnlGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtRecaudoUMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblRecaudoUMes))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblGananciasAnio)
+                                    .addComponent(txtGanaciasAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblConduServ)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(scTablaConduServ, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                .addComponent(separadorPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         TabPane.addTab("Panel Principal", pnlPrincipal);
@@ -224,7 +422,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                             .addComponent(btnEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBorrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCrearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTelefonosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                            .addComponent(btnTelefonosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlClientesLayout.createSequentialGroup()
@@ -233,7 +431,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                                 .addComponent(btnAnteriorCliente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteCliente))
-                            .addComponent(scTablaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)))
+                            .addComponent(scTablaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)))
                     .addComponent(SeparadorTCliente))
                 .addGap(17, 17, 17))
         );
@@ -376,8 +574,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
                             .addComponent(btnEditarConductores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBorrarConductores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCrearConductores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTelefonosConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                            .addComponent(btnTelefonosConductores1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                            .addComponent(btnTelefonosConductores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTelefonosConductores1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlConductoresLayout.createSequentialGroup()
@@ -386,7 +584,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                                 .addComponent(btnAnteriorConductores)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteConductores))
-                            .addComponent(scTablaConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)))
+                            .addComponent(scTablaConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)))
                     .addComponent(SeparadorTConductores))
                 .addGap(17, 17, 17))
         );
@@ -532,7 +730,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                                 .addComponent(btnAnteriorVehiculosVehiculos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteVehiculos))
-                            .addComponent(scTablaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 879, Short.MAX_VALUE)))
+                            .addComponent(scTablaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)))
                     .addComponent(SeparadorTVehiculos))
                 .addGap(17, 17, 17))
         );
@@ -681,7 +879,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                                 .addComponent(btnAnteriorServicios)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteServicios))
-                            .addComponent(scTablaServicios, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)))
+                            .addComponent(scTablaServicios, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)))
                     .addComponent(SeparadorTServicios))
                 .addGap(17, 17, 17))
         );
@@ -721,15 +919,142 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         pnlBusquedaAvanzada.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnAnteriorCliente1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnAnteriorCliente1.setText("Anterior");
+
+        btnSiguienteCliente1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnSiguienteCliente1.setText("Siguiente");
+
+        separadorCliente1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        scTablaClientes1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        scTablaClientes1.setFocusable(false);
+
+        tbClientes1.setAutoCreateRowSorter(true);
+        tbClientes1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        tbClientes1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Direccion", "Genero", "Nacionalidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbClientes1.setToolTipText("");
+        tbClientes1.setShowGrid(false);
+        scTablaClientes1.setViewportView(tbClientes1);
+
+        lblCliente1.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
+        lblCliente1.setText("Busqueda Avanzada");
+
+        btnTelefonosCliente1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnTelefonosCliente1.setText("Consultar");
+        btnTelefonosCliente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTelefonosCliente1ActionPerformed(evt);
+            }
+        });
+
+        txtMostrandoClientes1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        txtMostrandoClientes1.setText("Mostrando 1 de 50");
+
+        cmbBusquedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Valores totales de los servicios realizados diferenciando si corresponden a transporte de pasajeros o alimentos y la categoría a la que corresponde", "Cantidad de servicios de pasajeros y de alimentos por mes", "Datos de los clientes que han solicitado servicios durante un período de tiempo organizados de mayor a menor", "Valores totales de los servicios de acuerdo con su medio de pago", "Promedio de valor total de servicio de clientes dependiendo la nacionalidad", "Datos de conductores que han realizado servicios durante un periodo", "Cantidad de servicios de pasajeros de un género determinado" }));
+
+        rdbFrecuentes.setText("Busquedas Frecuentes");
+
+        rdbAvanzadas.setText("Consulta Avanzada (SQL)");
+        rdbAvanzadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbAvanzadasActionPerformed(evt);
+            }
+        });
+
+        txtSQL.setText("SELECT * FROM empleados");
+
         javax.swing.GroupLayout pnlBusquedaAvanzadaLayout = new javax.swing.GroupLayout(pnlBusquedaAvanzada);
         pnlBusquedaAvanzada.setLayout(pnlBusquedaAvanzadaLayout);
         pnlBusquedaAvanzadaLayout.setHorizontalGroup(
             pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1026, Short.MAX_VALUE)
+            .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                .addComponent(separadorCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SeparadorTCliente1)
+                    .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                        .addComponent(txtMostrandoClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAnteriorCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSiguienteCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(520, 520, 520))
+                    .addComponent(lblCliente1)
+                    .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                        .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                                .addComponent(rdbFrecuentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(37, 37, 37))
+                            .addComponent(cmbBusquedas, 0, 1, Short.MAX_VALUE))
+                        .addGap(239, 239, 239)
+                        .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                                .addComponent(rdbAvanzadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(65, 65, 65))
+                            .addComponent(txtSQL))
+                        .addGap(161, 161, 161))
+                    .addComponent(scTablaClientes1)
+                    .addComponent(btnTelefonosCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
         pnlBusquedaAvanzadaLayout.setVerticalGroup(
             pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 372, Short.MAX_VALUE)
+            .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(lblCliente1)
+                .addGap(18, 18, 18)
+                .addComponent(SeparadorTCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdbFrecuentes)
+                    .addComponent(rdbAvanzadas))
+                .addGap(7, 7, 7)
+                .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbBusquedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTelefonosCliente1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scTablaClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMostrandoClientes1)
+                    .addComponent(btnAnteriorCliente1)
+                    .addComponent(btnSiguienteCliente1))
+                .addGap(15, 15, 15))
+            .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                .addComponent(separadorCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         TabPane.addTab("Busqueda Avanzada", pnlBusquedaAvanzada);
@@ -741,11 +1066,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         lblConfiguracion.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
         lblConfiguracion.setText("Configuración");
 
-        jLabel1.setText("Ubicación base de datos");
+        lblUbicacion.setText("Ubicación base de datos");
 
-        jTextField1.setText("C:\\Users\\Usuario\\.PgAdmin\\");
+        txtUbicacion.setText("C:\\Users\\Usuario\\.PgAdmin\\");
 
-            jButton2.setText("Buscar");
+            btnBuscarUbicacion.setText("Buscar");
 
             javax.swing.GroupLayout pnlConfiguracionLayout = new javax.swing.GroupLayout(pnlConfiguracion);
             pnlConfiguracion.setLayout(pnlConfiguracionLayout);
@@ -757,17 +1082,17 @@ public class FrmAdministrador extends javax.swing.JFrame {
                     .addGroup(pnlConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlConfiguracionLayout.createSequentialGroup()
                             .addComponent(lblConfiguracion)
-                            .addGap(0, 871, Short.MAX_VALUE))
+                            .addGap(0, 679, Short.MAX_VALUE))
                         .addGroup(pnlConfiguracionLayout.createSequentialGroup()
                             .addComponent(SeparadorTConfiguracion)
                             .addGap(17, 17, 17))
                         .addGroup(pnlConfiguracionLayout.createSequentialGroup()
                             .addGroup(pnlConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
+                                .addComponent(lblUbicacion)
                                 .addGroup(pnlConfiguracionLayout.createSequentialGroup()
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton2)))
+                                    .addComponent(btnBuscarUbicacion)))
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             );
             pnlConfiguracionLayout.setVerticalGroup(
@@ -778,11 +1103,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(SeparadorTConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabel1)
+                    .addComponent(lblUbicacion)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnlConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2))
+                        .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscarUbicacion))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(pnlConfiguracionLayout.createSequentialGroup()
                     .addComponent(separadorConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -818,6 +1143,17 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 }
             });
 
+            btnCerrarSesion1.setBackground(new java.awt.Color(81, 107, 122));
+            btnCerrarSesion1.setForeground(new java.awt.Color(255, 255, 255));
+            btnCerrarSesion1.setText("Info Usuario");
+            btnCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnCerrarSesion1ActionPerformed(evt);
+                }
+            });
+
+            SeparadorPanel1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
             javax.swing.GroupLayout pnlInferiorLayout = new javax.swing.GroupLayout(pnlInferior);
             pnlInferior.setLayout(pnlInferiorLayout);
             pnlInferiorLayout.setHorizontalGroup(
@@ -830,6 +1166,10 @@ public class FrmAdministrador extends javax.swing.JFrame {
                             .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(SeparadorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(SeparadorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, Short.MAX_VALUE))))
             );
             pnlInferiorLayout.setVerticalGroup(
@@ -838,8 +1178,10 @@ public class FrmAdministrador extends javax.swing.JFrame {
                     .addComponent(SeparadorPanelT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SeparadorPanel))
+                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                        .addComponent(SeparadorPanel)
+                        .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SeparadorPanel1))
                     .addContainerGap())
             );
 
@@ -905,6 +1247,18 @@ public class FrmAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    private void btnTelefonosCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelefonosCliente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTelefonosCliente1ActionPerformed
+
+    private void rdbAvanzadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAvanzadasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdbAvanzadasActionPerformed
+
+    private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -943,14 +1297,18 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSeparator SeparadorPanel;
+    private javax.swing.JSeparator SeparadorPanel1;
     private javax.swing.JSeparator SeparadorPanelT;
     private javax.swing.JSeparator SeparadorTCliente;
+    private javax.swing.JSeparator SeparadorTCliente1;
     private javax.swing.JSeparator SeparadorTConductores;
     private javax.swing.JSeparator SeparadorTConfiguracion;
+    private javax.swing.JSeparator SeparadorTPrincipal;
     private javax.swing.JSeparator SeparadorTServicios;
     private javax.swing.JSeparator SeparadorTVehiculos;
     private javax.swing.JTabbedPane TabPane;
     private javax.swing.JButton btnAnteriorCliente;
+    private javax.swing.JButton btnAnteriorCliente1;
     private javax.swing.JButton btnAnteriorConductores;
     private javax.swing.JButton btnAnteriorServicios;
     private javax.swing.JButton btnAnteriorVehiculosVehiculos;
@@ -961,9 +1319,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnBuscarConductores;
     private javax.swing.JButton btnBuscarServicios;
+    private javax.swing.JButton btnBuscarUbicacion;
     private javax.swing.JButton btnBuscarVehiculos;
     private javax.swing.JButton btnBuscarVehiculos1;
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnCerrarSesion1;
     private javax.swing.JButton btnCrearCliente;
     private javax.swing.JButton btnCrearConductores;
     private javax.swing.JButton btnCrearServicios;
@@ -974,45 +1334,72 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarVehiculos;
     private javax.swing.JButton btnMasDetallesServicios;
     private javax.swing.JButton btnSiguienteCliente;
+    private javax.swing.JButton btnSiguienteCliente1;
     private javax.swing.JButton btnSiguienteConductores;
     private javax.swing.JButton btnSiguienteServicios;
     private javax.swing.JButton btnSiguienteVehiculos;
     private javax.swing.JButton btnTelefonosCliente;
+    private javax.swing.JButton btnTelefonosCliente1;
     private javax.swing.JButton btnTelefonosConductores;
     private javax.swing.JButton btnTelefonosConductores1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> cmbBusquedas;
+    private javax.swing.JLabel lblClienServ;
     private javax.swing.JLabel lblCliente;
+    private javax.swing.JLabel lblCliente1;
+    private javax.swing.JLabel lblConduServ;
     private javax.swing.JLabel lblConductores;
     private javax.swing.JLabel lblConfiguracion;
+    private javax.swing.JLabel lblGanancias;
+    private javax.swing.JLabel lblGananciasAnio;
+    private javax.swing.JLabel lblPrincipal;
+    private javax.swing.JLabel lblRecaudoUMes;
+    private javax.swing.JLabel lblServRec;
     private javax.swing.JLabel lblServicios;
+    private javax.swing.JLabel lblUbicacion;
     private javax.swing.JLabel lblVehiculos;
     private javax.swing.JPanel pnlBusquedaAvanzada;
     private javax.swing.JPanel pnlClientes;
     private javax.swing.JPanel pnlConductores;
     private javax.swing.JPanel pnlConfiguracion;
     private javax.swing.JPanel pnlFondo;
+    private javax.swing.JPanel pnlGanancias;
     private javax.swing.JPanel pnlInferior;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JPanel pnlServicios;
     private javax.swing.JPanel pnlVehiculos;
+    private javax.swing.JRadioButton rdbAvanzadas;
+    private javax.swing.JRadioButton rdbFrecuentes;
+    private javax.swing.JScrollPane scTablaClienServ;
     private javax.swing.JScrollPane scTablaClientes;
+    private javax.swing.JScrollPane scTablaClientes1;
+    private javax.swing.JScrollPane scTablaConduServ;
     private javax.swing.JScrollPane scTablaConductores;
+    private javax.swing.JScrollPane scTablaServRec;
     private javax.swing.JScrollPane scTablaServicios;
     private javax.swing.JScrollPane scTablaVehiculos;
     private javax.swing.JSeparator separadorCliente;
+    private javax.swing.JSeparator separadorCliente1;
     private javax.swing.JSeparator separadorConductores;
     private javax.swing.JSeparator separadorConfiguracion;
+    private javax.swing.JSeparator separadorPrincipal;
     private javax.swing.JSeparator separadorServicios;
     private javax.swing.JSeparator separadorVehiculos;
+    private javax.swing.JTable tbClienServ;
     private javax.swing.JTable tbClientes;
+    private javax.swing.JTable tbClientes1;
+    private javax.swing.JTable tbConduServ;
     private javax.swing.JTable tbConductores;
+    private javax.swing.JTable tbServRec;
     private javax.swing.JTable tbServicios;
     private javax.swing.JTable tbVehiculos;
+    private javax.swing.JTextField txtGanaciasAnio;
     private javax.swing.JLabel txtMostrandoClientes;
+    private javax.swing.JLabel txtMostrandoClientes1;
     private javax.swing.JLabel txtMostrandoConductor;
     private javax.swing.JLabel txtMostrandoServicios;
     private javax.swing.JLabel txtMostrandoVehiculos;
+    private javax.swing.JTextField txtRecaudoUMes;
+    private javax.swing.JTextField txtSQL;
+    private javax.swing.JTextField txtUbicacion;
     // End of variables declaration//GEN-END:variables
 }

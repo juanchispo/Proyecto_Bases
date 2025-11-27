@@ -100,15 +100,312 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1026" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="separadorPrincipal" min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="SeparadorTPrincipal" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblPrincipal" min="-2" pref="85" max="-2" attributes="0"/>
+                                      <Component id="lblServRec" pref="272" max="32767" attributes="0"/>
+                                      <Component id="scTablaServRec" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblClienServ" min="-2" pref="196" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblGanancias" pref="93" max="32767" attributes="0"/>
+                                          <EmptySpace min="229" pref="229" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblConduServ" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                                              <Component id="scTablaConduServ" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                                              <Component id="scTablaClienServ" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lblGananciasAnio" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtGanaciasAnio" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="pnlGanancias" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lblRecaudoUMes" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtRecaudoUMes" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="372" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="lblPrincipal" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="SeparadorTPrincipal" min="-2" pref="3" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblServRec" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblClienServ" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblGanancias" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="scTablaServRec" pref="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="scTablaClienServ" min="-2" pref="130" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="pnlGanancias" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="txtRecaudoUMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblRecaudoUMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblGananciasAnio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtGanaciasAnio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="lblConduServ" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="scTablaConduServ" min="-2" pref="130" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="separadorPrincipal" min="-2" pref="375" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JSeparator" name="separadorPrincipal">
+                  <Properties>
+                    <Property name="orientation" type="int" value="1"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPrincipal">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="MS PGothic" size="24" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Principal"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="SeparadorTPrincipal">
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="scTablaServRec">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tbServRec">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="false" title="ID" type="java.lang.Object"/>
+                            <Column editable="false" title="Conductor" type="java.lang.Object"/>
+                            <Column editable="false" title="Cliente" type="java.lang.Object"/>
+                            <Column editable="false" title="Valor" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="lblServRec">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Servicios Recientes"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblClienServ">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Clientes con mas servicios"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="scTablaClienServ">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tbClienServ">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="3" rowCount="4">
+                            <Column editable="false" title="ID" type="java.lang.Object"/>
+                            <Column editable="false" title="Nombre" type="java.lang.Object"/>
+                            <Column editable="false" title="Cant Servicios" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JScrollPane" name="scTablaConduServ">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tbConduServ">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="3" rowCount="4">
+                            <Column editable="false" title="ID" type="java.lang.Object"/>
+                            <Column editable="false" title="Nombre" type="java.lang.Object"/>
+                            <Column editable="false" title="Cant Servicios" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="lblConduServ">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Conductores con mas servicios"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JPanel" name="pnlGanancias">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
+                <Component class="javax.swing.JLabel" name="lblGanancias">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ganancias"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblRecaudoUMes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Recaudado el ultimo mes:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtRecaudoUMes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="2.415.035 $"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblGananciasAnio">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Mes con mas ganancia de 2025"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtGanaciasAnio">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Marzo"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlClientes">
               <Properties>
@@ -141,7 +438,7 @@
                                       <Component id="btnEditarCliente" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnBorrarCliente" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnCrearCliente" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnTelefonosCliente" pref="88" max="32767" attributes="0"/>
+                                      <Component id="btnTelefonosCliente" pref="106" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -152,7 +449,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnSiguienteCliente" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="scTablaClientes" pref="889" max="32767" attributes="0"/>
+                                      <Component id="scTablaClientes" pref="679" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="SeparadorTCliente" max="32767" attributes="0"/>
@@ -392,8 +689,8 @@
                                       <Component id="btnEditarConductores" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnBorrarConductores" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnCrearConductores" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnTelefonosConductores" alignment="0" pref="88" max="32767" attributes="0"/>
-                                      <Component id="btnTelefonosConductores1" alignment="1" pref="88" max="32767" attributes="0"/>
+                                      <Component id="btnTelefonosConductores" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnTelefonosConductores1" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -404,7 +701,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnSiguienteConductores" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="scTablaConductores" alignment="0" pref="889" max="32767" attributes="0"/>
+                                      <Component id="scTablaConductores" alignment="0" pref="701" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="SeparadorTConductores" alignment="0" max="32767" attributes="0"/>
@@ -671,7 +968,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnSiguienteVehiculos" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="scTablaVehiculos" alignment="0" pref="879" max="32767" attributes="0"/>
+                                      <Component id="scTablaVehiculos" alignment="0" pref="687" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="SeparadorTVehiculos" alignment="0" max="32767" attributes="0"/>
@@ -913,7 +1210,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnSiguienteServicios" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="scTablaServicios" alignment="0" pref="876" max="32767" attributes="0"/>
+                                      <Component id="scTablaServicios" alignment="0" pref="684" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="SeparadorTServicios" alignment="0" max="32767" attributes="0"/>
@@ -1151,15 +1448,239 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1026" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="separadorCliente1" min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="SeparadorTCliente1" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtMostrandoClientes1" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAnteriorCliente1" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSiguienteCliente1" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="520" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lblCliente1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="rdbFrecuentes" max="32767" attributes="0"/>
+                                          <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="cmbBusquedas" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="rdbAvanzadas" max="32767" attributes="0"/>
+                                          <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txtSQL" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="scTablaClientes1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTelefonosCliente1" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="372" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="lblCliente1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="SeparadorTCliente1" min="-2" pref="3" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="rdbFrecuentes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdbAvanzadas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cmbBusquedas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSQL" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnTelefonosCliente1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="scTablaClientes1" min="-2" pref="145" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtMostrandoClientes1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAnteriorCliente1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSiguienteCliente1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="separadorCliente1" min="-2" pref="375" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="btnAnteriorCliente1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="MS PGothic" size="12" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Anterior"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnSiguienteCliente1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="MS PGothic" size="12" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Siguiente"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="separadorCliente1">
+                  <Properties>
+                    <Property name="orientation" type="int" value="1"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="scTablaClientes1">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tbClientes1">
+                      <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="MS PGothic" size="12" style="0"/>
+                        </Property>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="5" rowCount="15">
+                            <Column editable="false" title="ID" type="java.lang.Object"/>
+                            <Column editable="false" title="Nombre" type="java.lang.Object"/>
+                            <Column editable="false" title="Direccion" type="java.lang.Object"/>
+                            <Column editable="false" title="Genero" type="java.lang.Object"/>
+                            <Column editable="false" title="Nacionalidad" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="showGrid" type="boolean" value="false"/>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="lblCliente1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="MS PGothic" size="24" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Busqueda Avanzada"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="SeparadorTCliente1">
+                </Component>
+                <Component class="javax.swing.JButton" name="btnTelefonosCliente1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="MS PGothic" size="12" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Consultar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelefonosCliente1ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="txtMostrandoClientes1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="MS PGothic" size="12" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Mostrando 1 de 50"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmbBusquedas">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="7">
+                        <StringItem index="0" value="Valores totales de los servicios realizados diferenciando si corresponden a transporte de pasajeros o alimentos y la categor&#xed;a a la que corresponde"/>
+                        <StringItem index="1" value="Cantidad de servicios de pasajeros y de alimentos por mes"/>
+                        <StringItem index="2" value="Datos de los clientes que han solicitado servicios durante un per&#xed;odo de tiempo organizados de mayor a menor"/>
+                        <StringItem index="3" value="Valores totales de los servicios de acuerdo con su medio de pago"/>
+                        <StringItem index="4" value="Promedio de valor total de servicio de clientes dependiendo la nacionalidad"/>
+                        <StringItem index="5" value="Datos de conductores que han realizado servicios durante un periodo"/>
+                        <StringItem index="6" value="Cantidad de servicios de pasajeros de un g&#xe9;nero determinado"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rdbFrecuentes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Busquedas Frecuentes"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rdbAvanzadas">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Consulta Avanzada (SQL)"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdbAvanzadasActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtSQL">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="SELECT * FROM empleados"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlConfiguracion">
               <Properties>
@@ -1184,7 +1705,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblConfiguracion" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="871" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="679" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="SeparadorTConfiguracion" max="32767" attributes="0"/>
@@ -1192,11 +1713,11 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblUbicacion" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="jTextField1" min="-2" pref="286" max="-2" attributes="0"/>
+                                          <Component id="txtUbicacion" min="-2" pref="286" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnBuscarUbicacion" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -1213,11 +1734,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="SeparadorTConfiguracion" min="-2" pref="3" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblUbicacion" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtUbicacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnBuscarUbicacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -1244,17 +1765,17 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="SeparadorTConfiguracion">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="lblUbicacion">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ubicaci&#xf3;n base de datos"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="txtUbicacion">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="C:\u005cUsers\u005cUsuario\u005c.PgAdmin\u005c" containsInvalidXMLChars="true"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="btnBuscarUbicacion">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
@@ -1283,6 +1804,10 @@
                           <Component id="btnCerrarSesion" min="-2" pref="115" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="SeparadorPanel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnCerrarSesion1" min="-2" pref="115" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="SeparadorPanel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1295,8 +1820,10 @@
                   <Component id="SeparadorPanelT" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnCerrarSesion" max="32767" attributes="0"/>
+                      <Component id="btnCerrarSesion" pref="34" max="32767" attributes="0"/>
                       <Component id="SeparadorPanel" max="32767" attributes="0"/>
+                      <Component id="btnCerrarSesion1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="SeparadorPanel1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1324,6 +1851,25 @@
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="SeparadorPanelT">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCerrarSesion1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="7a" green="6b" red="51" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Info Usuario"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarSesion1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="SeparadorPanel1">
+          <Properties>
+            <Property name="orientation" type="int" value="1"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
