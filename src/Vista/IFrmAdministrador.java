@@ -1,19 +1,822 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vista;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Dyl
  */
-public class FrmAdministrador extends javax.swing.JFrame {
+public class IFrmAdministrador extends javax.swing.JInternalFrame {
+
+    public JSeparator getSeparadorTCliente() {
+        return SeparadorTCliente;
+    }
+
+    public void setSeparadorTCliente(JSeparator SeparadorTCliente) {
+        this.SeparadorTCliente = SeparadorTCliente;
+    }
+
+    public JSeparator getSeparadorTCliente1() {
+        return SeparadorTCliente1;
+    }
+
+    public void setSeparadorTCliente1(JSeparator SeparadorTCliente1) {
+        this.SeparadorTCliente1 = SeparadorTCliente1;
+    }
+
+    public JSeparator getSeparadorTConductores() {
+        return SeparadorTConductores;
+    }
+
+    public void setSeparadorTConductores(JSeparator SeparadorTConductores) {
+        this.SeparadorTConductores = SeparadorTConductores;
+    }
+
+    public JSeparator getSeparadorTConfiguracion() {
+        return SeparadorTConfiguracion;
+    }
+
+    public void setSeparadorTConfiguracion(JSeparator SeparadorTConfiguracion) {
+        this.SeparadorTConfiguracion = SeparadorTConfiguracion;
+    }
+
+    public JSeparator getSeparadorTPrincipal() {
+        return SeparadorTPrincipal;
+    }
+
+    public void setSeparadorTPrincipal(JSeparator SeparadorTPrincipal) {
+        this.SeparadorTPrincipal = SeparadorTPrincipal;
+    }
+
+    public JSeparator getSeparadorTServicios() {
+        return SeparadorTServicios;
+    }
+
+    public void setSeparadorTServicios(JSeparator SeparadorTServicios) {
+        this.SeparadorTServicios = SeparadorTServicios;
+    }
+
+    public JSeparator getSeparadorTVehiculos() {
+        return SeparadorTVehiculos;
+    }
+
+    public void setSeparadorTVehiculos(JSeparator SeparadorTVehiculos) {
+        this.SeparadorTVehiculos = SeparadorTVehiculos;
+    }
+
+    public JTabbedPane getTabPane() {
+        return TabPane;
+    }
+
+    public void setTabPane(JTabbedPane TabPane) {
+        this.TabPane = TabPane;
+    }
+
+    public JButton getBtnAnteriorCliente() {
+        return btnAnteriorCliente;
+    }
+
+    public void setBtnAnteriorCliente(JButton btnAnteriorCliente) {
+        this.btnAnteriorCliente = btnAnteriorCliente;
+    }
+
+    public JButton getBtnAnteriorCliente1() {
+        return btnAnteriorCliente1;
+    }
+
+    public void setBtnAnteriorCliente1(JButton btnAnteriorCliente1) {
+        this.btnAnteriorCliente1 = btnAnteriorCliente1;
+    }
+
+    public JButton getBtnAnteriorConductores() {
+        return btnAnteriorConductores;
+    }
+
+    public void setBtnAnteriorConductores(JButton btnAnteriorConductores) {
+        this.btnAnteriorConductores = btnAnteriorConductores;
+    }
+
+    public JButton getBtnAnteriorServicios() {
+        return btnAnteriorServicios;
+    }
+
+    public void setBtnAnteriorServicios(JButton btnAnteriorServicios) {
+        this.btnAnteriorServicios = btnAnteriorServicios;
+    }
+
+    public JButton getBtnAnteriorVehiculosVehiculos() {
+        return btnAnteriorVehiculosVehiculos;
+    }
+
+    public void setBtnAnteriorVehiculosVehiculos(JButton btnAnteriorVehiculosVehiculos) {
+        this.btnAnteriorVehiculosVehiculos = btnAnteriorVehiculosVehiculos;
+    }
+
+    public JButton getBtnBorrarCliente() {
+        return btnBorrarCliente;
+    }
+
+    public void setBtnBorrarCliente(JButton btnBorrarCliente) {
+        this.btnBorrarCliente = btnBorrarCliente;
+    }
+
+    public JButton getBtnBorrarConductores() {
+        return btnBorrarConductores;
+    }
+
+    public void setBtnBorrarConductores(JButton btnBorrarConductores) {
+        this.btnBorrarConductores = btnBorrarConductores;
+    }
+
+    public JButton getBtnBorrarServicios() {
+        return btnBorrarServicios;
+    }
+
+    public void setBtnBorrarServicios(JButton btnBorrarServicios) {
+        this.btnBorrarServicios = btnBorrarServicios;
+    }
+
+    public JButton getBtnBorrarVehiculos() {
+        return btnBorrarVehiculos;
+    }
+
+    public void setBtnBorrarVehiculos(JButton btnBorrarVehiculos) {
+        this.btnBorrarVehiculos = btnBorrarVehiculos;
+    }
+
+    public JButton getBtnBuscarCliente() {
+        return btnBuscarCliente;
+    }
+
+    public void setBtnBuscarCliente(JButton btnBuscarCliente) {
+        this.btnBuscarCliente = btnBuscarCliente;
+    }
+
+    public JButton getBtnBuscarConductores() {
+        return btnBuscarConductores;
+    }
+
+    public void setBtnBuscarConductores(JButton btnBuscarConductores) {
+        this.btnBuscarConductores = btnBuscarConductores;
+    }
+
+    public JButton getBtnBuscarServicios() {
+        return btnBuscarServicios;
+    }
+
+    public void setBtnBuscarServicios(JButton btnBuscarServicios) {
+        this.btnBuscarServicios = btnBuscarServicios;
+    }
+
+    public JButton getBtnBuscarUbicacion() {
+        return btnBuscarUbicacion;
+    }
+
+    public void setBtnBuscarUbicacion(JButton btnBuscarUbicacion) {
+        this.btnBuscarUbicacion = btnBuscarUbicacion;
+    }
+
+    public JButton getBtnBuscarVehiculos() {
+        return btnBuscarVehiculos;
+    }
+
+    public void setBtnBuscarVehiculos(JButton btnBuscarVehiculos) {
+        this.btnBuscarVehiculos = btnBuscarVehiculos;
+    }
+
+    public JButton getBtnBuscarVehiculos1() {
+        return btnBuscarVehiculos1;
+    }
+
+    public void setBtnBuscarVehiculos1(JButton btnBuscarVehiculos1) {
+        this.btnBuscarVehiculos1 = btnBuscarVehiculos1;
+    }
+
+    public JButton getBtnCrearCliente() {
+        return btnCrearCliente;
+    }
+
+    public void setBtnCrearCliente(JButton btnCrearCliente) {
+        this.btnCrearCliente = btnCrearCliente;
+    }
+
+    public JButton getBtnCrearConductores() {
+        return btnCrearConductores;
+    }
+
+    public void setBtnCrearConductores(JButton btnCrearConductores) {
+        this.btnCrearConductores = btnCrearConductores;
+    }
+
+    public JButton getBtnCrearServicios() {
+        return btnCrearServicios;
+    }
+
+    public void setBtnCrearServicios(JButton btnCrearServicios) {
+        this.btnCrearServicios = btnCrearServicios;
+    }
+
+    public JButton getBtnCrearVehiculos() {
+        return btnCrearVehiculos;
+    }
+
+    public void setBtnCrearVehiculos(JButton btnCrearVehiculos) {
+        this.btnCrearVehiculos = btnCrearVehiculos;
+    }
+
+    public JButton getBtnEditarCliente() {
+        return btnEditarCliente;
+    }
+
+    public void setBtnEditarCliente(JButton btnEditarCliente) {
+        this.btnEditarCliente = btnEditarCliente;
+    }
+
+    public JButton getBtnEditarConductores() {
+        return btnEditarConductores;
+    }
+
+    public void setBtnEditarConductores(JButton btnEditarConductores) {
+        this.btnEditarConductores = btnEditarConductores;
+    }
+
+    public JButton getBtnEditarServicios() {
+        return btnEditarServicios;
+    }
+
+    public void setBtnEditarServicios(JButton btnEditarServicios) {
+        this.btnEditarServicios = btnEditarServicios;
+    }
+
+    public JButton getBtnEditarVehiculos() {
+        return btnEditarVehiculos;
+    }
+
+    public void setBtnEditarVehiculos(JButton btnEditarVehiculos) {
+        this.btnEditarVehiculos = btnEditarVehiculos;
+    }
+
+    public JButton getBtnMasDetallesServicios() {
+        return btnMasDetallesServicios;
+    }
+
+    public void setBtnMasDetallesServicios(JButton btnMasDetallesServicios) {
+        this.btnMasDetallesServicios = btnMasDetallesServicios;
+    }
+
+    public JButton getBtnSiguienteCliente() {
+        return btnSiguienteCliente;
+    }
+
+    public void setBtnSiguienteCliente(JButton btnSiguienteCliente) {
+        this.btnSiguienteCliente = btnSiguienteCliente;
+    }
+
+    public JButton getBtnSiguienteCliente1() {
+        return btnSiguienteCliente1;
+    }
+
+    public void setBtnSiguienteCliente1(JButton btnSiguienteCliente1) {
+        this.btnSiguienteCliente1 = btnSiguienteCliente1;
+    }
+
+    public JButton getBtnSiguienteConductores() {
+        return btnSiguienteConductores;
+    }
+
+    public void setBtnSiguienteConductores(JButton btnSiguienteConductores) {
+        this.btnSiguienteConductores = btnSiguienteConductores;
+    }
+
+    public JButton getBtnSiguienteServicios() {
+        return btnSiguienteServicios;
+    }
+
+    public void setBtnSiguienteServicios(JButton btnSiguienteServicios) {
+        this.btnSiguienteServicios = btnSiguienteServicios;
+    }
+
+    public JButton getBtnSiguienteVehiculos() {
+        return btnSiguienteVehiculos;
+    }
+
+    public void setBtnSiguienteVehiculos(JButton btnSiguienteVehiculos) {
+        this.btnSiguienteVehiculos = btnSiguienteVehiculos;
+    }
+
+    public JButton getBtnTelefonosCliente() {
+        return btnTelefonosCliente;
+    }
+
+    public void setBtnTelefonosCliente(JButton btnTelefonosCliente) {
+        this.btnTelefonosCliente = btnTelefonosCliente;
+    }
+
+    public JButton getBtnTelefonosCliente1() {
+        return btnTelefonosCliente1;
+    }
+
+    public void setBtnTelefonosCliente1(JButton btnTelefonosCliente1) {
+        this.btnTelefonosCliente1 = btnTelefonosCliente1;
+    }
+
+    public JButton getBtnTelefonosConductores() {
+        return btnTelefonosConductores;
+    }
+
+    public void setBtnTelefonosConductores(JButton btnTelefonosConductores) {
+        this.btnTelefonosConductores = btnTelefonosConductores;
+    }
+
+    public JButton getBtnTelefonosConductores1() {
+        return btnTelefonosConductores1;
+    }
+
+    public void setBtnTelefonosConductores1(JButton btnTelefonosConductores1) {
+        this.btnTelefonosConductores1 = btnTelefonosConductores1;
+    }
+
+    public JComboBox<String> getCmbBusquedas() {
+        return cmbBusquedas;
+    }
+
+    public void setCmbBusquedas(JComboBox<String> cmbBusquedas) {
+        this.cmbBusquedas = cmbBusquedas;
+    }
+
+    public JLabel getLblClienServ() {
+        return lblClienServ;
+    }
+
+    public void setLblClienServ(JLabel lblClienServ) {
+        this.lblClienServ = lblClienServ;
+    }
+
+    public JLabel getLblCliente() {
+        return lblCliente;
+    }
+
+    public void setLblCliente(JLabel lblCliente) {
+        this.lblCliente = lblCliente;
+    }
+
+    public JLabel getLblCliente1() {
+        return lblCliente1;
+    }
+
+    public void setLblCliente1(JLabel lblCliente1) {
+        this.lblCliente1 = lblCliente1;
+    }
+
+    public JLabel getLblConduServ() {
+        return lblConduServ;
+    }
+
+    public void setLblConduServ(JLabel lblConduServ) {
+        this.lblConduServ = lblConduServ;
+    }
+
+    public JLabel getLblConductores() {
+        return lblConductores;
+    }
+
+    public void setLblConductores(JLabel lblConductores) {
+        this.lblConductores = lblConductores;
+    }
+
+    public JLabel getLblConfiguracion() {
+        return lblConfiguracion;
+    }
+
+    public void setLblConfiguracion(JLabel lblConfiguracion) {
+        this.lblConfiguracion = lblConfiguracion;
+    }
+
+    public JLabel getLblGanancias() {
+        return lblGanancias;
+    }
+
+    public void setLblGanancias(JLabel lblGanancias) {
+        this.lblGanancias = lblGanancias;
+    }
+
+    public JLabel getLblGananciasAnio() {
+        return lblGananciasAnio;
+    }
+
+    public void setLblGananciasAnio(JLabel lblGananciasAnio) {
+        this.lblGananciasAnio = lblGananciasAnio;
+    }
+
+    public JLabel getLblPrincipal() {
+        return lblPrincipal;
+    }
+
+    public void setLblPrincipal(JLabel lblPrincipal) {
+        this.lblPrincipal = lblPrincipal;
+    }
+
+    public JLabel getLblRecaudoUMes() {
+        return lblRecaudoUMes;
+    }
+
+    public void setLblRecaudoUMes(JLabel lblRecaudoUMes) {
+        this.lblRecaudoUMes = lblRecaudoUMes;
+    }
+
+    public JLabel getLblServRec() {
+        return lblServRec;
+    }
+
+    public void setLblServRec(JLabel lblServRec) {
+        this.lblServRec = lblServRec;
+    }
+
+    public JLabel getLblServicios() {
+        return lblServicios;
+    }
+
+    public void setLblServicios(JLabel lblServicios) {
+        this.lblServicios = lblServicios;
+    }
+
+    public JLabel getLblUbicacion() {
+        return lblUbicacion;
+    }
+
+    public void setLblUbicacion(JLabel lblUbicacion) {
+        this.lblUbicacion = lblUbicacion;
+    }
+
+    public JLabel getLblVehiculos() {
+        return lblVehiculos;
+    }
+
+    public void setLblVehiculos(JLabel lblVehiculos) {
+        this.lblVehiculos = lblVehiculos;
+    }
+
+    public JPanel getPnlAdministrador() {
+        return pnlAdministrador;
+    }
+
+    public void setPnlAdministrador(JPanel pnlAdministrador) {
+        this.pnlAdministrador = pnlAdministrador;
+    }
+
+    public JPanel getPnlBusquedaAvanzada() {
+        return pnlBusquedaAvanzada;
+    }
+
+    public void setPnlBusquedaAvanzada(JPanel pnlBusquedaAvanzada) {
+        this.pnlBusquedaAvanzada = pnlBusquedaAvanzada;
+    }
+
+    public JPanel getPnlClientes() {
+        return pnlClientes;
+    }
+
+    public void setPnlClientes(JPanel pnlClientes) {
+        this.pnlClientes = pnlClientes;
+    }
+
+    public JPanel getPnlConductores() {
+        return pnlConductores;
+    }
+
+    public void setPnlConductores(JPanel pnlConductores) {
+        this.pnlConductores = pnlConductores;
+    }
+
+    public JPanel getPnlConfiguracion() {
+        return pnlConfiguracion;
+    }
+
+    public void setPnlConfiguracion(JPanel pnlConfiguracion) {
+        this.pnlConfiguracion = pnlConfiguracion;
+    }
+
+    public JPanel getPnlGanancias() {
+        return pnlGanancias;
+    }
+
+    public void setPnlGanancias(JPanel pnlGanancias) {
+        this.pnlGanancias = pnlGanancias;
+    }
+
+    public JPanel getPnlPrincipal() {
+        return pnlPrincipal;
+    }
+
+    public void setPnlPrincipal(JPanel pnlPrincipal) {
+        this.pnlPrincipal = pnlPrincipal;
+    }
+
+    public JPanel getPnlServicios() {
+        return pnlServicios;
+    }
+
+    public void setPnlServicios(JPanel pnlServicios) {
+        this.pnlServicios = pnlServicios;
+    }
+
+    public JPanel getPnlVehiculos() {
+        return pnlVehiculos;
+    }
+
+    public void setPnlVehiculos(JPanel pnlVehiculos) {
+        this.pnlVehiculos = pnlVehiculos;
+    }
+
+    public JRadioButton getRdbAvanzadas() {
+        return rdbAvanzadas;
+    }
+
+    public void setRdbAvanzadas(JRadioButton rdbAvanzadas) {
+        this.rdbAvanzadas = rdbAvanzadas;
+    }
+
+    public JRadioButton getRdbFrecuentes() {
+        return rdbFrecuentes;
+    }
+
+    public void setRdbFrecuentes(JRadioButton rdbFrecuentes) {
+        this.rdbFrecuentes = rdbFrecuentes;
+    }
+
+    public JScrollPane getScTablaClienServ() {
+        return scTablaClienServ;
+    }
+
+    public void setScTablaClienServ(JScrollPane scTablaClienServ) {
+        this.scTablaClienServ = scTablaClienServ;
+    }
+
+    public JScrollPane getScTablaClientes() {
+        return scTablaClientes;
+    }
+
+    public void setScTablaClientes(JScrollPane scTablaClientes) {
+        this.scTablaClientes = scTablaClientes;
+    }
+
+    public JScrollPane getScTablaClientes1() {
+        return scTablaClientes1;
+    }
+
+    public void setScTablaClientes1(JScrollPane scTablaClientes1) {
+        this.scTablaClientes1 = scTablaClientes1;
+    }
+
+    public JScrollPane getScTablaConduServ() {
+        return scTablaConduServ;
+    }
+
+    public void setScTablaConduServ(JScrollPane scTablaConduServ) {
+        this.scTablaConduServ = scTablaConduServ;
+    }
+
+    public JScrollPane getScTablaConductores() {
+        return scTablaConductores;
+    }
+
+    public void setScTablaConductores(JScrollPane scTablaConductores) {
+        this.scTablaConductores = scTablaConductores;
+    }
+
+    public JScrollPane getScTablaServRec() {
+        return scTablaServRec;
+    }
+
+    public void setScTablaServRec(JScrollPane scTablaServRec) {
+        this.scTablaServRec = scTablaServRec;
+    }
+
+    public JScrollPane getScTablaServicios() {
+        return scTablaServicios;
+    }
+
+    public void setScTablaServicios(JScrollPane scTablaServicios) {
+        this.scTablaServicios = scTablaServicios;
+    }
+
+    public JScrollPane getScTablaVehiculos() {
+        return scTablaVehiculos;
+    }
+
+    public void setScTablaVehiculos(JScrollPane scTablaVehiculos) {
+        this.scTablaVehiculos = scTablaVehiculos;
+    }
+
+    public JSeparator getSeparadorCliente() {
+        return separadorCliente;
+    }
+
+    public void setSeparadorCliente(JSeparator separadorCliente) {
+        this.separadorCliente = separadorCliente;
+    }
+
+    public JSeparator getSeparadorCliente1() {
+        return separadorCliente1;
+    }
+
+    public void setSeparadorCliente1(JSeparator separadorCliente1) {
+        this.separadorCliente1 = separadorCliente1;
+    }
+
+    public JSeparator getSeparadorConductores() {
+        return separadorConductores;
+    }
+
+    public void setSeparadorConductores(JSeparator separadorConductores) {
+        this.separadorConductores = separadorConductores;
+    }
+
+    public JSeparator getSeparadorConfiguracion() {
+        return separadorConfiguracion;
+    }
+
+    public void setSeparadorConfiguracion(JSeparator separadorConfiguracion) {
+        this.separadorConfiguracion = separadorConfiguracion;
+    }
+
+    public JSeparator getSeparadorPrincipal() {
+        return separadorPrincipal;
+    }
+
+    public void setSeparadorPrincipal(JSeparator separadorPrincipal) {
+        this.separadorPrincipal = separadorPrincipal;
+    }
+
+    public JSeparator getSeparadorServicios() {
+        return separadorServicios;
+    }
+
+    public void setSeparadorServicios(JSeparator separadorServicios) {
+        this.separadorServicios = separadorServicios;
+    }
+
+    public JSeparator getSeparadorVehiculos() {
+        return separadorVehiculos;
+    }
+
+    public void setSeparadorVehiculos(JSeparator separadorVehiculos) {
+        this.separadorVehiculos = separadorVehiculos;
+    }
+
+    public JTable getTbClienServ() {
+        return tbClienServ;
+    }
+
+    public void setTbClienServ(JTable tbClienServ) {
+        this.tbClienServ = tbClienServ;
+    }
+
+    public JTable getTbClientes() {
+        return tbClientes;
+    }
+
+    public void setTbClientes(JTable tbClientes) {
+        this.tbClientes = tbClientes;
+    }
+
+    public JTable getTbClientes1() {
+        return tbClientes1;
+    }
+
+    public void setTbClientes1(JTable tbClientes1) {
+        this.tbClientes1 = tbClientes1;
+    }
+
+    public JTable getTbConduServ() {
+        return tbConduServ;
+    }
+
+    public void setTbConduServ(JTable tbConduServ) {
+        this.tbConduServ = tbConduServ;
+    }
+
+    public JTable getTbConductores() {
+        return tbConductores;
+    }
+
+    public void setTbConductores(JTable tbConductores) {
+        this.tbConductores = tbConductores;
+    }
+
+    public JTable getTbServRec() {
+        return tbServRec;
+    }
+
+    public void setTbServRec(JTable tbServRec) {
+        this.tbServRec = tbServRec;
+    }
+
+    public JTable getTbServicios() {
+        return tbServicios;
+    }
+
+    public void setTbServicios(JTable tbServicios) {
+        this.tbServicios = tbServicios;
+    }
+
+    public JTable getTbVehiculos() {
+        return tbVehiculos;
+    }
+
+    public void setTbVehiculos(JTable tbVehiculos) {
+        this.tbVehiculos = tbVehiculos;
+    }
+
+    public JTextField getTxtGanaciasAnio() {
+        return txtGanaciasAnio;
+    }
+
+    public void setTxtGanaciasAnio(JTextField txtGanaciasAnio) {
+        this.txtGanaciasAnio = txtGanaciasAnio;
+    }
+
+    public JLabel getTxtMostrandoClientes() {
+        return txtMostrandoClientes;
+    }
+
+    public void setTxtMostrandoClientes(JLabel txtMostrandoClientes) {
+        this.txtMostrandoClientes = txtMostrandoClientes;
+    }
+
+    public JLabel getTxtMostrandoClientes1() {
+        return txtMostrandoClientes1;
+    }
+
+    public void setTxtMostrandoClientes1(JLabel txtMostrandoClientes1) {
+        this.txtMostrandoClientes1 = txtMostrandoClientes1;
+    }
+
+    public JLabel getTxtMostrandoConductor() {
+        return txtMostrandoConductor;
+    }
+
+    public void setTxtMostrandoConductor(JLabel txtMostrandoConductor) {
+        this.txtMostrandoConductor = txtMostrandoConductor;
+    }
+
+    public JLabel getTxtMostrandoServicios() {
+        return txtMostrandoServicios;
+    }
+
+    public void setTxtMostrandoServicios(JLabel txtMostrandoServicios) {
+        this.txtMostrandoServicios = txtMostrandoServicios;
+    }
+
+    public JLabel getTxtMostrandoVehiculos() {
+        return txtMostrandoVehiculos;
+    }
+
+    public void setTxtMostrandoVehiculos(JLabel txtMostrandoVehiculos) {
+        this.txtMostrandoVehiculos = txtMostrandoVehiculos;
+    }
+
+    public JTextField getTxtRecaudoUMes() {
+        return txtRecaudoUMes;
+    }
+
+    public void setTxtRecaudoUMes(JTextField txtRecaudoUMes) {
+        this.txtRecaudoUMes = txtRecaudoUMes;
+    }
+
+    public JTextField getTxtSQL() {
+        return txtSQL;
+    }
+
+    public void setTxtSQL(JTextField txtSQL) {
+        this.txtSQL = txtSQL;
+    }
+
+    public JTextField getTxtUbicacion() {
+        return txtUbicacion;
+    }
+
+    public void setTxtUbicacion(JTextField txtUbicacion) {
+        this.txtUbicacion = txtUbicacion;
+    }
 
     /**
-     * Creates new form FrmPrincipal
+     * Creates new form IFrmAdministrador
      */
-    public FrmAdministrador() {
+    public IFrmAdministrador() {
         initComponents();
     }
 
@@ -26,7 +829,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlFondo = new javax.swing.JPanel();
+        pnlAdministrador = new javax.swing.JPanel();
         TabPane = new javax.swing.JTabbedPane();
         pnlPrincipal = new javax.swing.JPanel();
         separadorPrincipal = new javax.swing.JSeparator();
@@ -125,17 +928,12 @@ public class FrmAdministrador extends javax.swing.JFrame {
         lblUbicacion = new javax.swing.JLabel();
         txtUbicacion = new javax.swing.JTextField();
         btnBuscarUbicacion = new javax.swing.JButton();
-        pnlInferior = new javax.swing.JPanel();
-        SeparadorPanel = new javax.swing.JSeparator();
-        btnCerrarSesion = new javax.swing.JButton();
-        SeparadorPanelT = new javax.swing.JSeparator();
-        btnCerrarSesion1 = new javax.swing.JButton();
-        SeparadorPanel1 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("PANEL DE ADMINISTRADOR");
 
-        pnlFondo.setBackground(new java.awt.Color(255, 255, 255));
+        pnlAdministrador.setBackground(new java.awt.Color(255, 255, 255));
 
         TabPane.setBackground(new java.awt.Color(81, 107, 122));
         TabPane.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,14 +1062,14 @@ public class FrmAdministrador extends javax.swing.JFrame {
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblServRec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                            .addComponent(lblServRec, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
                             .addComponent(scTablaServRec, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                                 .addComponent(lblClienServ, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                                .addComponent(lblGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                                 .addGap(229, 229, 229))
                             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +1173,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         tbClientes.setToolTipText("");
         tbClientes.setShowGrid(false);
         scTablaClientes.setViewportView(tbClientes);
-        tbClientes.getAccessibleContext().setAccessibleName("");
 
         txtMostrandoClientes.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         txtMostrandoClientes.setText("Mostrando 1 de 50");
@@ -433,7 +1230,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                             .addComponent(btnEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBorrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCrearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTelefonosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                            .addComponent(btnTelefonosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlClientesLayout.createSequentialGroup()
@@ -442,7 +1239,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                                 .addComponent(btnAnteriorCliente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteCliente))
-                            .addComponent(scTablaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)))
+                            .addComponent(scTablaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)))
                     .addComponent(SeparadorTCliente))
                 .addGap(17, 17, 17))
         );
@@ -595,7 +1392,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                                 .addComponent(btnAnteriorConductores)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteConductores))
-                            .addComponent(scTablaConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)))
+                            .addComponent(scTablaConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)))
                     .addComponent(SeparadorTConductores))
                 .addGap(17, 17, 17))
         );
@@ -741,7 +1538,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                                 .addComponent(btnAnteriorVehiculosVehiculos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteVehiculos))
-                            .addComponent(scTablaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)))
+                            .addComponent(scTablaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)))
                     .addComponent(SeparadorTVehiculos))
                 .addGap(17, 17, 17))
         );
@@ -890,7 +1687,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                                 .addComponent(btnAnteriorServicios)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteServicios))
-                            .addComponent(scTablaServicios, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)))
+                            .addComponent(scTablaServicios, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)))
                     .addComponent(SeparadorTServicios))
                 .addGap(17, 17, 17))
         );
@@ -1096,7 +1893,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                     .addGroup(pnlConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlConfiguracionLayout.createSequentialGroup()
                             .addComponent(lblConfiguracion)
-                            .addGap(0, 679, Short.MAX_VALUE))
+                            .addGap(0, 689, Short.MAX_VALUE))
                         .addGroup(pnlConfiguracionLayout.createSequentialGroup()
                             .addComponent(SeparadorTConfiguracion)
                             .addGap(17, 17, 17))
@@ -1130,88 +1927,31 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
             TabPane.addTab("Configuración", pnlConfiguracion);
 
-            javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
-            pnlFondo.setLayout(pnlFondoLayout);
-            pnlFondoLayout.setHorizontalGroup(
-                pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            javax.swing.GroupLayout pnlAdministradorLayout = new javax.swing.GroupLayout(pnlAdministrador);
+            pnlAdministrador.setLayout(pnlAdministradorLayout);
+            pnlAdministradorLayout.setHorizontalGroup(
+                pnlAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(TabPane, javax.swing.GroupLayout.Alignment.TRAILING)
             );
-            pnlFondoLayout.setVerticalGroup(
-                pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlFondoLayout.createSequentialGroup()
+            pnlAdministradorLayout.setVerticalGroup(
+                pnlAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlAdministradorLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
-
-            pnlInferior.setBackground(new java.awt.Color(255, 255, 255));
-
-            SeparadorPanel.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-            btnCerrarSesion.setBackground(new java.awt.Color(250, 39, 51));
-            btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
-            btnCerrarSesion.setText("Cerrar Sesion");
-            btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btnCerrarSesionActionPerformed(evt);
-                }
-            });
-
-            btnCerrarSesion1.setBackground(new java.awt.Color(81, 107, 122));
-            btnCerrarSesion1.setForeground(new java.awt.Color(255, 255, 255));
-            btnCerrarSesion1.setText("Info Usuario");
-            btnCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btnCerrarSesion1ActionPerformed(evt);
-                }
-            });
-
-            SeparadorPanel1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-            javax.swing.GroupLayout pnlInferiorLayout = new javax.swing.GroupLayout(pnlInferior);
-            pnlInferior.setLayout(pnlInferiorLayout);
-            pnlInferiorLayout.setHorizontalGroup(
-                pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlInferiorLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(SeparadorPanelT)
-                        .addGroup(pnlInferiorLayout.createSequentialGroup()
-                            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(SeparadorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(SeparadorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))))
-            );
-            pnlInferiorLayout.setVerticalGroup(
-                pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInferiorLayout.createSequentialGroup()
-                    .addComponent(SeparadorPanelT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                        .addComponent(SeparadorPanel)
-                        .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SeparadorPanel1))
-                    .addContainerGap())
             );
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlInferior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(pnlFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(pnlInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
             );
 
             pack();
@@ -1233,17 +1973,21 @@ public class FrmAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTelefonosConductoresActionPerformed
 
-    private void btnCrearVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearVehiculosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearVehiculosActionPerformed
-
     private void btnTelefonosConductores1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelefonosConductores1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTelefonosConductores1ActionPerformed
 
+    private void btnCrearVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearVehiculosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrearVehiculosActionPerformed
+
     private void btnBuscarVehiculos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVehiculos1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarVehiculos1ActionPerformed
+
+    private void btnAnteriorServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorServiciosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnteriorServiciosActionPerformed
 
     private void btnCrearServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearServiciosActionPerformed
         // TODO add your handling code here:
@@ -1253,14 +1997,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMasDetallesServiciosActionPerformed
 
-    private void btnAnteriorServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorServiciosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAnteriorServiciosActionPerformed
-
-    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCerrarSesionActionPerformed
-
     private void btnTelefonosCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelefonosCliente1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTelefonosCliente1ActionPerformed
@@ -1269,14 +2005,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbAvanzadasActionPerformed
 
-    private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSeparator SeparadorPanel;
-    private javax.swing.JSeparator SeparadorPanel1;
-    private javax.swing.JSeparator SeparadorPanelT;
     private javax.swing.JSeparator SeparadorTCliente;
     private javax.swing.JSeparator SeparadorTCliente1;
     private javax.swing.JSeparator SeparadorTConductores;
@@ -1300,8 +2030,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarUbicacion;
     private javax.swing.JButton btnBuscarVehiculos;
     private javax.swing.JButton btnBuscarVehiculos1;
-    private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnCerrarSesion1;
     private javax.swing.JButton btnCrearCliente;
     private javax.swing.JButton btnCrearConductores;
     private javax.swing.JButton btnCrearServicios;
@@ -1335,13 +2063,12 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel lblServicios;
     private javax.swing.JLabel lblUbicacion;
     private javax.swing.JLabel lblVehiculos;
+    private javax.swing.JPanel pnlAdministrador;
     private javax.swing.JPanel pnlBusquedaAvanzada;
     private javax.swing.JPanel pnlClientes;
     private javax.swing.JPanel pnlConductores;
     private javax.swing.JPanel pnlConfiguracion;
-    private javax.swing.JPanel pnlFondo;
     private javax.swing.JPanel pnlGanancias;
-    private javax.swing.JPanel pnlInferior;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JPanel pnlServicios;
     private javax.swing.JPanel pnlVehiculos;
