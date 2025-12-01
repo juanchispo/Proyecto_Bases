@@ -1,69 +1,42 @@
 
 package Modelo;
 
-public class Conductor {
-    private int id_conductor;
-    private String direccion;
+import java.util.ArrayList;
+
+public class Conductor extends Persona{
     private String fotografia;
-    private String Nacionalidad;
-    private String genero;
-    private String nombre;
 
-    public Conductor(int id_conductor, String direccion, String fotografia, String Nacionalidad, String genero, String nombre) {
-        this.id_conductor = id_conductor;
-        this.direccion = direccion;
+    public Conductor(String fotografia, int id, String direccion, Nacionalidad nacionalidad, Genero genero, String nombre, ArrayList<String> telefonos) {
+        super(id, direccion, nacionalidad, genero, nombre, telefonos);
         this.fotografia = fotografia;
-        this.Nacionalidad = Nacionalidad;
-        this.genero = genero;
-        this.nombre = nombre;
     }
 
-    public int getId() {
-        return id_conductor;
+    public Conductor(String fotografia) {
+        this.fotografia = fotografia;
     }
-
-    public void setId(int id_conductor) {
-        this.id_conductor = id_conductor;
+    
+    public Conductor() {
+        this.fotografia = "";
     }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getFotografia() {
         return fotografia;
     }
 
     public void setFotografia(String fotografia) {
-        this.fotografia = fotografia;
+        this.fotografia = "";
     }
+    
 
-    public String getNacionalidad() {
-        return Nacionalidad;
-    }
-
-    public void setNacionalidad(String Nacionalidad) {
-        this.Nacionalidad = Nacionalidad;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+     @Override
+    public Object[] getDatos(){
+        Object[] datos = new Object[6];
+        datos[0] = id;
+        datos[1] = fotografia;
+        datos[2] = nombre;
+        datos[3] = direccion;
+        datos[4] = genero.getGenero();
+        datos[5] = nacionalidad.getNacionalidad();
+        return datos;
     }
 
 }
