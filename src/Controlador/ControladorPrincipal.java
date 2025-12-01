@@ -5,7 +5,6 @@
 package Controlador;
 
 import Vista.FrmPrincipal;
-import Vista.IFrmAddModGenerico;
 import Vista.IFrmAdministrador;
 import Vista.IFrmRegistro;
 import java.awt.Component;
@@ -40,27 +39,22 @@ public class ControladorPrincipal extends Controlador{
     }
 
     @Override
-    public void inicializarBotones() {
-        frm.getBtnCerrarSesion().addActionListener(this);
-    }
-
-    @Override
     public void iniciar() {
-        inicializarBotones();
+        frm.getPnlInferior().setVisible(false);
+        inicializarBotones(frm);
         frm.setVisible(true);
-            registrarUsuario();
+        registrarUsuario();
     }
 
     private void registrarUsuario(){
         IFrmRegistro ifrmR = new IFrmRegistro();
         ControladorRegistrar contR = new ControladorRegistrar(this, ifrmR);
-        contR.iniciar();
-        
+        contR.iniciar();        
     }
 
     public void iniciarFrmAdministrador() {
         IFrmAdministrador ifrmA = new IFrmAdministrador();
-        ControladorAdministrador contA = new ControladorAdministrador(ifrmA);
+        ControladorAdministrador contA = new ControladorAdministrador(this, ifrmA);
         contA.iniciar();
         frm.getPnlInferior().setVisible(true);
         frm.getEscritorio().add(ifrmA);
