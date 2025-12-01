@@ -6,6 +6,7 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
@@ -14,6 +15,14 @@ import javax.swing.JSeparator;
  * @author Dyl
  */
 public class FrmPrincipal extends javax.swing.JFrame {
+
+    public JLabel getLblAvisos() {
+        return lblAvisos;
+    }
+
+    public void setLblAvisos(JLabel lblAvisos) {
+        this.lblAvisos = lblAvisos;
+    }
 
     public JDesktopPane getEscritorio() {
         return Escritorio;
@@ -94,6 +103,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         SeparadorPanelT = new javax.swing.JSeparator();
         btnInfoUsuario = new javax.swing.JButton();
         SeparadorPanel1 = new javax.swing.JSeparator();
+        lblAvisos = new javax.swing.JLabel();
         Escritorio = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,6 +132,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         SeparadorPanel1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        lblAvisos.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        lblAvisos.setForeground(new java.awt.Color(102, 102, 102));
+        lblAvisos.setText("AVISO:");
+
         javax.swing.GroupLayout pnlInferiorLayout = new javax.swing.GroupLayout(pnlInferior);
         pnlInferior.setLayout(pnlInferiorLayout);
         pnlInferiorLayout.setHorizontalGroup(
@@ -138,19 +152,27 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(btnInfoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SeparadorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 737, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAvisos)
+                        .addGap(0, 677, Short.MAX_VALUE))))
         );
         pnlInferiorLayout.setVerticalGroup(
             pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInferiorLayout.createSequentialGroup()
                 .addComponent(SeparadorPanelT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(SeparadorPanel)
-                    .addComponent(btnInfoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SeparadorPanel1))
-                .addContainerGap())
+                    .addGroup(pnlInferiorLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(SeparadorPanel)
+                            .addComponent(btnInfoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SeparadorPanel1))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInferiorLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblAvisos)
+                        .addGap(14, 14, 14))))
         );
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
@@ -198,6 +220,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator SeparadorPanelT;
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnInfoUsuario;
+    private javax.swing.JLabel lblAvisos;
     private javax.swing.JPanel pnlInferior;
     // End of variables declaration//GEN-END:variables
 }

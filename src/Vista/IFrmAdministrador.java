@@ -21,6 +21,14 @@ import javax.swing.JTextField;
  */
 public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
+    public JSeparator getSeparadorTBA() {
+        return SeparadorTBA;
+    }
+
+    public void setSeparadorTBA(JSeparator SeparadorTBA) {
+        this.SeparadorTBA = SeparadorTBA;
+    }
+
     public JSeparator getSeparadorTCliente() {
         return SeparadorTCliente;
     }
@@ -29,20 +37,12 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.SeparadorTCliente = SeparadorTCliente;
     }
 
-    public JSeparator getSeparadorTCliente1() {
-        return SeparadorTCliente1;
+    public JSeparator getSeparadorTConductor() {
+        return SeparadorTConductor;
     }
 
-    public void setSeparadorTCliente1(JSeparator SeparadorTCliente1) {
-        this.SeparadorTCliente1 = SeparadorTCliente1;
-    }
-
-    public JSeparator getSeparadorTConductores() {
-        return SeparadorTConductores;
-    }
-
-    public void setSeparadorTConductores(JSeparator SeparadorTConductores) {
-        this.SeparadorTConductores = SeparadorTConductores;
+    public void setSeparadorTConductor(JSeparator SeparadorTConductor) {
+        this.SeparadorTConductor = SeparadorTConductor;
     }
 
     public JSeparator getSeparadorTConfiguracion() {
@@ -85,6 +85,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.TabPane = TabPane;
     }
 
+    public JButton getBtnAnteriorBA() {
+        return btnAnteriorBA;
+    }
+
+    public void setBtnAnteriorBA(JButton btnAnteriorBA) {
+        this.btnAnteriorBA = btnAnteriorBA;
+    }
+
     public JButton getBtnAnteriorCliente() {
         return btnAnteriorCliente;
     }
@@ -93,20 +101,12 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnAnteriorCliente = btnAnteriorCliente;
     }
 
-    public JButton getBtnAnteriorCliente1() {
-        return btnAnteriorCliente1;
+    public JButton getBtnAnteriorConductor() {
+        return btnAnteriorConductor;
     }
 
-    public void setBtnAnteriorCliente1(JButton btnAnteriorCliente1) {
-        this.btnAnteriorCliente1 = btnAnteriorCliente1;
-    }
-
-    public JButton getBtnAnteriorConductores() {
-        return btnAnteriorConductores;
-    }
-
-    public void setBtnAnteriorConductores(JButton btnAnteriorConductores) {
-        this.btnAnteriorConductores = btnAnteriorConductores;
+    public void setBtnAnteriorConductor(JButton btnAnteriorConductor) {
+        this.btnAnteriorConductor = btnAnteriorConductor;
     }
 
     public JButton getBtnAnteriorServicios() {
@@ -133,12 +133,12 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnBorrarCliente = btnBorrarCliente;
     }
 
-    public JButton getBtnBorrarConductores() {
-        return btnBorrarConductores;
+    public JButton getBtnBorrarConductor() {
+        return btnBorrarConductor;
     }
 
-    public void setBtnBorrarConductores(JButton btnBorrarConductores) {
-        this.btnBorrarConductores = btnBorrarConductores;
+    public void setBtnBorrarConductor(JButton btnBorrarConductor) {
+        this.btnBorrarConductor = btnBorrarConductor;
     }
 
     public JButton getBtnBorrarServicios() {
@@ -165,12 +165,20 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnBuscarCliente = btnBuscarCliente;
     }
 
-    public JButton getBtnBuscarConductores() {
-        return btnBuscarConductores;
+    public JButton getBtnBuscarConductor() {
+        return btnBuscarConductor;
     }
 
-    public void setBtnBuscarConductores(JButton btnBuscarConductores) {
-        this.btnBuscarConductores = btnBuscarConductores;
+    public void setBtnBuscarConductor(JButton btnBuscarConductor) {
+        this.btnBuscarConductor = btnBuscarConductor;
+    }
+
+    public JButton getBtnBuscarConductorVehiculo() {
+        return btnBuscarConductorVehiculo;
+    }
+
+    public void setBtnBuscarConductorVehiculo(JButton btnBuscarConductorVehiculo) {
+        this.btnBuscarConductorVehiculo = btnBuscarConductorVehiculo;
     }
 
     public JButton getBtnBuscarServicios() {
@@ -197,14 +205,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnBuscarVehiculos = btnBuscarVehiculos;
     }
 
-    public JButton getBtnBuscarVehiculos1() {
-        return btnBuscarVehiculos1;
-    }
-
-    public void setBtnBuscarVehiculos1(JButton btnBuscarVehiculos1) {
-        this.btnBuscarVehiculos1 = btnBuscarVehiculos1;
-    }
-
     public JButton getBtnCrearCliente() {
         return btnCrearCliente;
     }
@@ -213,12 +213,12 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnCrearCliente = btnCrearCliente;
     }
 
-    public JButton getBtnCrearConductores() {
-        return btnCrearConductores;
+    public JButton getBtnCrearConductor() {
+        return btnCrearConductor;
     }
 
-    public void setBtnCrearConductores(JButton btnCrearConductores) {
-        this.btnCrearConductores = btnCrearConductores;
+    public void setBtnCrearConductor(JButton btnCrearConductor) {
+        this.btnCrearConductor = btnCrearConductor;
     }
 
     public JButton getBtnCrearServicios() {
@@ -245,12 +245,12 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnEditarCliente = btnEditarCliente;
     }
 
-    public JButton getBtnEditarConductores() {
-        return btnEditarConductores;
+    public JButton getBtnEditarConductor() {
+        return btnEditarConductor;
     }
 
-    public void setBtnEditarConductores(JButton btnEditarConductores) {
-        this.btnEditarConductores = btnEditarConductores;
+    public void setBtnEditarConductor(JButton btnEditarConductor) {
+        this.btnEditarConductor = btnEditarConductor;
     }
 
     public JButton getBtnEditarServicios() {
@@ -277,6 +277,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnMasDetallesServicios = btnMasDetallesServicios;
     }
 
+    public JButton getBtnSiguienteBA() {
+        return btnSiguienteBA;
+    }
+
+    public void setBtnSiguienteBA(JButton btnSiguienteBA) {
+        this.btnSiguienteBA = btnSiguienteBA;
+    }
+
     public JButton getBtnSiguienteCliente() {
         return btnSiguienteCliente;
     }
@@ -285,20 +293,12 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnSiguienteCliente = btnSiguienteCliente;
     }
 
-    public JButton getBtnSiguienteCliente1() {
-        return btnSiguienteCliente1;
+    public JButton getBtnSiguienteConductor() {
+        return btnSiguienteConductor;
     }
 
-    public void setBtnSiguienteCliente1(JButton btnSiguienteCliente1) {
-        this.btnSiguienteCliente1 = btnSiguienteCliente1;
-    }
-
-    public JButton getBtnSiguienteConductores() {
-        return btnSiguienteConductores;
-    }
-
-    public void setBtnSiguienteConductores(JButton btnSiguienteConductores) {
-        this.btnSiguienteConductores = btnSiguienteConductores;
+    public void setBtnSiguienteConductor(JButton btnSiguienteConductor) {
+        this.btnSiguienteConductor = btnSiguienteConductor;
     }
 
     public JButton getBtnSiguienteServicios() {
@@ -317,6 +317,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnSiguienteVehiculos = btnSiguienteVehiculos;
     }
 
+    public JButton getBtnTelefonosBA() {
+        return btnTelefonosBA;
+    }
+
+    public void setBtnTelefonosBA(JButton btnTelefonosBA) {
+        this.btnTelefonosBA = btnTelefonosBA;
+    }
+
     public JButton getBtnTelefonosCliente() {
         return btnTelefonosCliente;
     }
@@ -325,28 +333,20 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnTelefonosCliente = btnTelefonosCliente;
     }
 
-    public JButton getBtnTelefonosCliente1() {
-        return btnTelefonosCliente1;
+    public JButton getBtnTelefonosConductor() {
+        return btnTelefonosConductor;
     }
 
-    public void setBtnTelefonosCliente1(JButton btnTelefonosCliente1) {
-        this.btnTelefonosCliente1 = btnTelefonosCliente1;
+    public void setBtnTelefonosConductor(JButton btnTelefonosConductor) {
+        this.btnTelefonosConductor = btnTelefonosConductor;
     }
 
-    public JButton getBtnTelefonosConductores() {
-        return btnTelefonosConductores;
+    public JButton getBtnVehiculosConductor() {
+        return btnVehiculosConductor;
     }
 
-    public void setBtnTelefonosConductores(JButton btnTelefonosConductores) {
-        this.btnTelefonosConductores = btnTelefonosConductores;
-    }
-
-    public JButton getBtnTelefonosConductores1() {
-        return btnTelefonosConductores1;
-    }
-
-    public void setBtnTelefonosConductores1(JButton btnTelefonosConductores1) {
-        this.btnTelefonosConductores1 = btnTelefonosConductores1;
+    public void setBtnVehiculosConductor(JButton btnVehiculosConductor) {
+        this.btnVehiculosConductor = btnVehiculosConductor;
     }
 
     public JComboBox<String> getCmbBusquedas() {
@@ -355,6 +355,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
     public void setCmbBusquedas(JComboBox<String> cmbBusquedas) {
         this.cmbBusquedas = cmbBusquedas;
+    }
+
+    public JLabel getLblBA() {
+        return lblBA;
+    }
+
+    public void setLblBA(JLabel lblBA) {
+        this.lblBA = lblBA;
     }
 
     public JLabel getLblClienServ() {
@@ -373,14 +381,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.lblCliente = lblCliente;
     }
 
-    public JLabel getLblCliente1() {
-        return lblCliente1;
-    }
-
-    public void setLblCliente1(JLabel lblCliente1) {
-        this.lblCliente1 = lblCliente1;
-    }
-
     public JLabel getLblConduServ() {
         return lblConduServ;
     }
@@ -389,12 +389,12 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.lblConduServ = lblConduServ;
     }
 
-    public JLabel getLblConductores() {
-        return lblConductores;
+    public JLabel getLblConductor() {
+        return lblConductor;
     }
 
-    public void setLblConductores(JLabel lblConductores) {
-        this.lblConductores = lblConductores;
+    public void setLblConductor(JLabel lblConductor) {
+        this.lblConductor = lblConductor;
     }
 
     public JLabel getLblConfiguracion() {
@@ -557,6 +557,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.rdbFrecuentes = rdbFrecuentes;
     }
 
+    public JScrollPane getScTablaBA() {
+        return scTablaBA;
+    }
+
+    public void setScTablaBA(JScrollPane scTablaBA) {
+        this.scTablaBA = scTablaBA;
+    }
+
     public JScrollPane getScTablaClienServ() {
         return scTablaClienServ;
     }
@@ -571,14 +579,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
     public void setScTablaClientes(JScrollPane scTablaClientes) {
         this.scTablaClientes = scTablaClientes;
-    }
-
-    public JScrollPane getScTablaClientes1() {
-        return scTablaClientes1;
-    }
-
-    public void setScTablaClientes1(JScrollPane scTablaClientes1) {
-        this.scTablaClientes1 = scTablaClientes1;
     }
 
     public JScrollPane getScTablaConduServ() {
@@ -621,6 +621,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.scTablaVehiculos = scTablaVehiculos;
     }
 
+    public JSeparator getSeparadorBA() {
+        return separadorBA;
+    }
+
+    public void setSeparadorBA(JSeparator separadorBA) {
+        this.separadorBA = separadorBA;
+    }
+
     public JSeparator getSeparadorCliente() {
         return separadorCliente;
     }
@@ -629,20 +637,12 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.separadorCliente = separadorCliente;
     }
 
-    public JSeparator getSeparadorCliente1() {
-        return separadorCliente1;
+    public JSeparator getSeparadorConductor() {
+        return separadorConductor;
     }
 
-    public void setSeparadorCliente1(JSeparator separadorCliente1) {
-        this.separadorCliente1 = separadorCliente1;
-    }
-
-    public JSeparator getSeparadorConductores() {
-        return separadorConductores;
-    }
-
-    public void setSeparadorConductores(JSeparator separadorConductores) {
-        this.separadorConductores = separadorConductores;
+    public void setSeparadorConductor(JSeparator separadorConductor) {
+        this.separadorConductor = separadorConductor;
     }
 
     public JSeparator getSeparadorConfiguracion() {
@@ -749,20 +749,20 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.txtGanaciasAnio = txtGanaciasAnio;
     }
 
+    public JLabel getTxtMostrandoBA() {
+        return txtMostrandoBA;
+    }
+
+    public void setTxtMostrandoBA(JLabel txtMostrandoBA) {
+        this.txtMostrandoBA = txtMostrandoBA;
+    }
+
     public JLabel getTxtMostrandoClientes() {
         return txtMostrandoClientes;
     }
 
     public void setTxtMostrandoClientes(JLabel txtMostrandoClientes) {
         this.txtMostrandoClientes = txtMostrandoClientes;
-    }
-
-    public JLabel getTxtMostrandoClientes1() {
-        return txtMostrandoClientes1;
-    }
-
-    public void setTxtMostrandoClientes1(JLabel txtMostrandoClientes1) {
-        this.txtMostrandoClientes1 = txtMostrandoClientes1;
     }
 
     public JLabel getTxtMostrandoConductor() {
@@ -812,6 +812,11 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     public void setTxtUbicacion(JTextField txtUbicacion) {
         this.txtUbicacion = txtUbicacion;
     }
+
+   
+
+   
+
 
     /**
      * Creates new form IFrmAdministrador
@@ -868,17 +873,17 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         scTablaConductores = new javax.swing.JScrollPane();
         tbConductores = new javax.swing.JTable();
         txtMostrandoConductor = new javax.swing.JLabel();
-        btnAnteriorConductores = new javax.swing.JButton();
-        btnSiguienteConductores = new javax.swing.JButton();
-        separadorConductores = new javax.swing.JSeparator();
-        btnBuscarConductores = new javax.swing.JButton();
-        btnEditarConductores = new javax.swing.JButton();
-        btnBorrarConductores = new javax.swing.JButton();
-        btnCrearConductores = new javax.swing.JButton();
-        lblConductores = new javax.swing.JLabel();
-        SeparadorTConductores = new javax.swing.JSeparator();
-        btnTelefonosConductores = new javax.swing.JButton();
-        btnTelefonosConductores1 = new javax.swing.JButton();
+        btnAnteriorConductor = new javax.swing.JButton();
+        btnSiguienteConductor = new javax.swing.JButton();
+        separadorConductor = new javax.swing.JSeparator();
+        btnBuscarConductor = new javax.swing.JButton();
+        btnEditarConductor = new javax.swing.JButton();
+        btnBorrarConductor = new javax.swing.JButton();
+        btnCrearConductor = new javax.swing.JButton();
+        lblConductor = new javax.swing.JLabel();
+        SeparadorTConductor = new javax.swing.JSeparator();
+        btnTelefonosConductor = new javax.swing.JButton();
+        btnVehiculosConductor = new javax.swing.JButton();
         pnlVehiculos = new javax.swing.JPanel();
         scTablaVehiculos = new javax.swing.JScrollPane();
         tbVehiculos = new javax.swing.JTable();
@@ -892,7 +897,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         btnCrearVehiculos = new javax.swing.JButton();
         lblVehiculos = new javax.swing.JLabel();
         SeparadorTVehiculos = new javax.swing.JSeparator();
-        btnBuscarVehiculos1 = new javax.swing.JButton();
+        btnBuscarConductorVehiculo = new javax.swing.JButton();
         pnlServicios = new javax.swing.JPanel();
         scTablaServicios = new javax.swing.JScrollPane();
         tbServicios = new javax.swing.JTable();
@@ -908,15 +913,15 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         SeparadorTServicios = new javax.swing.JSeparator();
         btnMasDetallesServicios = new javax.swing.JButton();
         pnlBusquedaAvanzada = new javax.swing.JPanel();
-        btnAnteriorCliente1 = new javax.swing.JButton();
-        btnSiguienteCliente1 = new javax.swing.JButton();
-        separadorCliente1 = new javax.swing.JSeparator();
-        scTablaClientes1 = new javax.swing.JScrollPane();
+        btnAnteriorBA = new javax.swing.JButton();
+        btnSiguienteBA = new javax.swing.JButton();
+        separadorBA = new javax.swing.JSeparator();
+        scTablaBA = new javax.swing.JScrollPane();
         tbClientes1 = new javax.swing.JTable();
-        lblCliente1 = new javax.swing.JLabel();
-        SeparadorTCliente1 = new javax.swing.JSeparator();
-        btnTelefonosCliente1 = new javax.swing.JButton();
-        txtMostrandoClientes1 = new javax.swing.JLabel();
+        lblBA = new javax.swing.JLabel();
+        SeparadorTBA = new javax.swing.JSeparator();
+        btnTelefonosBA = new javax.swing.JButton();
+        txtMostrandoBA = new javax.swing.JLabel();
         cmbBusquedas = new javax.swing.JComboBox<>();
         rdbFrecuentes = new javax.swing.JRadioButton();
         rdbAvanzadas = new javax.swing.JRadioButton();
@@ -1162,9 +1167,16 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                 "ID", "Nombre", "Direccion", "Genero", "Nacionalidad"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -1306,9 +1318,16 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                 "ID", "Foto", "Nombre", "Direccion", "Genero", "Nacionalidad"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -1321,47 +1340,47 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         txtMostrandoConductor.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         txtMostrandoConductor.setText("Mostrando 1 de 50");
 
-        btnAnteriorConductores.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnAnteriorConductores.setText("Anterior");
+        btnAnteriorConductor.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnAnteriorConductor.setText("Anterior");
 
-        btnSiguienteConductores.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnSiguienteConductores.setText("Siguiente");
+        btnSiguienteConductor.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnSiguienteConductor.setText("Siguiente");
 
-        separadorConductores.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        separadorConductor.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        btnBuscarConductores.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnBuscarConductores.setText("Buscar");
+        btnBuscarConductor.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnBuscarConductor.setText("Buscar");
 
-        btnEditarConductores.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnEditarConductores.setText("Editar");
+        btnEditarConductor.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnEditarConductor.setText("Editar");
 
-        btnBorrarConductores.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnBorrarConductores.setText("Borrar");
+        btnBorrarConductor.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnBorrarConductor.setText("Borrar");
 
-        btnCrearConductores.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnCrearConductores.setText("Crear");
-        btnCrearConductores.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearConductor.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnCrearConductor.setText("Crear");
+        btnCrearConductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearConductoresActionPerformed(evt);
+                btnCrearConductorActionPerformed(evt);
             }
         });
 
-        lblConductores.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
-        lblConductores.setText("Conductores");
+        lblConductor.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
+        lblConductor.setText("Conductores");
 
-        btnTelefonosConductores.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnTelefonosConductores.setText("Teléfonos");
-        btnTelefonosConductores.addActionListener(new java.awt.event.ActionListener() {
+        btnTelefonosConductor.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnTelefonosConductor.setText("Teléfonos");
+        btnTelefonosConductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTelefonosConductoresActionPerformed(evt);
+                btnTelefonosConductorActionPerformed(evt);
             }
         });
 
-        btnTelefonosConductores1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnTelefonosConductores1.setText("Vehiculos");
-        btnTelefonosConductores1.addActionListener(new java.awt.event.ActionListener() {
+        btnVehiculosConductor.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnVehiculosConductor.setText("Vehiculos");
+        btnVehiculosConductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTelefonosConductores1ActionPerformed(evt);
+                btnVehiculosConductorActionPerformed(evt);
             }
         });
 
@@ -1370,63 +1389,63 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         pnlConductoresLayout.setHorizontalGroup(
             pnlConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConductoresLayout.createSequentialGroup()
-                .addComponent(separadorConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separadorConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlConductoresLayout.createSequentialGroup()
-                        .addComponent(lblConductores)
+                        .addComponent(lblConductor)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlConductoresLayout.createSequentialGroup()
                         .addGroup(pnlConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscarConductores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEditarConductores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBorrarConductores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCrearConductores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTelefonosConductores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTelefonosConductores1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnBuscarConductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEditarConductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBorrarConductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCrearConductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTelefonosConductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVehiculosConductor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlConductoresLayout.createSequentialGroup()
                                 .addComponent(txtMostrandoConductor)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnAnteriorConductores)
+                                .addComponent(btnAnteriorConductor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSiguienteConductores))
+                                .addComponent(btnSiguienteConductor))
                             .addComponent(scTablaConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)))
-                    .addComponent(SeparadorTConductores))
+                    .addComponent(SeparadorTConductor))
                 .addGap(17, 17, 17))
         );
         pnlConductoresLayout.setVerticalGroup(
             pnlConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConductoresLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(lblConductores)
+                .addComponent(lblConductor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SeparadorTConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SeparadorTConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlConductoresLayout.createSequentialGroup()
-                        .addComponent(btnCrearConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCrearConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditarConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBorrarConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBorrarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscarConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTelefonosConductores)
+                        .addComponent(btnTelefonosConductor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTelefonosConductores1))
+                        .addComponent(btnVehiculosConductor))
                     .addGroup(pnlConductoresLayout.createSequentialGroup()
                         .addComponent(scTablaConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMostrandoConductor)
-                            .addComponent(btnAnteriorConductores)
-                            .addComponent(btnSiguienteConductores))))
+                            .addComponent(btnAnteriorConductor)
+                            .addComponent(btnSiguienteConductor))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlConductoresLayout.createSequentialGroup()
-                .addComponent(separadorConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separadorConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1504,11 +1523,11 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         lblVehiculos.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
         lblVehiculos.setText("Vehículos");
 
-        btnBuscarVehiculos1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnBuscarVehiculos1.setText("Conductores");
-        btnBuscarVehiculos1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarConductorVehiculo.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnBuscarConductorVehiculo.setText("Conductores");
+        btnBuscarConductorVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarVehiculos1ActionPerformed(evt);
+                btnBuscarConductorVehiculoActionPerformed(evt);
             }
         });
 
@@ -1529,7 +1548,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                             .addComponent(btnEditarVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBorrarVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCrearVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBuscarVehiculos1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnBuscarConductorVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlVehiculosLayout.createSequentialGroup()
@@ -1560,7 +1579,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscarVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscarVehiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnBuscarConductorVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlVehiculosLayout.createSequentialGroup()
                         .addComponent(scTablaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1727,16 +1746,21 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
         pnlBusquedaAvanzada.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnAnteriorCliente1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnAnteriorCliente1.setText("Anterior");
+        btnAnteriorBA.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnAnteriorBA.setText("Anterior");
+        btnAnteriorBA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnteriorBAActionPerformed(evt);
+            }
+        });
 
-        btnSiguienteCliente1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnSiguienteCliente1.setText("Siguiente");
+        btnSiguienteBA.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnSiguienteBA.setText("Siguiente");
 
-        separadorCliente1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        separadorBA.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        scTablaClientes1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        scTablaClientes1.setFocusable(false);
+        scTablaBA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        scTablaBA.setFocusable(false);
 
         tbClientes1.setAutoCreateRowSorter(true);
         tbClientes1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
@@ -1772,21 +1796,21 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         });
         tbClientes1.setToolTipText("");
         tbClientes1.setShowGrid(false);
-        scTablaClientes1.setViewportView(tbClientes1);
+        scTablaBA.setViewportView(tbClientes1);
 
-        lblCliente1.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
-        lblCliente1.setText("Busqueda Avanzada");
+        lblBA.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
+        lblBA.setText("Busqueda Avanzada");
 
-        btnTelefonosCliente1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnTelefonosCliente1.setText("Consultar");
-        btnTelefonosCliente1.addActionListener(new java.awt.event.ActionListener() {
+        btnTelefonosBA.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnTelefonosBA.setText("Consultar");
+        btnTelefonosBA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTelefonosCliente1ActionPerformed(evt);
+                btnTelefonosBAActionPerformed(evt);
             }
         });
 
-        txtMostrandoClientes1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        txtMostrandoClientes1.setText("Mostrando 1 de 50");
+        txtMostrandoBA.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        txtMostrandoBA.setText("Mostrando 1 de 50");
 
         cmbBusquedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Valores totales de los servicios realizados diferenciando si corresponden a transporte de pasajeros o alimentos y la categoría a la que corresponde", "Cantidad de servicios de pasajeros y de alimentos por mes", "Datos de los clientes que han solicitado servicios durante un período de tiempo organizados de mayor a menor", "Valores totales de los servicios de acuerdo con su medio de pago", "Promedio de valor total de servicio de clientes dependiendo la nacionalidad", "Datos de conductores que han realizado servicios durante un periodo", "Cantidad de servicios de pasajeros de un género determinado" }));
 
@@ -1806,18 +1830,18 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         pnlBusquedaAvanzadaLayout.setHorizontalGroup(
             pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
-                .addComponent(separadorCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separadorBA, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SeparadorTCliente1)
+                    .addComponent(SeparadorTBA)
                     .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
-                        .addComponent(txtMostrandoClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtMostrandoBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAnteriorCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAnteriorBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSiguienteCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSiguienteBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(520, 520, 520))
-                    .addComponent(lblCliente1)
+                    .addComponent(lblBA)
                     .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
                         .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
@@ -1831,17 +1855,17 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                                 .addGap(65, 65, 65))
                             .addComponent(txtSQL))
                         .addGap(161, 161, 161))
-                    .addComponent(scTablaClientes1)
-                    .addComponent(btnTelefonosCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(scTablaBA)
+                    .addComponent(btnTelefonosBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
         pnlBusquedaAvanzadaLayout.setVerticalGroup(
             pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(lblCliente1)
+                .addComponent(lblBA)
                 .addGap(18, 18, 18)
-                .addComponent(SeparadorTCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SeparadorTBA, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdbFrecuentes)
@@ -1851,17 +1875,17 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                     .addComponent(cmbBusquedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTelefonosCliente1)
+                .addComponent(btnTelefonosBA)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(scTablaClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scTablaBA, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMostrandoClientes1)
-                    .addComponent(btnAnteriorCliente1)
-                    .addComponent(btnSiguienteCliente1))
+                    .addComponent(txtMostrandoBA)
+                    .addComponent(btnAnteriorBA)
+                    .addComponent(btnSiguienteBA))
                 .addGap(15, 15, 15))
             .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
-                .addComponent(separadorCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separadorBA, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1965,25 +1989,25 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTelefonosClienteActionPerformed
 
-    private void btnCrearConductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConductoresActionPerformed
+    private void btnCrearConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConductorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearConductoresActionPerformed
+    }//GEN-LAST:event_btnCrearConductorActionPerformed
 
-    private void btnTelefonosConductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelefonosConductoresActionPerformed
+    private void btnTelefonosConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelefonosConductorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTelefonosConductoresActionPerformed
+    }//GEN-LAST:event_btnTelefonosConductorActionPerformed
 
-    private void btnTelefonosConductores1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelefonosConductores1ActionPerformed
+    private void btnVehiculosConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosConductorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTelefonosConductores1ActionPerformed
+    }//GEN-LAST:event_btnVehiculosConductorActionPerformed
 
     private void btnCrearVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearVehiculosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearVehiculosActionPerformed
 
-    private void btnBuscarVehiculos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVehiculos1ActionPerformed
+    private void btnBuscarConductorVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConductorVehiculoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarVehiculos1ActionPerformed
+    }//GEN-LAST:event_btnBuscarConductorVehiculoActionPerformed
 
     private void btnAnteriorServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorServiciosActionPerformed
         // TODO add your handling code here:
@@ -1997,63 +2021,67 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMasDetallesServiciosActionPerformed
 
-    private void btnTelefonosCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelefonosCliente1ActionPerformed
+    private void btnTelefonosBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelefonosBAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTelefonosCliente1ActionPerformed
+    }//GEN-LAST:event_btnTelefonosBAActionPerformed
 
     private void rdbAvanzadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAvanzadasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbAvanzadasActionPerformed
 
+    private void btnAnteriorBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorBAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnteriorBAActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSeparator SeparadorTBA;
     private javax.swing.JSeparator SeparadorTCliente;
-    private javax.swing.JSeparator SeparadorTCliente1;
-    private javax.swing.JSeparator SeparadorTConductores;
+    private javax.swing.JSeparator SeparadorTConductor;
     private javax.swing.JSeparator SeparadorTConfiguracion;
     private javax.swing.JSeparator SeparadorTPrincipal;
     private javax.swing.JSeparator SeparadorTServicios;
     private javax.swing.JSeparator SeparadorTVehiculos;
     private javax.swing.JTabbedPane TabPane;
+    private javax.swing.JButton btnAnteriorBA;
     private javax.swing.JButton btnAnteriorCliente;
-    private javax.swing.JButton btnAnteriorCliente1;
-    private javax.swing.JButton btnAnteriorConductores;
+    private javax.swing.JButton btnAnteriorConductor;
     private javax.swing.JButton btnAnteriorServicios;
     private javax.swing.JButton btnAnteriorVehiculosVehiculos;
     private javax.swing.JButton btnBorrarCliente;
-    private javax.swing.JButton btnBorrarConductores;
+    private javax.swing.JButton btnBorrarConductor;
     private javax.swing.JButton btnBorrarServicios;
     private javax.swing.JButton btnBorrarVehiculos;
     private javax.swing.JButton btnBuscarCliente;
-    private javax.swing.JButton btnBuscarConductores;
+    private javax.swing.JButton btnBuscarConductor;
+    private javax.swing.JButton btnBuscarConductorVehiculo;
     private javax.swing.JButton btnBuscarServicios;
     private javax.swing.JButton btnBuscarUbicacion;
     private javax.swing.JButton btnBuscarVehiculos;
-    private javax.swing.JButton btnBuscarVehiculos1;
     private javax.swing.JButton btnCrearCliente;
-    private javax.swing.JButton btnCrearConductores;
+    private javax.swing.JButton btnCrearConductor;
     private javax.swing.JButton btnCrearServicios;
     private javax.swing.JButton btnCrearVehiculos;
     private javax.swing.JButton btnEditarCliente;
-    private javax.swing.JButton btnEditarConductores;
+    private javax.swing.JButton btnEditarConductor;
     private javax.swing.JButton btnEditarServicios;
     private javax.swing.JButton btnEditarVehiculos;
     private javax.swing.JButton btnMasDetallesServicios;
+    private javax.swing.JButton btnSiguienteBA;
     private javax.swing.JButton btnSiguienteCliente;
-    private javax.swing.JButton btnSiguienteCliente1;
-    private javax.swing.JButton btnSiguienteConductores;
+    private javax.swing.JButton btnSiguienteConductor;
     private javax.swing.JButton btnSiguienteServicios;
     private javax.swing.JButton btnSiguienteVehiculos;
+    private javax.swing.JButton btnTelefonosBA;
     private javax.swing.JButton btnTelefonosCliente;
-    private javax.swing.JButton btnTelefonosCliente1;
-    private javax.swing.JButton btnTelefonosConductores;
-    private javax.swing.JButton btnTelefonosConductores1;
+    private javax.swing.JButton btnTelefonosConductor;
+    private javax.swing.JButton btnVehiculosConductor;
     private javax.swing.JComboBox<String> cmbBusquedas;
+    private javax.swing.JLabel lblBA;
     private javax.swing.JLabel lblClienServ;
     private javax.swing.JLabel lblCliente;
-    private javax.swing.JLabel lblCliente1;
     private javax.swing.JLabel lblConduServ;
-    private javax.swing.JLabel lblConductores;
+    private javax.swing.JLabel lblConductor;
     private javax.swing.JLabel lblConfiguracion;
     private javax.swing.JLabel lblGanancias;
     private javax.swing.JLabel lblGananciasAnio;
@@ -2074,17 +2102,17 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlVehiculos;
     private javax.swing.JRadioButton rdbAvanzadas;
     private javax.swing.JRadioButton rdbFrecuentes;
+    private javax.swing.JScrollPane scTablaBA;
     private javax.swing.JScrollPane scTablaClienServ;
     private javax.swing.JScrollPane scTablaClientes;
-    private javax.swing.JScrollPane scTablaClientes1;
     private javax.swing.JScrollPane scTablaConduServ;
     private javax.swing.JScrollPane scTablaConductores;
     private javax.swing.JScrollPane scTablaServRec;
     private javax.swing.JScrollPane scTablaServicios;
     private javax.swing.JScrollPane scTablaVehiculos;
+    private javax.swing.JSeparator separadorBA;
     private javax.swing.JSeparator separadorCliente;
-    private javax.swing.JSeparator separadorCliente1;
-    private javax.swing.JSeparator separadorConductores;
+    private javax.swing.JSeparator separadorConductor;
     private javax.swing.JSeparator separadorConfiguracion;
     private javax.swing.JSeparator separadorPrincipal;
     private javax.swing.JSeparator separadorServicios;
@@ -2098,8 +2126,8 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JTable tbServicios;
     private javax.swing.JTable tbVehiculos;
     private javax.swing.JTextField txtGanaciasAnio;
+    private javax.swing.JLabel txtMostrandoBA;
     private javax.swing.JLabel txtMostrandoClientes;
-    private javax.swing.JLabel txtMostrandoClientes1;
     private javax.swing.JLabel txtMostrandoConductor;
     private javax.swing.JLabel txtMostrandoServicios;
     private javax.swing.JLabel txtMostrandoVehiculos;

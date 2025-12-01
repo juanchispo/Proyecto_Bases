@@ -5,7 +5,6 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" value="PANEL DE ADMINISTRADOR"/>
-    <Property name="maximum" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -491,14 +490,43 @@
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="5" rowCount="15">
-                            <Column editable="false" title="ID" type="java.lang.Object"/>
-                            <Column editable="false" title="Nombre" type="java.lang.Object"/>
-                            <Column editable="false" title="Direccion" type="java.lang.Object"/>
-                            <Column editable="false" title="Genero" type="java.lang.Object"/>
-                            <Column editable="false" title="Nacionalidad" type="java.lang.Object"/>
+                            <Column editable="false" title="ID" type="java.lang.Integer"/>
+                            <Column editable="false" title="Nombre" type="java.lang.String"/>
+                            <Column editable="false" title="Direccion" type="java.lang.String"/>
+                            <Column editable="false" title="Genero" type="java.lang.String"/>
+                            <Column editable="false" title="Nacionalidad" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
                         <Property name="showGrid" type="boolean" value="false"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -612,35 +640,35 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="separadorConductores" min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="separadorConductor" min="-2" pref="14" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblConductores" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblConductor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnBuscarConductores" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnEditarConductores" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnBorrarConductores" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnCrearConductores" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnTelefonosConductores" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnTelefonosConductores1" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnBuscarConductor" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnEditarConductor" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnBorrarConductor" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnCrearConductor" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnTelefonosConductor" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnVehiculosConductor" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="txtMostrandoConductor" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnAnteriorConductores" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnAnteriorConductor" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnSiguienteConductores" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnSiguienteConductor" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="scTablaConductores" alignment="0" pref="710" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="SeparadorTConductores" alignment="0" max="32767" attributes="0"/>
+                              <Component id="SeparadorTConductor" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       </Group>
@@ -650,38 +678,38 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="lblConductores" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblConductor" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="SeparadorTConductores" min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="SeparadorTConductor" min="-2" pref="3" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnCrearConductores" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="btnCrearConductor" min="-2" pref="27" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnEditarConductores" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="btnEditarConductor" min="-2" pref="27" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnBorrarConductores" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="btnBorrarConductor" min="-2" pref="27" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnBuscarConductores" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="btnBuscarConductor" min="-2" pref="27" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnTelefonosConductores" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTelefonosConductor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnTelefonosConductores1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnVehiculosConductor" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="scTablaConductores" min="-2" pref="265" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtMostrandoConductor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnAnteriorConductores" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSiguienteConductores" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAnteriorConductor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnSiguienteConductor" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="separadorConductores" min="-2" pref="375" max="-2" attributes="0"/>
+                          <Component id="separadorConductor" min="-2" pref="375" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -713,15 +741,49 @@
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="6" rowCount="15">
-                            <Column editable="false" title="ID" type="java.lang.Object"/>
+                            <Column editable="false" title="ID" type="java.lang.Integer"/>
                             <Column editable="false" title="Foto" type="java.lang.Object"/>
-                            <Column editable="false" title="Nombre" type="java.lang.Object"/>
-                            <Column editable="false" title="Direccion" type="java.lang.Object"/>
-                            <Column editable="false" title="Genero" type="java.lang.Object"/>
-                            <Column editable="false" title="Nacionalidad" type="java.lang.Object"/>
+                            <Column editable="true" title="Nombre" type="java.lang.String"/>
+                            <Column editable="false" title="Direccion" type="java.lang.String"/>
+                            <Column editable="false" title="Genero" type="java.lang.String"/>
+                            <Column editable="true" title="Nacionalidad" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
                         <Property name="showGrid" type="boolean" value="false"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -738,7 +800,7 @@
                     <Property name="text" type="java.lang.String" value="Mostrando 1 de 50"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnAnteriorConductores">
+                <Component class="javax.swing.JButton" name="btnAnteriorConductor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -746,7 +808,7 @@
                     <Property name="text" type="java.lang.String" value="Anterior"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnSiguienteConductores">
+                <Component class="javax.swing.JButton" name="btnSiguienteConductor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -754,12 +816,12 @@
                     <Property name="text" type="java.lang.String" value="Siguiente"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="separadorConductores">
+                <Component class="javax.swing.JSeparator" name="separadorConductor">
                   <Properties>
                     <Property name="orientation" type="int" value="1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnBuscarConductores">
+                <Component class="javax.swing.JButton" name="btnBuscarConductor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -767,7 +829,7 @@
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnEditarConductores">
+                <Component class="javax.swing.JButton" name="btnEditarConductor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -775,7 +837,7 @@
                     <Property name="text" type="java.lang.String" value="Editar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnBorrarConductores">
+                <Component class="javax.swing.JButton" name="btnBorrarConductor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -783,7 +845,7 @@
                     <Property name="text" type="java.lang.String" value="Borrar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnCrearConductores">
+                <Component class="javax.swing.JButton" name="btnCrearConductor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -791,10 +853,10 @@
                     <Property name="text" type="java.lang.String" value="Crear"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearConductoresActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearConductorActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblConductores">
+                <Component class="javax.swing.JLabel" name="lblConductor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="24" style="0"/>
@@ -802,9 +864,9 @@
                     <Property name="text" type="java.lang.String" value="Conductores"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="SeparadorTConductores">
+                <Component class="javax.swing.JSeparator" name="SeparadorTConductor">
                 </Component>
-                <Component class="javax.swing.JButton" name="btnTelefonosConductores">
+                <Component class="javax.swing.JButton" name="btnTelefonosConductor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -812,10 +874,10 @@
                     <Property name="text" type="java.lang.String" value="Tel&#xe9;fonos"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelefonosConductoresActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelefonosConductorActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnTelefonosConductores1">
+                <Component class="javax.swing.JButton" name="btnVehiculosConductor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -823,7 +885,7 @@
                     <Property name="text" type="java.lang.String" value="Vehiculos"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelefonosConductores1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVehiculosConductorActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -859,7 +921,7 @@
                                       <Component id="btnEditarVehiculos" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnBorrarVehiculos" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnCrearVehiculos" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnBuscarVehiculos1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnBuscarConductorVehiculo" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -897,7 +959,7 @@
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Component id="btnBuscarVehiculos" min="-2" pref="27" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnBuscarVehiculos1" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="btnBuscarConductorVehiculo" min="-2" pref="27" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="scTablaVehiculos" min="-2" pref="265" max="-2" attributes="0"/>
@@ -1033,7 +1095,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="SeparadorTVehiculos">
                 </Component>
-                <Component class="javax.swing.JButton" name="btnBuscarVehiculos1">
+                <Component class="javax.swing.JButton" name="btnBuscarConductorVehiculo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -1041,7 +1103,7 @@
                     <Property name="text" type="java.lang.String" value="Conductores"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarVehiculos1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarConductorVehiculoActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1288,19 +1350,19 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="separadorCliente1" min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="separadorBA" min="-2" pref="14" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="SeparadorTCliente1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="SeparadorTBA" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtMostrandoClientes1" max="32767" attributes="0"/>
+                                  <Component id="txtMostrandoBA" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnAnteriorCliente1" max="32767" attributes="0"/>
+                                  <Component id="btnAnteriorBA" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnSiguienteCliente1" max="32767" attributes="0"/>
+                                  <Component id="btnSiguienteBA" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="520" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="lblCliente1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBA" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
@@ -1319,8 +1381,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="scTablaClientes1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnTelefonosCliente1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="scTablaBA" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTelefonosBA" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
@@ -1330,9 +1392,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="lblCliente1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblBA" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="SeparadorTCliente1" min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="SeparadorTBA" min="-2" pref="3" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="rdbFrecuentes" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1344,34 +1406,37 @@
                               <Component id="txtSQL" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnTelefonosCliente1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTelefonosBA" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="scTablaClientes1" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="scTablaBA" min="-2" pref="145" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMostrandoClientes1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAnteriorCliente1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnSiguienteCliente1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMostrandoBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAnteriorBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSiguienteBA" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="separadorCliente1" min="-2" pref="375" max="-2" attributes="0"/>
+                          <Component id="separadorBA" min="-2" pref="375" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnAnteriorCliente1">
+                <Component class="javax.swing.JButton" name="btnAnteriorBA">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Anterior"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnteriorBAActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnSiguienteCliente1">
+                <Component class="javax.swing.JButton" name="btnSiguienteBA">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -1379,12 +1444,12 @@
                     <Property name="text" type="java.lang.String" value="Siguiente"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="separadorCliente1">
+                <Component class="javax.swing.JSeparator" name="separadorBA">
                   <Properties>
                     <Property name="orientation" type="int" value="1"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="scTablaClientes1">
+                <Container class="javax.swing.JScrollPane" name="scTablaBA">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -1425,7 +1490,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="lblCliente1">
+                <Component class="javax.swing.JLabel" name="lblBA">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="24" style="0"/>
@@ -1433,9 +1498,9 @@
                     <Property name="text" type="java.lang.String" value="Busqueda Avanzada"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="SeparadorTCliente1">
+                <Component class="javax.swing.JSeparator" name="SeparadorTBA">
                 </Component>
-                <Component class="javax.swing.JButton" name="btnTelefonosCliente1">
+                <Component class="javax.swing.JButton" name="btnTelefonosBA">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -1443,10 +1508,10 @@
                     <Property name="text" type="java.lang.String" value="Consultar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelefonosCliente1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelefonosBAActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtMostrandoClientes1">
+                <Component class="javax.swing.JLabel" name="txtMostrandoBA">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>

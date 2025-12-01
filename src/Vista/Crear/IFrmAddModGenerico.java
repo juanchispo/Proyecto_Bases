@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package Vista;
+package Vista.Crear;
 
+import Vista.*;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
