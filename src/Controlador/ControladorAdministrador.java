@@ -3,8 +3,31 @@
  */
 package Controlador;
 
+import java.lang.Math;
+import Modelo.Cliente;
 import Vista.IFrmAdministrador;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.util.Vector;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+import javax.swing.JToggleButton;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import Modelo.Dao.*;
+import Modelo.Persona;
+import Controlador.ControladorPrincipal;
+import Modelo.Conductor;
+import Modelo.Genero;
+import Modelo.Nacionalidad;
+import Vista.Crear.IFrmAddModCliente;
+import Vista.Crear.IFrmAddModConductor;
+import Vista.Crear.IFrmTelefonos;
+import java.awt.Container;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,28 +35,215 @@ import java.awt.event.ActionEvent;
  */
 public class ControladorAdministrador extends Controlador{
     IFrmAdministrador ifrm;
+    ControladorPrincipal ctrlP;
+    ArrayList<Cliente> clientes;
+    ArrayList<Conductor> conductores;
+    int pgClientes, pgConductores, pgVehiculos, pgServicios, pgBA;
+    AtomicInteger rsClientes, rsConductores, rsVehiculos, rsServicios, rsBA;
 
-    public ControladorAdministrador(IFrmAdministrador ifrm) {
+    public ControladorAdministrador(ControladorPrincipal ctrlP,IFrmAdministrador ifrm, ArrayList<Cliente> clientes, int pgClientes, int pgConductores, int pgVehiculos, int pgServicios, int pgBA, AtomicInteger rsClientes, AtomicInteger rsConductores, AtomicInteger rsVehiculos, AtomicInteger rsServicios, AtomicInteger rsBA) {
+        this.ctrlP = ctrlP;
         this.ifrm = ifrm;
+        this.clientes = clientes;
+        this.pgClientes = pgClientes;
+        this.pgConductores = pgConductores;
+        this.pgVehiculos = pgVehiculos;
+        this.pgServicios = pgServicios;
+        this.pgBA = pgBA;
+        this.rsClientes = rsClientes;
+        this.rsConductores = rsConductores;
+        this.rsVehiculos = rsVehiculos;
+        this.rsServicios = rsServicios;
+        this.rsBA = rsBA;
+    }
+    
+    public ControladorAdministrador(ControladorPrincipal ctrlP, IFrmAdministrador ifrm) {
+        this.ctrlP = ctrlP;
+        this.ifrm = ifrm;
+        this.clientes = new ArrayList<>();
+        this.conductores = new ArrayList<>();
+        this.pgClientes = 1;
+        this.pgConductores = 1;
+        this.pgVehiculos = 1;
+        this.pgServicios = 1;
+        this.pgBA = 1;
+        this.rsClientes = new AtomicInteger();
+        this.rsConductores = new AtomicInteger();
+        this.rsVehiculos = new AtomicInteger();
+        this.rsServicios = new AtomicInteger();
+        this.rsBA = new AtomicInteger();
     }
     
     public ControladorAdministrador() {
         this.ifrm = new IFrmAdministrador();
+        this.clientes = new ArrayList<>();
+        this.pgClientes = 1;
+        this.pgConductores = 1;
+        this.pgVehiculos = 1;
+        this.pgServicios = 1;
+        this.pgBA = 1;
+        this.rsClientes = new AtomicInteger();
+        this.rsConductores = new AtomicInteger();
+        this.rsVehiculos = new AtomicInteger();
+        this.rsServicios = new AtomicInteger();
+        this.rsBA = new AtomicInteger();
+    }
+    
+    public void llenarTabla(TableModel tbM, Object[][] datos) {
+        ((DefaultTableModel) tbM).setRowCount(0);
+        for (Object[] dato : datos) {
+            ((DefaultTableModel)tbM).addRow(dato);
+        }
+    }
+    
+    public int calcularPaginas(AtomicInteger num, int div){
+        return Math.ceilDiv(num.get(), div);
+    }
+
+    public void actualizarTablas(){
+        Conexion con = new Conexion();
+        if (con.getConexion() == null) {
+            ctrlP.frm.getLblAvisos().setText("AVISO -> Fallo la conexion con la Base de Datos.");
+        }else{
+            ctrlP.frm.getLblAvisos().setText("AVISO -> Conexion exitosa con la Base de Datos.");
+            actualizarTbCliente();
+            actualizarTbConductores();
+        }
     }
     
     @Override
-    public void inicializarBotones() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void iniciar() {
+    public void iniciar() {        
+        inicializarBotones(ifrm);
+        actualizarTablas();
         ifrm.setVisible(true);
     }
+    
+    
+    public int reducirPagina(int pg, AtomicInteger rs){
+        if (pg > 1) {
+            pg --;
+            ctrlP.getFrm().getLblAvisos().setText("");
+        } else ctrlP.getFrm().getLblAvisos().setText("AVISO -> No hay mas paginas anteriores.");
+        return pg;
+    }
+    
+    public int aumentarPagina(int pg, AtomicInteger rs){
+        if (calcularPaginas(rs, 15) > pg){
+            pg ++;          
+            ctrlP.getFrm().getLblAvisos().setText("");
+        } else ctrlP.getFrm().getLblAvisos().setText("AVISO -> No hay mas paginas siguientes.");
+        return pg;
+    }
+ 
+    public void actualizarTbCliente(){
+        DaoCliente daoc = new DaoCliente();
+        clientes = daoc.listar((pgClientes-1)*15, 15, rsClientes);
+        Object[][] datos = new Object[clientes.size()][5];
+        for (int i = 0; i < clientes.size(); i++) {
+            datos[i] = clientes.get(i).getDatos();
+        }
+        llenarTabla(ifrm.getTbClientes().getModel(), datos);
+        ifrm.getTxtMostrandoClientes().setText("Mostrando " + pgClientes +" de "+ calcularPaginas(rsClientes, 15));
+        
+    }
+    public void actualizarTbConductores(){
+        DaoConductor daoc = new DaoConductor();
+        conductores = daoc.listar((pgConductores-1)*15, 15, rsConductores);
+        Object[][] datos = new Object[conductores.size()][5];
+        for (int i = 0; i < conductores.size(); i++) {
+            datos[i] = conductores.get(i).getDatos();
+        }
+        llenarTabla(ifrm.getTbConductores().getModel(), datos);
+        ifrm.getTxtMostrandoConductor().setText("Mostrando " + pgConductores +" de "+ calcularPaginas(rsConductores, 15));
+        
+    }
 
+    
+    private void telefonos(Persona p){
+        IFrmTelefonos ifrmR = new IFrmTelefonos();
+        ControladorTelefonos contR = new ControladorTelefonos(ifrmR, ctrlP, p);
+        contR.iniciar();        
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (e.getSource().equals(ifrm.getBtnBuscarCliente())){
+            actualizarTbCliente();
+        } else if (e.getSource().equals(ifrm.getBtnAnteriorCliente())){
+            pgClientes = reducirPagina(pgClientes, rsClientes);
+            actualizarTbCliente();
+        } else if (e.getSource().equals(ifrm.getBtnSiguienteCliente())){
+            pgClientes = aumentarPagina(pgClientes, rsClientes);
+            actualizarTbCliente();
+        } else if (e.getSource().equals(ifrm.getBtnBorrarCliente())){
+            int indice = ifrm.getTbClientes().getSelectedRow();
+            int confirmacion = JOptionPane.showConfirmDialog(ifrm, 
+                    "¿Esta seguro que desea" +
+                    "eliminar el cliente de id " +
+                    String.valueOf(ifrm.getTbClientes().getValueAt(indice, 0)) +
+                    " y de nombre " +
+                    String.valueOf(ifrm.getTbClientes().getValueAt(indice, 1)) + 
+                    "?"
+            , "Confirmacion para eliminar Cliente", 0);
+            if (confirmacion == 0) {
+            DaoCliente daoc = new DaoCliente();
+            boolean eliminar = daoc.eliminar(Integer.parseInt(String.valueOf(ifrm.getTbClientes().getValueAt(indice, 0))));
+            String msg = eliminar ? "Eliminado correctamente." : "Error al eliminar.";
+            ctrlP.frm.getLblAvisos().setText("Aviso -> "+ msg);
+            actualizarTbCliente();
+            }
+        } else if (e.getSource().equals(ifrm.getBtnTelefonosCliente())){
+            Cliente c = clientes.get(ifrm.getTbClientes().getSelectedRow());
+            telefonos(c);
+        } else if (e.getSource().equals(ifrm.getBtnEditarCliente())){
+            int index = ifrm.getTbClientes().getSelectedRow();
+            IFrmAddModCliente ifrmR = new IFrmAddModCliente();
+            ControladorModCliente contC = new ControladorModCliente(ifrmR, ctrlP, clientes.get(index));
+            contC.iniciar(); 
+            actualizarTbCliente();
+        } else if (e.getSource().equals(ifrm.getBtnCrearCliente())){
+            IFrmAddModCliente ifrmR = new IFrmAddModCliente();
+            ControladorAddCliente contC = new ControladorAddCliente(ifrmR, ctrlP);
+            contC.iniciar(); 
+        } else if (e.getSource().equals(ifrm.getBtnBuscarConductor())){
+            actualizarTbCliente();
+        } else if (e.getSource().equals(ifrm.getBtnAnteriorConductor())){
+            pgConductores = reducirPagina(pgConductores, rsConductores);
+            actualizarTbConductores();
+        } else if (e.getSource().equals(ifrm.getBtnSiguienteConductor())){
+            pgConductores = aumentarPagina(pgConductores, rsConductores);
+            actualizarTbConductores();
+        } else if (e.getSource().equals(ifrm.getBtnBorrarConductor())){
+            int indice = ifrm.getTbConductores().getSelectedRow();
+            int confirmacion = JOptionPane.showConfirmDialog(ifrm, 
+                    "¿Esta seguro que desea" +
+                    "eliminar el cliente de id " +
+                    String.valueOf(ifrm.getTbConductores().getValueAt(indice, 0)) +
+                    " y de nombre " +
+                    String.valueOf(ifrm.getTbConductores().getValueAt(indice, 1)) + 
+                    "?"
+            , "Confirmacion para eliminar Conductor", 0);
+            if (confirmacion == 0) {
+            DaoConductor daoc = new DaoConductor();
+            boolean eliminar = daoc.eliminar(Integer.parseInt(String.valueOf(ifrm.getTbConductores().getValueAt(indice, 0))));
+            String msg = eliminar ? "Eliminado correctamente." : "Error al eliminar.";
+            ctrlP.frm.getLblAvisos().setText("Aviso -> "+ msg);
+                actualizarTbConductores();
+            }
+        } else if (e.getSource().equals(ifrm.getBtnTelefonosConductor())){
+            Conductor c = conductores.get(ifrm.getTbConductores().getSelectedRow());
+            telefonos(c);
+        } else if (e.getSource().equals(ifrm.getBtnEditarConductor())){
+            int index = ifrm.getTbConductores().getSelectedRow();
+            IFrmAddModConductor ifrmR = new IFrmAddModConductor();
+            ControladorModConductor contC = new ControladorModConductor(ifrmR, ctrlP, conductores.get(index));
+            contC.iniciar(); 
+            actualizarTbConductores();
+        } else if (e.getSource().equals(ifrm.getBtnCrearConductor())){
+            IFrmAddModConductor ifrmR = new IFrmAddModConductor();
+            ControladorAddConductor contC = new ControladorAddConductor(ifrmR, ctrlP);
+            contC.iniciar(); 
+        } 
     }
     
 }
