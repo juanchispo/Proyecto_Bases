@@ -3,10 +3,13 @@
  */
 package Controlador;
 
-import Vista.FrmPrincipal;
+import Modelo.imagenes.PanelLogo;
 import Vista.IFrmRegistro;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import javax.swing.JInternalFrame;
+import javax.swing.JDesktopPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -22,21 +25,32 @@ public class ControladorRegistrar extends Controlador{
         this.ifrm = ifrm;
     }
 
-    @Override
-    public void inicializarBotones() {
-        ifrm.getBtnIngresar().addActionListener(this);
-    }
+@Override
+public void iniciar() {
+    inicializarBotones(ifrm);
 
-    @Override
-    public void iniciar() {
-        inicializarBotones();
-        ifrm.setVisible(true);
-        ifrm.setLocation(380, 10);
-        ctrP.getFrm().getPnlInferior().setVisible(false);
-        ctrP.getFrm().getEscritorio().removeAll();
-        ctrP.getFrm().getEscritorio().add(ifrm);
-        ctrP.getFrm().getEscritorio().updateUI();
-    }
+    PanelLogo pn = new PanelLogo("src/img/aventureros sin fondo.png");
+    pn.setPreferredSize(new Dimension(150, 200));
+
+    JPanel panelDestino = ifrm.getPnlImagen();
+    panelDestino.setLayout(new BorderLayout()); 
+    panelDestino.removeAll(); 
+    panelDestino.add(pn, BorderLayout.CENTER);
+    panelDestino.revalidate();
+    panelDestino.repaint();
+
+    ifrm.setLocation(380, 10);
+    ctrP.getFrm().getPnlInferior().setVisible(false);
+
+    JDesktopPane escritorio = ctrP.getFrm().getEscritorio();
+    escritorio.removeAll();
+    escritorio.add(ifrm);
+    escritorio.revalidate();
+    escritorio.repaint();
+
+    ifrm.setVisible(true);
+}
+
     
     public boolean getAcceso(){
         return acceso;
