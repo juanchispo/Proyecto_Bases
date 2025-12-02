@@ -42,6 +42,7 @@ public class ControladorPrincipal extends Controlador {
     public void iniciar() {
         frm.getPnlInferior().setVisible(false);
         inicializarBotones(frm);
+        frm.setLocationRelativeTo(null);
         frm.setVisible(true);
         registrarUsuario();
     }
