@@ -141,6 +141,32 @@ public class DaoServicio extends Conexion {
         return "0";
     }
 
+    public String[] obtenerMesMasGanancias() {
+
+        String sql
+                = "SELECT DATE_FORMAT(fecha_servicio, '%Y-%m') AS mes, "
+                + "SUM(valor_servicio) AS total "
+                + "FROM servicio "
+                + "GROUP BY mes "
+                + "ORDER BY total DESC "
+                + "LIMIT 1";
+
+        try (Connection cnx = getConexion(); PreparedStatement pst = cnx.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
+
+            if (rs.next()) {
+                return new String[]{
+                    rs.getString("mes"), 
+                    rs.getString("total") 
+                };
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error obtenerMesMasGanancias -> " + ex);
+        }
+
+        return null;
+    }
+
     public void mensaje(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title, 1);
     }
