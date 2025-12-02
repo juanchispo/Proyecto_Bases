@@ -126,7 +126,7 @@ public class DaoServicio extends Conexion {
 
         String sql = "SELECT SUM(valor_servicio) AS ganancias "
                 + "FROM servicio "
-                + "WHERE fecha_servicio >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)";
+                + "WHERE fecha_servicio >= (CURRENT_DATE - INTERVAL '1 month')";
 
         try (Connection cnx = getConexion(); PreparedStatement ps = cnx.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 

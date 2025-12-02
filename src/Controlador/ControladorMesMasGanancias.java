@@ -23,11 +23,11 @@ public class ControladorMesMasGanancias extends Controlador {
 
   
         if (datos != null) {
-            vista.getTxtRecaudoUMes().setText(
+            vista.getTxtGanaciasAnio().setText(
                 "Mes: " + datos[0] + "  |  Ganancias: $" + datos[1]
             );
         } else {
-            vista.getTxtRecaudoUMes().setText("Sin datos disponibles");
+            vista.getTxtGanaciasAnio().setText("Sin datos disponibles");
         }
     }
 
