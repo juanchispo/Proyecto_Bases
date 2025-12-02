@@ -681,8 +681,8 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         return tbClienServ;
     }
 
-    public void setTbClienServ(JTable tbClienServ) {
-        this.tbClienServ = tbClienServ;
+    public void setTbClienServ(JTable tbClienServ) {      
+        this.tbClienServ = tbClienServ;       
     }
 
     public JTable getTbClientes() {
