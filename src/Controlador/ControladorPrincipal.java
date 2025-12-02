@@ -52,13 +52,19 @@ public class ControladorPrincipal extends Controlador{
         contR.iniciar();        
     }
 
-    public void iniciarFrmAdministrador() {
-        IFrmAdministrador ifrmA = new IFrmAdministrador();
-        ControladorAdministrador contA = new ControladorAdministrador(this, ifrmA);
-        contA.iniciar();
-        frm.getPnlInferior().setVisible(true);
-        frm.getEscritorio().add(ifrmA);
-    } 
+public void iniciarFrmAdministrador() {
+    IFrmAdministrador ifrmA = new IFrmAdministrador();
+
+    ControladorAdministrador contA = new ControladorAdministrador(this, ifrmA);
+    contA.iniciar();
+
+    ControladorMasServiciosCliente contMas = new ControladorMasServiciosCliente(ifrmA);
+    contMas.iniciar();
+
+    frm.getPnlInferior().setVisible(true);
+    frm.getEscritorio().add(ifrmA);
+}
+
     
     @Override
     public void actionPerformed(ActionEvent e) {
