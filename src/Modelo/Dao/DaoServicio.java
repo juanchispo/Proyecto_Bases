@@ -131,7 +131,7 @@ public class DaoServicio extends Conexion {
         try (Connection cnx = getConexion(); PreparedStatement ps = cnx.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
             if (rs.next()) {
-                return rs.getString("ganancias"); // puede ser null
+                return rs.getString("ganancias");
             }
 
         } catch (Exception e) {
@@ -144,10 +144,11 @@ public class DaoServicio extends Conexion {
     public String[] obtenerMesMasGanancias() {
 
         String sql
-                = "SELECT DATE_FORMAT(fecha_servicio, '%Y-%m') AS mes, "
-                + "SUM(valor_servicio) AS total "
+                = "SELECT TO_CHAR(fecha_servicio, 'YYYY-MM') AS mes, "
+                + "COALESCE(SUM(valor_servicio), 0) AS total "
                 + "FROM servicio "
-                + "GROUP BY mes "
+                + "WHERE fecha_servicio IS NOT NULL "
+                + "GROUP BY TO_CHAR(fecha_servicio, 'YYYY-MM') "
                 + "ORDER BY total DESC "
                 + "LIMIT 1";
 
@@ -155,8 +156,8 @@ public class DaoServicio extends Conexion {
 
             if (rs.next()) {
                 return new String[]{
-                    rs.getString("mes"), 
-                    rs.getString("total") 
+                    rs.getString("mes"),
+                    rs.getString("total")
                 };
             }
 
@@ -164,7 +165,7 @@ public class DaoServicio extends Conexion {
             System.err.println("Error obtenerMesMasGanancias -> " + ex);
         }
 
-        return null;
+        return new String[]{"Sin datos", "0"};
     }
 
     public void mensaje(String msg, String title) {
