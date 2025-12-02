@@ -1055,7 +1055,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         });
 
         lblGananciasAnio.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        lblGananciasAnio.setText("Mes con mas ganancia de 2025");
+        lblGananciasAnio.setText("Mes con mas ganancia");
 
         txtGanaciasAnio.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         txtGanaciasAnio.setText("Marzo");
@@ -1089,7 +1089,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                        .addComponent(lblGananciasAnio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblGananciasAnio)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtGanaciasAnio))
                                     .addComponent(pnlGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
