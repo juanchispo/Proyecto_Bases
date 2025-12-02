@@ -62,6 +62,7 @@ public class ControladorPrincipal extends Controlador {
         contMas.iniciar();
         ControladorMasServiciosConductor contCon = new ControladorMasServiciosConductor(ifrmA);
         contCon.iniciar();
+        new ControladorGananciasUltimoMes(ifrmA).iniciar();
 
         frm.getPnlInferior().setVisible(true);
         frm.getEscritorio().add(ifrmA);

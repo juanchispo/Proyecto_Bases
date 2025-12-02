@@ -1048,6 +1048,11 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
         txtRecaudoUMes.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         txtRecaudoUMes.setText("2.415.035 $");
+        txtRecaudoUMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRecaudoUMesActionPerformed(evt);
+            }
+        });
 
         lblGananciasAnio.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         lblGananciasAnio.setText("Mes con mas ganancia de 2025");
@@ -2032,6 +2037,10 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private void btnAnteriorBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorBAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnteriorBAActionPerformed
+
+    private void txtRecaudoUMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecaudoUMesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRecaudoUMesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

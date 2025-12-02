@@ -13,8 +13,8 @@ public class DaoServicio extends Conexion {
     public boolean agregar(Servicio s) {
         Connection cnx = getConexion();
         String sql = "INSERT INTO servicio (id_servicio, valor_servicio, direccion_ori, direccion_des, "
-                   + "id_conductor, id_cliente, tipo_servicio, medio_pago, tarifa) "
-                   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "id_conductor, id_cliente, tipo_servicio, medio_pago, tarifa) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(sql);
@@ -62,9 +62,9 @@ public class DaoServicio extends Conexion {
     public boolean actualizar(Servicio s) {
         Connection cnx = getConexion();
         String sql = "UPDATE servicio SET valor_servicio = ?, direccion_ori = ?, direccion_des = ?, "
-                   + "id_conductor = ?, id_cliente = ?, tipo_servicio = ?, "
-                   + "medio_pago = ?, tarifa = ? "
-                   + "WHERE id_servicio = ?";
+                + "id_conductor = ?, id_cliente = ?, tipo_servicio = ?, "
+                + "medio_pago = ?, tarifa = ? "
+                + "WHERE id_servicio = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(sql);
@@ -120,6 +120,25 @@ public class DaoServicio extends Conexion {
         }
 
         return false;
+    }
+
+    public String obtenerGananciasUltimoMes() {
+
+        String sql = "SELECT SUM(valor_servicio) AS ganancias "
+                + "FROM servicio "
+                + "WHERE fecha_servicio >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)";
+
+        try (Connection cnx = getConexion(); PreparedStatement ps = cnx.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) {
+                return rs.getString("ganancias"); // puede ser null
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al obtener ganancias del último mes: " + e);
+        }
+
+        return "0";
     }
 
     public void mensaje(String msg, String title) {
