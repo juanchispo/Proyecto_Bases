@@ -4,13 +4,13 @@ package Modelo;
 public class Vehiculo {
    private int placa;
    private String modelo;
-   private String marca;
+   private int id_marca;
    private String tipo_servicio;
 
-    public Vehiculo(int placa, String modelo, String marca, String tipo_servicio) {
+    public Vehiculo(int placa, String modelo, int id_marca, String tipo_servicio) {
         this.placa = placa;
         this.modelo = modelo;
-        this.marca = marca;
+        this.id_marca = id_marca;
         this.tipo_servicio = tipo_servicio;
     }
 
@@ -30,12 +30,12 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
-    public String getMarca() {
-        return marca;
+    public int getMarca() {
+        return id_marca;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setMarca(int marca) {
+        this.id_marca = id_marca;
     }
 
     public String getTipo_servicio() {
