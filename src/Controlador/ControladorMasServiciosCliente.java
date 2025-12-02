@@ -18,11 +18,10 @@ public class ControladorMasServiciosCliente extends Controlador {
     public void iniciar() {
         cargarClienteMasServicios();
     }
-
     private void cargarClienteMasServicios() {
 
         DaoCliente dao = new DaoCliente();
-        String[] datos = dao.clienteMasServiciosVista();
+        String[] datos = dao.ControladorMasServiciosCliente();
 
         DefaultTableModel modelo = (DefaultTableModel) vista.getTbClienServ().getModel();
         modelo.setRowCount(0);
