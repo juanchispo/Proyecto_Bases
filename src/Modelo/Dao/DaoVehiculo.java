@@ -1,5 +1,6 @@
 package Modelo.Dao;
 
+import Modelo.Marca;
 import Modelo.Vehiculo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ public class DaoVehiculo extends Conexion {
             PreparedStatement pst = cnx.prepareStatement(stc);
             pst.setInt(1, v.getPlaca());
             pst.setString(2, v.getModelo());
-            pst.setString(3, v.getMarca());
+            pst.setInt(3, v.getMarca().getId_marca());
             pst.setString(4, v.getTipo_servicio());
 
             pst.executeUpdate();
@@ -60,7 +61,7 @@ public class DaoVehiculo extends Conexion {
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
             pst.setString(1, v.getModelo());
-            pst.setString(2, v.getMarca());
+            pst.setInt(2, v.getMarca().getId_marca());
             pst.setString(3, v.getTipo_servicio());
             pst.setInt(4, v.getPlaca());
 
@@ -88,7 +89,7 @@ public class DaoVehiculo extends Conexion {
             if (rst.next()) {
                 v.setPlaca(rst.getInt("placa"));
                 v.setModelo(rst.getString("modelo"));
-                v.setMarca(rst.getString("marca"));
+                v.setMarca( new Marca(rst.getInt("marca"), ""));
                 v.setTipo_servicio(rst.getString("tipo_servicio"));
                 return true;
             }
