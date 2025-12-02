@@ -21,17 +21,21 @@ public class ControladorMasServiciosCliente extends Controlador {
     private void cargarClienteMasServicios() {
 
         DaoCliente dao = new DaoCliente();
-        String[] datos = dao.ControladorMasServiciosCliente();
+        String[][] datos = dao.ControladorMasServiciosCliente();
 
-        DefaultTableModel modelo = (DefaultTableModel) vista.getTbClienServ().getModel();
+        DefaultTableModel modelo
+                = (DefaultTableModel) vista.getTbClienServ().getModel();
+
         modelo.setRowCount(0);
 
         if (datos != null) {
-            modelo.addRow(new Object[]{
-                datos[0],  
-                datos[1],  
-                datos[2]   
-            });
+            for (int i = 0; i < datos.length; i++) {
+                modelo.addRow(new Object[]{
+                    datos[i][0],
+                    datos[i][1],
+                    datos[i][2]
+                });
+            }
         }
     }
 

@@ -20,7 +20,7 @@ public class ControladorMasServiciosConductor extends Controlador {
     private void cargarConductorMasServicios() {
 
         DaoConductor dao = new DaoConductor();
-        String[] datos = dao.conductorMasServiciosVista();
+        String[][] datos = dao.conductorMasServiciosVista();
 
         DefaultTableModel modelo
                 = (DefaultTableModel) vista.getTbConduServ().getModel();
@@ -28,11 +28,13 @@ public class ControladorMasServiciosConductor extends Controlador {
         modelo.setRowCount(0);
 
         if (datos != null) {
-            modelo.addRow(new Object[]{
-                datos[0],
-                datos[1],
-                datos[2]
-            });
+            for (int i = 0; i < datos.length; i++) {
+                modelo.addRow(new Object[]{
+                    datos[i][0],
+                    datos[i][1],
+                    datos[i][2]
+                });
+            }
         }
     }
 

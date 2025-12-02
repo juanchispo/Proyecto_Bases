@@ -152,27 +152,31 @@ public class DaoCliente extends Conexion {
         return lista;
     }
 
-    public String[] ControladorMasServiciosCliente() {
+    public String[][] ControladorMasServiciosCliente() {
         Connection cnx = getConexion();
         String stc = "SELECT * FROM vista_cliente_mas_servicios";
 
+        ArrayList<String[]> resultados = new ArrayList<>();    
+        
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
             ResultSet rst = pst.executeQuery();
 
-            if (rst.next()) {
-                return new String[]{
+            while (rst.next()) {
+                String [] fila = new String[]{
                     rst.getString("id_cliente"),
                     rst.getString("nombre"),
                     rst.getString("total_servicios")
                 };
+                resultados.add(fila);
             }
-
+            rst.close();
+            pst.close();
         } catch (SQLException ex) {
             System.err.println("Error consultando la vista -> " + ex);
         }
 
-        return null;
+        return resultados.toArray(new String[resultados.size()][3]);
     }
 
     public void mensaje(String msg, String title) {
