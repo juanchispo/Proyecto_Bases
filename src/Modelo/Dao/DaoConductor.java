@@ -17,7 +17,7 @@ public class DaoConductor extends Conexion {
     public boolean agregar(Conductor c) {
         Connection cnx = getConexion();
         String stc = "INSERT INTO Conductor (id_conductor, direccion, fotografia, nacionalidad, genero, nombre) "
-                   + "VALUES (?,?,?,?,?,?)";
+                + "VALUES (?,?,?,?,?,?)";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
@@ -61,7 +61,7 @@ public class DaoConductor extends Conexion {
     public boolean actualizar(Conductor c) {
         Connection cnx = getConexion();
         String stc = "UPDATE Conductor SET direccion = ?, fotografia = ?, nacionalidad = ?, genero = ?, nombre = ? "
-                   + "WHERE id_conductor = ?";
+                + "WHERE id_conductor = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
@@ -109,22 +109,22 @@ public class DaoConductor extends Conexion {
         }
         return false;
     }
+
     public ArrayList<Conductor> listar(int offset, int limit, AtomicInteger resultados) {
         ArrayList<Conductor> lista = new ArrayList<>();
-        
-        String sql = 
-            "SELECT c.id_conductor, c.nombre, c.direccion, c.fotografia, "
-            + "n.id_nacionalidad, n.nacionalidad, g.id_genero, g.genero, "
-            + "COUNT(*) OVER() AS total_registros "
-            + "FROM conductor c "
-            + "LEFT JOIN nacionalidad n ON c.nacionalidad = n.id_nacionalidad "
-            + "LEFT JOIN genero g ON c.genero = g.id_genero "
-            + "ORDER BY c.id_conductor "
-            + "LIMIT ? OFFSET ?";
 
-        try (Connection cn = getConexion();
-             PreparedStatement pst = cn.prepareStatement(sql)) {
-            
+        String sql
+                = "SELECT c.id_conductor, c.nombre, c.direccion, c.fotografia, "
+                + "n.id_nacionalidad, n.nacionalidad, g.id_genero, g.genero, "
+                + "COUNT(*) OVER() AS total_registros "
+                + "FROM conductor c "
+                + "LEFT JOIN nacionalidad n ON c.nacionalidad = n.id_nacionalidad "
+                + "LEFT JOIN genero g ON c.genero = g.id_genero "
+                + "ORDER BY c.id_conductor "
+                + "LIMIT ? OFFSET ?";
+
+        try (Connection cn = getConexion(); PreparedStatement pst = cn.prepareStatement(sql)) {
+
             pst.setInt(1, limit);
             pst.setInt(2, offset);
 
@@ -141,22 +141,45 @@ public class DaoConductor extends Conexion {
                 nac.setId_nacionalidad(rs.getInt("id_nacionalidad"));
                 nac.setNacionalidad(rs.getString("nacionalidad"));
                 con.setNacionalidad(nac);
-                
+
                 Genero gen = new Genero();
                 gen.setId_genero(rs.getInt("id_genero"));
                 gen.setGenero(rs.getString("genero"));
                 con.setGenero(gen);
-                
+
                 lista.add(con);
                 resultados.set(rs.getInt("total_registros"));
             }
-
 
         } catch (SQLException e) {
             System.err.println("Error SELECT Conductor: " + e.getMessage());
         }
         return lista;
     }
+
+    public String[] conductorMasServiciosVista() {
+        Connection cnx = getConexion();
+        String stc = "SELECT * FROM vista_conductor_mas_servicios";
+
+        try {
+            PreparedStatement pst = cnx.prepareStatement(stc);
+            ResultSet rst = pst.executeQuery();
+
+            if (rst.next()) {
+                return new String[]{
+                    rst.getString("id_conductor"),
+                    rst.getString("nombre"),
+                    rst.getString("total_servicios")
+                };
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error consultando la vista -> " + ex);
+        }
+
+        return null;
+    }
+
     public void mensaje(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title, 1);
     }

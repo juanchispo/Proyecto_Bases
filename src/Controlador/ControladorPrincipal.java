@@ -18,7 +18,8 @@ import javax.swing.JInternalFrame;
  *
  * @author Dyl
  */
-public class ControladorPrincipal extends Controlador{
+public class ControladorPrincipal extends Controlador {
+
     FrmPrincipal frm;
 
     public FrmPrincipal getFrm() {
@@ -28,12 +29,11 @@ public class ControladorPrincipal extends Controlador{
     public void setFrm(FrmPrincipal frm) {
         this.frm = frm;
     }
-    
-    
+
     public ControladorPrincipal(FrmPrincipal frm) {
         this.frm = frm;
     }
-    
+
     public ControladorPrincipal() {
         this.frm = new FrmPrincipal();
     }
@@ -46,31 +46,32 @@ public class ControladorPrincipal extends Controlador{
         registrarUsuario();
     }
 
-    private void registrarUsuario(){
+    private void registrarUsuario() {
         IFrmRegistro ifrmR = new IFrmRegistro();
         ControladorRegistrar contR = new ControladorRegistrar(this, ifrmR);
-        contR.iniciar();        
+        contR.iniciar();
     }
 
-public void iniciarFrmAdministrador() {
-    IFrmAdministrador ifrmA = new IFrmAdministrador();
+    public void iniciarFrmAdministrador() {
+        IFrmAdministrador ifrmA = new IFrmAdministrador();
 
-    ControladorAdministrador contA = new ControladorAdministrador(this, ifrmA);
-    contA.iniciar();
+        ControladorAdministrador contA = new ControladorAdministrador(this, ifrmA);
+        contA.iniciar();
 
-    ControladorMasServiciosCliente contMas = new ControladorMasServiciosCliente(ifrmA);
-    contMas.iniciar();
+        ControladorMasServiciosCliente contMas = new ControladorMasServiciosCliente(ifrmA);
+        contMas.iniciar();
+        ControladorMasServiciosConductor contCon = new ControladorMasServiciosConductor(ifrmA);
+        contCon.iniciar();
 
-    frm.getPnlInferior().setVisible(true);
-    frm.getEscritorio().add(ifrmA);
-}
+        frm.getPnlInferior().setVisible(true);
+        frm.getEscritorio().add(ifrmA);
+    }
 
-    
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(frm.getBtnCerrarSesion())){
-                registrarUsuario();
+        if (e.getSource().equals(frm.getBtnCerrarSesion())) {
+            registrarUsuario();
 
         }
-    }   
+    }
 }
