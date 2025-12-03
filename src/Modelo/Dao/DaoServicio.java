@@ -68,70 +68,77 @@ public class DaoServicio {
     }
     
 
-    public ArrayList<Servicio> listar(int offset, int limit, AtomicInteger resultados) {
-        ArrayList<Servicio> lista = new ArrayList<>();
-        Connection cnx = null;
+   public ArrayList<Servicio> listar(int offset, int limit, AtomicInteger resultados) {
+    ArrayList<Servicio> lista = new ArrayList<>();
+    Connection cnx = null;
 
-        String sql
-                = "SELECT S.id_servicio, S.valor_servicio, S.direccion_ori, "
-                + "S.direccion_des, S.fecha_servicio, S.id_conductor, "
-                + "C.nombre AS nombre_conductor, S.id_cliente, CL.nombre AS nombre_cliente, "
-                + "S.id_tipo_servicio, TS.nombre_tipo_servicio, "
-                + "S.medio_pago AS id_medio_pago, MP.nombre_medio_pago, S.tarifa AS "
-                + "id_tarifa, T.nivel AS nivel_tarifa, T.valor_tarifa, COUNT(*) OVER() AS total_registros "
-                + "FROM Servicio AS S LEFT JOIN Conductor AS C ON S.id_conductor = C.id_conductor "
-                + "LEFT JOIN Cliente AS CL ON S.id_cliente = CL.id_cliente "
-                + "LEFT JOIN TipoServicio AS TS ON S.id_tipo_servicio = TS.id_tipo_servicio "
-                + "LEFT JOIN MedioPago AS MP ON S.medio_pago = MP.id_medio_pago "
-                + "LEFT JOIN Tarifa AS T ON S.tarifa = T.id_tarifa "
-                + "ORDER BY S.fecha_servicio DESC, S.id_servicio "
-                + "LIMIT ? OFFSET ?";
+    String sql
+        = "SELECT S.id_servicio, S.valor_servicio, S.direccion_ori, "
+        + "S.direccion_des, S.fecha_servicio, S.id_conductor, "
+        + "C.nombre AS nombre_conductor, S.id_cliente, CL.nombre AS nombre_cliente, "
+        + "S.id_tipo_servicio, TS.nombre_tipo_servicio, "
+        + "S.medio_pago AS id_medio_pago, MP.nombre_medio_pago, S.tarifa AS "
+        + "id_tarifa, T.nivel AS nivel_tarifa, T.valor_tarifa, COUNT(*) OVER() AS total_registros "
+        + "FROM Servicio AS S LEFT JOIN Conductor AS C ON S.id_conductor = C.id_conductor "
+        + "LEFT JOIN Cliente AS CL ON S.id_cliente = CL.id_cliente "
+        + "LEFT JOIN TipoServicio AS TS ON S.id_tipo_servicio = TS.id_tipo_servicio "
+        + "LEFT JOIN MedioPago AS MP ON S.medio_pago = MP.id_medio_pago "
+        + "LEFT JOIN Tarifa AS T ON S.tarifa = T.id_tarifa "
+        + "ORDER BY S.fecha_servicio DESC, S.id_servicio "
+        + "LIMIT ? OFFSET ?";
 
-        try {
-            cnx = conn.getConexion();
-            try (PreparedStatement pst = cnx.prepareStatement(sql)) {
+    try {
+        cnx = conn.getConexion();
+        try (PreparedStatement pst = cnx.prepareStatement(sql)) {
 
-                pst.setInt(1, limit);
-                pst.setInt(2, offset);
+            pst.setInt(1, limit);
+            pst.setInt(2, offset);
 
-                try (ResultSet rs = pst.executeQuery()) {
-                    while (rs.next()) {
-                        Servicio serv = new Servicio();
-                        serv.setId_servicio(rs.getInt("id_servicio"));
-                        serv.setDireccion_des(rs.getString("direccion_des"));
-                        serv.setDireccion_ori(rs.getString("direccion_ori"));
-
-                        Cliente cl = new Cliente();
-                        cl.setId(rs.getInt("id_cliente"));
-                        cl.setNombre(rs.getString("nombre_cliente"));
-                        serv.setCliente(cl);
-
-                        Conductor co = new Conductor();
-                        co.setId(rs.getInt("id_conductor"));
-                        co.setNombre(rs.getString("nombre_conductor"));
-                        serv.setConductor(co);
-
-                        TipoServicio tip = new TipoServicio(rs.getInt("id_tipo_servicio"), rs.getString("nombre_tipo_servicio"));
-                        serv.setTipo_servicio(tip);
-
-                        MedioPago med = new MedioPago(rs.getInt("id_medio_pago"), rs.getString("nombre_medio_pago"));
-                        serv.setMedio_pago(med);
-
-                        Tarifa tar = new Tarifa(rs.getInt("id_tarifa"), rs.getString("nivel_tarifa"), rs.getString("valor_tarifa"));
-                        serv.setTarifa(tar);
-
-                        lista.add(serv);
-                        resultados.set(rs.getInt("total_registros"));
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    Servicio serv = new Servicio();
+                    serv.setId_servicio(rs.getInt("id_servicio"));
+                    serv.setValor_servicio(rs.getDouble("valor_servicio")); // Agregar esta línea
+                    serv.setDireccion_des(rs.getString("direccion_des"));
+                    serv.setDireccion_ori(rs.getString("direccion_ori"));
+                    
+                    // Agregar la fecha del servicio
+                    java.sql.Timestamp fechaTimestamp = rs.getTimestamp("fecha_servicio");
+                    if (fechaTimestamp != null) {
+                        serv.setFecha_servicio(new java.util.Date(fechaTimestamp.getTime()));
                     }
+
+                    Cliente cl = new Cliente();
+                    cl.setId(rs.getInt("id_cliente"));
+                    cl.setNombre(rs.getString("nombre_cliente"));
+                    serv.setCliente(cl);
+
+                    Conductor co = new Conductor();
+                    co.setId(rs.getInt("id_conductor"));
+                    co.setNombre(rs.getString("nombre_conductor"));
+                    serv.setConductor(co);
+
+                    TipoServicio tip = new TipoServicio(rs.getInt("id_tipo_servicio"), rs.getString("nombre_tipo_servicio"));
+                    serv.setTipo_servicio(tip);
+
+                    MedioPago med = new MedioPago(rs.getInt("id_medio_pago"), rs.getString("nombre_medio_pago"));
+                    serv.setMedio_pago(med);
+
+                    Tarifa tar = new Tarifa(rs.getInt("id_tarifa"), rs.getString("nivel_tarifa"), rs.getString("valor_tarifa"));
+                    serv.setTarifa(tar);
+
+                    lista.add(serv);
+                    resultados.set(rs.getInt("total_registros"));
                 }
             }
-        } catch (SQLException e) {
-            System.err.println("Error SELECT Servicios: " + e.getMessage());
-        } finally {
-            conn.cerrarConexion(cnx);
         }
-        return lista;
+    } catch (SQLException e) {
+        System.err.println("Error SELECT Servicios: " + e.getMessage());
+    } finally {
+        conn.cerrarConexion(cnx);
     }
+    return lista;
+}
 
     public DefaultTableModel obtenerServiciosTableModel(TableModel tb) {
         Connection cnx = null;
@@ -224,6 +231,88 @@ public class DaoServicio {
         return new String[]{"Sin datos", "0"};
     }
 
+    public Servicio obtenerPorId(int id_servicio) {
+        Servicio serv = null;
+        Connection cnx = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        String sql
+                = "SELECT S.id_servicio, S.valor_servicio, S.direccion_ori, "
+                + "S.direccion_des, S.fecha_servicio, S.id_conductor, "
+                + "C.nombre AS nombre_conductor, S.id_cliente, CL.nombre AS nombre_cliente, "
+                + "S.id_tipo_servicio, TS.nombre_tipo_servicio, "
+                + "S.medio_pago AS id_medio_pago, MP.nombre_medio_pago, S.tarifa AS "
+                + "id_tarifa, T.nivel AS nivel_tarifa, T.valor_tarifa "
+                + "FROM Servicio AS S LEFT JOIN Conductor AS C ON S.id_conductor = C.id_conductor "
+                + "LEFT JOIN Cliente AS CL ON S.id_cliente = CL.id_cliente "
+                + "LEFT JOIN TipoServicio AS TS ON S.id_tipo_servicio = TS.id_tipo_servicio "
+                + "LEFT JOIN MedioPago AS MP ON S.medio_pago = MP.id_medio_pago "
+                + "LEFT JOIN Tarifa AS T ON S.tarifa = T.id_tarifa "
+                + "WHERE S.id_servicio = ?"; // Condición para filtrar por ID
+
+        try {
+            cnx = conn.getConexion();
+            pst = cnx.prepareStatement(sql);
+            pst.setInt(1, id_servicio); // Establecer el ID del servicio
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) { // Solo esperamos un resultado
+                serv = new Servicio();
+                serv.setId_servicio(rs.getInt("id_servicio"));
+                serv.setValor_servicio(rs.getDouble("valor_servicio"));
+                serv.setDireccion_des(rs.getString("direccion_des"));
+                serv.setDireccion_ori(rs.getString("direccion_ori"));
+                
+                // Procesar la fecha del servicio
+                java.sql.Timestamp fechaTimestamp = rs.getTimestamp("fecha_servicio");
+                if (fechaTimestamp != null) {
+                    serv.setFecha_servicio(new java.util.Date(fechaTimestamp.getTime()));
+                }
+
+                // Crear y asignar el Cliente
+                Cliente cl = new Cliente();
+                cl.setId(rs.getInt("id_cliente"));
+                cl.setNombre(rs.getString("nombre_cliente"));
+                serv.setCliente(cl);
+
+                // Crear y asignar el Conductor
+                Conductor co = new Conductor();
+                co.setId(rs.getInt("id_conductor"));
+                co.setNombre(rs.getString("nombre_conductor"));
+                serv.setConductor(co);
+
+                // Crear y asignar el TipoServicio
+                TipoServicio tip = new TipoServicio(rs.getInt("id_tipo_servicio"), rs.getString("nombre_tipo_servicio"));
+                serv.setTipo_servicio(tip);
+
+                // Crear y asignar el MedioPago
+                MedioPago med = new MedioPago(rs.getInt("id_medio_pago"), rs.getString("nombre_medio_pago"));
+                serv.setMedio_pago(med);
+
+                // Crear y asignar la Tarifa
+                Tarifa tar = new Tarifa(rs.getInt("id_tarifa"), rs.getString("nivel_tarifa"), rs.getString("valor_tarifa"));
+                serv.setTarifa(tar);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error SELECT Servicio por ID: " + e.getMessage());
+            mensaje("Error al obtener el servicio: " + e.getMessage(), "SELECT ERROR");
+            serv = null; // Asegurar que devuelve null si hay un error
+        } finally {
+            // Cerrar recursos en el orden inverso de apertura
+            try {
+                if (rs != null) rs.close();
+                if (pst != null) pst.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar recursos (obtenerPorId): " + e.getMessage());
+            }
+            conn.cerrarConexion(cnx);
+        }
+        return serv;
+    }
+    
     public void mensaje(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title, 1);
     }

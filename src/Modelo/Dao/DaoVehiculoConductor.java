@@ -1,10 +1,13 @@
 package Modelo.Dao;
 
+import Modelo.Conductor;
+import Modelo.Vehiculo;
 import Modelo.VehiculoConductor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -12,122 +15,34 @@ import javax.swing.JOptionPane;
 
 public class DaoVehiculoConductor {
 
-    private final Conexion conn = new Conexion();
+    private final Conexion conexionBD;
+    private final DaoMarca marcaDao;
 
-    // AGREGAR: INSERT correcto
-    public boolean agregar(VehiculoConductor vc) {
-        Connection cnx = null;
-        String stc = "INSERT INTO VehiculoConductor (id_placa, id_conductor) VALUES (?,?)";
-
-        try {
-            cnx = conn.getConexion();
-            try (PreparedStatement pst = cnx.prepareStatement(stc)) {
-                pst.setInt(1, vc.getId_placa());
-                pst.setInt(2, vc.getId_conductor());
-                pst.executeUpdate();
-                return true;
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al ejecutar el INSERT -> " + ex);
-            mensaje("Error al ejecutar el INSERT", "Agregar!!!");
-            return false;
-        } finally {
-            conn.cerrarConexion(cnx);
-        }
+    public DaoVehiculoConductor() {
+        this.conexionBD = new Conexion();
+        this.marcaDao = new DaoMarca();
     }
 
-    // ELIMINAR: Debe borrar por id_placa E id_conductor
-    public boolean eliminar(VehiculoConductor m) {
-        Connection cnx = null;
-        String stc = "DELETE FROM VehiculoConductor WHERE id_placa = ? AND id_conductor = ?";
+    public boolean actualizarConductor(int idActual, int idNuevo) {
+        Connection con = null;
+        String sql = "UPDATE Conductor SET id_conductor = ? WHERE id_conductor = ?";
+        boolean exito = false;
 
         try {
-            cnx = conn.getConexion();
-            try (PreparedStatement pst = cnx.prepareStatement(stc)) {
-                pst.setInt(1, m.getId_placa());
-                pst.setInt(2, m.getId_conductor());
-                pst.executeUpdate();
-                return true;
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al ejecutar el DELETE -> " + ex);
-            mensaje("Error al ejecutar el DELETE", "Eliminar!!!");
-            return false;
-        } finally {
-            conn.cerrarConexion(cnx);
-        }
-    }
+            con = conexionBD.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, idNuevo);
+                ps.setInt(2, idActual);
 
-    // ACTUALIZAR: Actualiza la relación placa-conductor (Asume que id_placa es la clave para la actualización)
-    public boolean actualizarVehiculoConductor(VehiculoConductor m) {
-        Connection cnx = null;
-        String stc = "UPDATE VehiculoConductor SET id_conductor = ? WHERE id_placa = ?";
-
-        try {
-            cnx = conn.getConexion();
-            try (PreparedStatement pst = cnx.prepareStatement(stc)) {
-                pst.setInt(1, m.getId_conductor());
-                pst.setInt(2, m.getId_placa());
-                pst.executeUpdate();
-                return true;
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al ejecutar el UPDATE -> " + ex);
-            mensaje("Error al ejecutar el UPDATE", "Actualizar!!!");
-            return false;
-        } finally {
-            conn.cerrarConexion(cnx);
-        }
-    }
-
-    // CONSULTAR: Consulta la relación por id_placa
-    public boolean consultar(VehiculoConductor m) {
-        Connection cnx = null;
-        String stc = "SELECT id_placa, id_conductor FROM VehiculoConductor WHERE id_placa = ?";
-
-        try {
-            cnx = conn.getConexion();
-            try (PreparedStatement pst = cnx.prepareStatement(stc)) {
-                pst.setInt(1, m.getId_placa());
-
-                try (ResultSet rst = pst.executeQuery()) {
-                    if (rst.next()) {
-                        m.setId_placa(rst.getInt("id_placa"));
-                        m.setId_conductor(rst.getInt("id_conductor"));
-                        return true;
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al ejecutar el SELECT -> " + ex);
-            mensaje("Error al ejecutar el SELECT", "Consultar!!!");
-            return false;
-        } finally {
-            conn.cerrarConexion(cnx);
-        }
-        return false;
-    }
-
-    public DefaultComboBoxModel<String> obtenerPlacasVehiculos() {
-        DefaultComboBoxModel<String> modeloCombo = new DefaultComboBoxModel<>();
-        Connection cnx = null;
-        String sql = "SELECT placa FROM Vehiculo ORDER BY placa";
-
-        try {
-            cnx = conn.getConexion();
-            try (PreparedStatement ps = cnx.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
-
-                while (rs.next()) {
-                    modeloCombo.addElement(rs.getString("placa"));
-                }
+                exito = ps.executeUpdate() > 0;
             }
         } catch (SQLException e) {
-            System.err.println("Error al cargar placas de vehículos: " + e.getMessage());
+            System.err.println("Error al actualizar ID de conductor: " + e.getMessage());
         } finally {
-            conn.cerrarConexion(cnx);
+            conexionBD.cerrarConexion(con);
         }
 
-        return modeloCombo;
+        return exito;
     }
 
     public HashMap<Integer, String> obtenerConductores() {
@@ -136,7 +51,7 @@ public class DaoVehiculoConductor {
         String sql = "SELECT id_conductor, nombre FROM Conductor ORDER BY nombre";
 
         try {
-            Connection cnx = conn.getConexion();
+            con = conexionBD.getConexion();
             try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
                 while (rs.next()) {
@@ -149,20 +64,117 @@ public class DaoVehiculoConductor {
         } catch (SQLException e) {
             System.err.println("Error al cargar conductores: " + e.getMessage());
         } finally {
-            conn.cerrarConexion(con);
+            conexionBD.cerrarConexion(con);
         }
 
         return mapaConductores;
     }
 
-    //Consultar id de Conductor
+    public DefaultComboBoxModel<String> obtenerPlacasVehiculos() {
+        DefaultComboBoxModel<String> modeloCombo = new DefaultComboBoxModel<>();
+        Connection con = null;
+        String sql = "SELECT placa FROM Vehiculo ORDER BY placa";
+
+        try {
+            con = conexionBD.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    modeloCombo.addElement(rs.getString("placa"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al cargar placas de vehículos: " + e.getMessage());
+        } finally {
+            conexionBD.cerrarConexion(con);
+        }
+
+        return modeloCombo;
+    }
+
+    public Vehiculo consultarVehiculoPorPlaca(String placa) {
+        Vehiculo vehiculo = null;
+        Connection con = null;
+        String sql = "SELECT placa, modelo, marca FROM Vehiculo WHERE placa = ?";
+
+        try {
+            con = conexionBD.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+
+                ps.setString(1, placa);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        vehiculo = new Vehiculo();
+                        vehiculo.setPlaca(rs.getString("placa"));
+                        vehiculo.setModelo(rs.getString("modelo"));
+
+                        // Si necesitas cargar la marca completa:
+                        int idMarca = rs.getInt("marca");
+                        vehiculo.setMarca(new DaoMarca().consultar(idMarca));
+                    }
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al consultar vehículo por placa: " + e.getMessage());
+        } finally {
+            conexionBD.cerrarConexion(con);
+        }
+
+        return vehiculo;
+    }
+
+    public String obtenerNombreConductor(int id) {
+        String nombre = null;
+        Connection con = null;
+        String sql = "SELECT nombre FROM Conductor WHERE id_conductor = ?";
+
+        try {
+            con = conexionBD.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    nombre = rs.getString("nombre");
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener nombre del conductor: " + e.getMessage());
+        } finally {
+            conexionBD.cerrarConexion(con);
+        }
+
+        return nombre;
+    }
+
+    public boolean existePlaca(String placa) {
+        Connection con = null;
+        String sql = "SELECT 1 FROM Vehiculo WHERE placa = ?";
+
+        try {
+            con = conexionBD.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, placa);
+                ResultSet rs = ps.executeQuery();
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al verificar placa: " + e.getMessage());
+        } finally {
+            conexionBD.cerrarConexion(con);
+        }
+
+        return false;
+    }
+
     public DefaultListModel<String> listarConductores() {
         DefaultListModel<String> modelo = new DefaultListModel<>();
         Connection con = null;
         String sql = "SELECT id_conductor, nombre FROM Conductor ORDER BY nombre ASC";
 
         try {
-            Connection cnx = conn.getConexion();
+            con = conexionBD.getConexion();
             try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
                 while (rs.next()) {
@@ -176,61 +188,54 @@ public class DaoVehiculoConductor {
         } catch (SQLException e) {
             System.err.println("Error al listar conductores: " + e.getMessage());
         } finally {
-            conn.cerrarConexion(con);
-        }
-
-        return modelo;
-    }
-
-//Consultar por placa
-    public DefaultListModel<String> listarPlacasVehiculos() {
-        DefaultListModel<String> modelo = new DefaultListModel<>();
-        Connection con = null;
-        String sql = "SELECT placa FROM Vehiculo ORDER BY placa ASC";
-
-        try {
-            Connection cnx = conn.getConexion();
-            try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
-
-                while (rs.next()) {
-                    modelo.addElement(rs.getString("placa"));
-                }
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Error al listar placas de vehículos: " + e.getMessage());
-        } finally {
-            conn.cerrarConexion(con);
+            conexionBD.cerrarConexion(con);
         }
 
         return modelo;
     }
     
-    //actualizar .
-    public boolean actualizarConductor(int idActual, int idNuevo) {
-    Connection con = null;
-    String sql = "UPDATE Conductor SET id_conductor = ? WHERE id_conductor = ?";
-    boolean exito = false;
+    public ArrayList<Vehiculo> obtenerVehiculosPorConductor(int idConductor) {
+        // Utilizamos List en lugar de DefaultListModel para tener un retorno de datos puro,
+        // sin dependencias de la UI (Swing).
+        ArrayList<Vehiculo> vehiculosAsociados = new ArrayList<>();
+        Connection con = null;
+        
+        // Consulta SQL para obtener los datos del Vehículo
+        // Se une VehiculoConductor con Vehiculo para obtener los datos de la placa
+        String sql = "SELECT V.placa, V.modelo, V.marca " +
+                     "FROM Vehiculo V " +
+                     "JOIN VehiculoConductor VC ON V.placa = VC.placa_vehiculo " +
+                     "WHERE VC.id_conductor = ?";
 
-    try {
-        Connection cnx = conn.getConexion();
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, idNuevo);
-            ps.setInt(2, idActual);
-
-            exito = ps.executeUpdate() > 0;
+        try {
+            con = conexionBD.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                
+                // Establece el parámetro id_conductor
+                ps.setInt(1, idConductor);
+                
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        Vehiculo vehiculo = new Vehiculo();
+                        vehiculo.setPlaca(rs.getString("placa"));
+                        vehiculo.setModelo(rs.getString("modelo"));
+                        
+                        // Carga el objeto Marca completo utilizando DaoMarca
+                        int idMarca = rs.getInt("marca");
+                        // Se asume que this.marcaDao es una instancia válida de DaoMarca.
+                        vehiculo.setMarca(this.marcaDao.consultar(idMarca)); 
+                        
+                        vehiculosAsociados.add(vehiculo);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener vehículos por conductor: " + e.getMessage());
+        } finally {
+            conexionBD.cerrarConexion(con);
         }
-    } catch (SQLException e) {
-        System.err.println("Error al actualizar ID de conductor: " + e.getMessage());
-    } finally {
-        conn.cerrarConexion(con);
+
+        return vehiculosAsociados;
     }
 
-    return exito;
-}
-
-
-    public void mensaje(String msg, String title) {
-        JOptionPane.showMessageDialog(null, msg, title, 1);
-    }
 }

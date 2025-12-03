@@ -27,6 +27,14 @@ public class Conductor extends Persona{
     public void setFotografia(String fotografia) {
         this.fotografia = fotografia;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 
      @Override

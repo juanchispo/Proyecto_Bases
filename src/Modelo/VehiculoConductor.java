@@ -1,29 +1,35 @@
-
 package Modelo;
 
-
 public class VehiculoConductor {
-    private int id_placa;
-    private int id_conductor;
+    private Vehiculo vehiculo;
+    private Conductor conductor;
 
-    public VehiculoConductor(int id_placa, int id_conductor) {
-        this.id_placa = id_placa;
-        this.id_conductor = id_conductor;
+    public VehiculoConductor(Vehiculo vehiculo, Conductor conductor) {
+        this.vehiculo = vehiculo;
+        this.conductor = conductor;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
     }
 
     public int getId_placa() {
-        return id_placa;
-    }
-
-    public void setId_placa(int id_placa) {
-        this.id_placa = id_placa;
+        return vehiculo.getId();   
     }
 
     public int getId_conductor() {
-        return id_conductor;
-    }
-
-    public void setId_conductor(int id_conductor) {
-        this.id_conductor = id_conductor;
+        return conductor.getId();  
     }
 }
