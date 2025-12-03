@@ -4,7 +4,6 @@
  */
 package Controlador;
 
-import Modelo.Dao.DaoUsuario;
 import Vista.FrmPrincipal;
 import Vista.IFrmAdministrador;
 import Vista.IFrmRegistro;
@@ -41,19 +40,11 @@ public class ControladorPrincipal extends Controlador {
 
     @Override
     public void iniciar() {
-
         frm.getPnlInferior().setVisible(false);
         inicializarBotones(frm);
         frm.setLocationRelativeTo(null);
         frm.setVisible(true);
-
-        DaoUsuario dao = new DaoUsuario();
-
-        if (dao.existeAdmin()) {
-            iniciarFrmAdministrador();
-        } else {
-            registrarUsuario();
-        }
+        registrarUsuario();
     }
 
     private void registrarUsuario() {
