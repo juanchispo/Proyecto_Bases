@@ -27,7 +27,7 @@ public class ControladorCliente extends ControladorAdministrador{
     public ControladorCliente(IFrmAdministrador ifrm) {
         this.ifrm = ifrm;
         this.rsClientes = new AtomicInteger();
-        this.pgClientes = 0;
+        this.pgClientes = 1;
     }
     
     public void actualizarTbCliente(){

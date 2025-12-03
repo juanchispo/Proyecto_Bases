@@ -24,7 +24,7 @@ public class ControladorConductor extends ControladorAdministrador{
     public ControladorConductor(IFrmAdministrador ifrm) {
         this.ifrm = ifrm;
         this.rsConductores = new AtomicInteger();
-        this.pgConductores = 0;
+        this.pgConductores = 1;
     }
 
     @Override
