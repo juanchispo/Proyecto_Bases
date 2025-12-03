@@ -8,6 +8,7 @@ import Modelo.Dao.DaoConductor;
 import Modelo.Dao.DaoServicio;
 import Modelo.Servicio;
 import Vista.Crear.IFrmAddModCliente;
+import Vista.Crear.IFrmAddModServicioDetalles;
 import Vista.IFrmAdministrador;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class ControladorServicios extends ControladorAdministrador{
         Object[][] datos = new Object[servicios.size()][4]; 
 
         for (int i = 0; i < servicios.size(); i++) {
-            datos[i] = servicios.get(i).getDatos();
+            datos[i] = servicios.get(i).getDatosCompletos();
         }
         llenarTabla(ifrm.getTbServicios().getModel(), datos);
         ifrm.getTxtMostrandoServicios().setText("Mostrando " + pgServicios +" de "+ calcularPaginas(rsServicios, 15));
@@ -58,6 +59,12 @@ public class ControladorServicios extends ControladorAdministrador{
     public void actionPerformed(ActionEvent e) {
     if (e.getSource().equals(ifrm.getBtnBuscarServicios())){
    actualizarTbServicios();
+    } else if (e.getSource().equals(ifrm.getBtnMasDetallesServicios())){
+        int index = ifrm.getTbServicios().getSelectedRow();
+        DaoServicio dao = new DaoServicio();
+        Servicio servicio = dao.obtenerPorId(Integer.parseInt(String.valueOf(ifrm.getTbServicios().getValueAt(index, 0))));
+        ControladorServicioDetalles c = new ControladorServicioDetalles(new IFrmAddModServicioDetalles(), ctrlP, servicio);
+        c.iniciar();
     }
     }
     

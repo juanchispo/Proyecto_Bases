@@ -28,7 +28,7 @@ public class ControladorServicioDetalles extends Controlador {
         
         // Configurar título y ID del servicio
         ifrm.getLblAddModCliente().setText("DETALLES DEL SERVICIO");
-        ifrm.getTxtIdServicio().setText(String.valueOf(servicio.getId_servicio()));
+        ifrm.getTxtId().setText(String.valueOf(servicio.getId_servicio()));
         
         ctrP.getFrm().getEscritorio().add(ifrm);
         cargarDetallesServicio();
@@ -40,7 +40,7 @@ public class ControladorServicioDetalles extends Controlador {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         
         // Crear modelo de tabla
-        DefaultTableModel model = (DefaultTableModel) ifrm.getTblDetalles().getModel();
+        DefaultTableModel model = (DefaultTableModel) ifrm.getJTable2().getModel();
         model.setRowCount(0); // Limpiar tabla
         
         // Agregar filas con la información del servicio
