@@ -27,6 +27,15 @@ public class ControladorBusqueda extends ControladorAdministrador{
                     ifrm.getTbConsultas().setModel(daob.cantidadServiciosPorMes().getModel());
                     break;
                 case 2:
+                    ifrm.getTbConsultas().setModel(daob.clientesPorPeriodo(inicio, fin).getModel());
+                    break;
+                case 3:
+                    ifrm.getTbConsultas().setModel(daob.valoresPorMedioPago().getModel());
+                    break;
+                case 4:
+                    ifrm.getTbConsultas().setModel(daob.promedioPorNacionalidad().getModel());
+                    break;
+                case 5:
                     ifrm.getTbConsultas().setModel(daob.valoresTotalesServicios().getModel());
                     break;
                 default:
