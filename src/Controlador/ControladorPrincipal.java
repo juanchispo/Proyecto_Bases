@@ -57,14 +57,8 @@ public class ControladorPrincipal extends Controlador {
         IFrmAdministrador ifrmA = new IFrmAdministrador();
 
         ControladorAdministrador contA = new ControladorAdministrador(this, ifrmA);
+     
         contA.iniciar();
-
-        ControladorMasServiciosCliente contMas = new ControladorMasServiciosCliente(ifrmA);
-        contMas.iniciar();
-        ControladorMasServiciosConductor contCon = new ControladorMasServiciosConductor(ifrmA);
-        contCon.iniciar();
-        new ControladorGananciasUltimoMes(ifrmA).iniciar();
-        new ControladorMesMasGanancias(ifrmA).iniciar();
 
         frm.getPnlInferior().setVisible(true);
         frm.getEscritorio().add(ifrmA);
