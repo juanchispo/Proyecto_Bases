@@ -3,8 +3,12 @@ package Controlador;
 import Modelo.Dao.DaoCliente;
 import Modelo.Dao.DaoConductor;
 import Modelo.Dao.DaoServicio;
+import Modelo.imagenes.PanelLogo;
 import Vista.IFrmAdministrador;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -103,6 +107,16 @@ public class ControladorPgPrincipal extends Controlador{
         cargarConductorMasServicios();
         cargarMesMasGanancias();
         inicializarBotones(vista);
+        
+        PanelLogo pn = new PanelLogo("src/img/ganancias.png");
+        pn.setPreferredSize(new Dimension(150, 150));
+        
+        JPanel panelDestino = vista.getPnlGanancias();
+        panelDestino.setLayout(new BorderLayout()); 
+        panelDestino.removeAll(); 
+        panelDestino.add(pn, BorderLayout.CENTER);
+        panelDestino.revalidate();
+        panelDestino.repaint();
     }
 
     @Override
