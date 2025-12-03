@@ -1418,7 +1418,7 @@
                                   <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                               </Group>
                               <Component id="scTablaBA" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnTelefonosBA" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnBA" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
@@ -1442,7 +1442,7 @@
                               <Component id="txtSQL" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnTelefonosBA" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBA" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="scTablaBA" min="-2" pref="145" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -1502,7 +1502,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tbClientes1">
+                    <Component class="javax.swing.JTable" name="tbConsultas">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1536,7 +1536,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="SeparadorTBA">
                 </Component>
-                <Component class="javax.swing.JButton" name="btnTelefonosBA">
+                <Component class="javax.swing.JButton" name="btnBA">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="MS PGothic" size="12" style="0"/>
@@ -1544,7 +1544,7 @@
                     <Property name="text" type="java.lang.String" value="Consultar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelefonosBAActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBAActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="txtMostrandoBA">

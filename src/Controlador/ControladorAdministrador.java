@@ -62,11 +62,13 @@ public class ControladorAdministrador extends Controlador{
         ControladorConductor cnCC = new ControladorConductor(ifrm, ctrlP);
         ControladorVehiculo cnV = new ControladorVehiculo(ifrm, ctrlP);
         ControladorServicios cnS = new ControladorServicios(ifrm, ctrlP);
+        ControladorBusqueda cB = new ControladorBusqueda(ifrm);
         cnP.iniciar();
         cnC.iniciar();
         cnCC.iniciar();
         cnV.iniciar();
         cnS.iniciar();
+        cB.iniciar();
     }
     
     @Override
