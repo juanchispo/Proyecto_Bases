@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 public class DaoVehiculoConductor {
@@ -152,6 +153,57 @@ public class DaoVehiculoConductor {
         }
 
         return mapaConductores;
+    }
+
+    //Consultar id de Conductor
+    public DefaultListModel<String> listarConductores() {
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        Connection con = null;
+        String sql = "SELECT id_conductor, nombre FROM Conductor ORDER BY nombre ASC";
+
+        try {
+            Connection cnx = conn.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    int id = rs.getInt("id_conductor");
+                    String nombre = rs.getString("nombre");
+
+                    modelo.addElement(id + " - " + nombre);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al listar conductores: " + e.getMessage());
+        } finally {
+            conn.cerrarConexion(con);
+        }
+
+        return modelo;
+    }
+
+//Consultar por placa
+    public DefaultListModel<String> listarPlacasVehiculos() {
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        Connection con = null;
+        String sql = "SELECT placa FROM Vehiculo ORDER BY placa ASC";
+
+        try {
+            Connection cnx = conn.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    modelo.addElement(rs.getString("placa"));
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al listar placas de vehículos: " + e.getMessage());
+        } finally {
+            conn.cerrarConexion(con);
+        }
+
+        return modelo;
     }
 
     public void mensaje(String msg, String title) {
