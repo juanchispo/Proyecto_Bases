@@ -13,7 +13,7 @@ public class Conexion {
         String url = "jdbc:postgresql://localhost:5432/aventurerosbda";
 
         String usuario = "postgres";    
-        String contrasena = "123456"; 
+        String contrasena = "Juandi726"; 
 
         try {
             Class.forName(driver);

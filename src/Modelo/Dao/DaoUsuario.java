@@ -9,12 +9,14 @@ import javax.swing.JOptionPane;
 
 public class DaoUsuario extends Conexion {
 
+    // =======================
+    // INSERTAR USUARIO
+    // =======================
     public boolean agregar(Usuario u) {
 
-        String sql = "INSERT INTO usuario (nombre, contrasena, tipo) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO usuario (nombre, password, tipo) VALUES (?, ?, ?)";
 
-        try (Connection cnx = getConexion();
-             PreparedStatement pst = cnx.prepareStatement(sql)) {
+        try (Connection cnx = getConexion(); PreparedStatement pst = cnx.prepareStatement(sql)) {
 
             pst.setString(1, u.getNombre());
             pst.setString(2, u.getPassword());
@@ -29,17 +31,20 @@ public class DaoUsuario extends Conexion {
         }
     }
 
+    // =======================
+    // VALIDAR LOGIN
+    // =======================
     public boolean validarLogin(Usuario u) {
 
-        String sql = "SELECT * FROM usuario WHERE nombre = ? AND contrasena = ?";
+        String sql = "SELECT * FROM usuario WHERE nombre = ? AND password = ?";
 
-        try (Connection cnx = getConexion();
-             PreparedStatement pst = cnx.prepareStatement(sql)) {
+        try (Connection cnx = getConexion(); PreparedStatement pst = cnx.prepareStatement(sql)) {
 
             pst.setString(1, u.getNombre());
             pst.setString(2, u.getPassword());
 
             try (ResultSet rs = pst.executeQuery()) {
+
                 if (rs.next()) {
                     u.setTipo(rs.getString("tipo"));
                     return true;
@@ -54,12 +59,14 @@ public class DaoUsuario extends Conexion {
         return false;
     }
 
+    // =======================
+    // CONSULTAR USUARIO
+    // =======================
     public boolean consultar(Usuario u) {
 
         String sql = "SELECT * FROM usuario WHERE nombre = ?";
 
-        try (Connection cnx = getConexion();
-             PreparedStatement pst = cnx.prepareStatement(sql)) {
+        try (Connection cnx = getConexion(); PreparedStatement pst = cnx.prepareStatement(sql)) {
 
             pst.setString(1, u.getNombre());
 
@@ -67,7 +74,7 @@ public class DaoUsuario extends Conexion {
 
                 if (rs.next()) {
                     u.setNombre(rs.getString("nombre"));
-                    u.setPassword(rs.getString("contrasena"));
+                    u.setPassword(rs.getString("password"));
                     u.setTipo(rs.getString("tipo"));
                     return true;
                 }
@@ -81,22 +88,26 @@ public class DaoUsuario extends Conexion {
         return false;
     }
 
+    // =======================
+    // VERIFICAR ADMIN
+    // =======================
     public boolean existeAdmin() {
 
-        String sql = "SELECT 1 FROM usuario WHERE tipo = 'Administrador' LIMIT 1";
+    String sql = "SELECT * FROM usuario WHERE LOWER(tipo) = LOWER('Administrador') LIMIT 1";
 
-        try (Connection cnx = getConexion();
-             PreparedStatement pst = cnx.prepareStatement(sql);
-             ResultSet rs = pst.executeQuery()) {
+    try (Connection cnx = getConexion();
+         PreparedStatement pst = cnx.prepareStatement(sql);
+         ResultSet rs = pst.executeQuery()) {
 
-            return rs.next(); 
+        return rs.next();
 
-        } catch (SQLException ex) {
-            System.err.println("Error SELECT admin -> " + ex);
-            mensaje("Error al verificar administrador", "Verificar Admin");
-            return false;
-        }
+    } catch (SQLException ex) {
+        System.err.println("Error SELECT admin -> " + ex);
+        mensaje("Error al verificar administrador", "Verificar Admin");
+        return false;
     }
+}
+
 
     private void mensaje(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title, JOptionPane.ERROR_MESSAGE);
