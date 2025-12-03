@@ -31,6 +31,7 @@ public class ControladorVehiculo extends ControladorAdministrador{
     public ControladorVehiculo(IFrmAdministrador ifrm) {
         this.ifrm = ifrm;
         this.rsVehiculos = new AtomicInteger();
+        this.pgVehiculos = 1;
     }
 
     @Override

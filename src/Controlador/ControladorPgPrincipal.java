@@ -6,6 +6,7 @@ import Modelo.Dao.DaoServicio;
 import Vista.IFrmAdministrador;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -37,6 +38,13 @@ public class ControladorPgPrincipal extends Controlador{
                 });
             }
         }
+    }
+    
+    public void actualizarTbServiPri(){
+        DaoServicio daoS = new DaoServicio();
+        TableModel tb = vista.getTbServRec().getModel();
+        tb = daoS.obtenerServiciosTableModel(tb);
+        vista.getTbServRec().setModel(tb);
     }
     
     private void cargarClienteMasServicios() {

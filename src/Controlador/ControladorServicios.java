@@ -29,6 +29,7 @@ public class ControladorServicios extends ControladorAdministrador{
     public ControladorServicios(IFrmAdministrador ifrm) {
         this.ifrm = ifrm;
         this.rsServicios = new AtomicInteger();
+        this.pgServicios = 1;
     }
     
     public void actualizarTbServicios(){
@@ -45,23 +46,17 @@ public class ControladorServicios extends ControladorAdministrador{
         ifrm.getTxtMostrandoServicios().setText("Mostrando " + pgServicios +" de "+ calcularPaginas(rsServicios, 15));
     }
    
-    public void actualizarTbServiPri(){
-        DaoServicio daoS = new DaoServicio();
-        TableModel tb = ifrm.getTbServRec().getModel();
-        tb = daoS.obtenerServiciosTableModel(tb);
-        ifrm.getTbServRec().setModel(tb);
-    }
+
     
     @Override
     public void iniciar() {
-        actualizarTbServiPri();
         inicializarBotones(ifrm);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    if (e.getSource().equals(ifrm.getBtnBuscarCliente())){
-   
+    if (e.getSource().equals(ifrm.getBtnBuscarServicios())){
+   actualizarTbServicios();
     }
     }
     
