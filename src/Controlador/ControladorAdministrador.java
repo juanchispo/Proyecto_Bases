@@ -21,6 +21,7 @@ import Controlador.ControladorPrincipal;
 import Modelo.Conductor;
 import Modelo.Genero;
 import Modelo.Nacionalidad;
+import Modelo.imagenes.ImgTabla;
 import Vista.Crear.IFrmAddModCliente;
 import Vista.Crear.IFrmAddModConductor;
 import Vista.Crear.IFrmTelefonos;
@@ -55,6 +56,10 @@ public class ControladorAdministrador extends Controlador{
         this.rsVehiculos = rsVehiculos;
         this.rsServicios = rsServicios;
         this.rsBA = rsBA;
+    }
+    
+    public void imagenesTabla(){
+        
     }
     
     public ControladorAdministrador(ControladorPrincipal ctrlP, IFrmAdministrador ifrm) {
@@ -115,6 +120,8 @@ public class ControladorAdministrador extends Controlador{
     public void iniciar() {        
         inicializarBotones(ifrm);
         actualizarTablas();
+        ifrm.getTbConductores().setDefaultRenderer(Object.class, new ImgTabla());
+        ifrm.getTbConductores().setRowHeight(100);
         ifrm.setVisible(true);
     }
     

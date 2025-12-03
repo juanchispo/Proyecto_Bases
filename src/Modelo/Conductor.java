@@ -2,6 +2,8 @@
 package Modelo;
 
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Conductor extends Persona{
     private String fotografia;
@@ -23,7 +25,7 @@ public class Conductor extends Persona{
     }
 
     public void setFotografia(String fotografia) {
-        this.fotografia = "";
+        this.fotografia = fotografia;
     }
     
 
@@ -31,7 +33,7 @@ public class Conductor extends Persona{
     public Object[] getDatos(){
         Object[] datos = new Object[6];
         datos[0] = id;
-        datos[1] = fotografia;
+        datos[1] = new JLabel(new ImageIcon(getClass().getResource("/img/" + fotografia)));
         datos[2] = nombre;
         datos[3] = direccion;
         datos[4] = genero.getGenero();

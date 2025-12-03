@@ -135,6 +135,7 @@ public class DaoConductor extends Conexion {
                 con.setId(rs.getInt("id_conductor"));
                 con.setNombre(rs.getString("nombre"));
                 con.setDireccion(rs.getString("direccion"));
+                con.setFotografia(rs.getString("fotografia"));
                 con.setGenero(new Genero(rs.getInt("id_genero"), rs.getString("genero")));
 
                 Nacionalidad nac = new Nacionalidad();
