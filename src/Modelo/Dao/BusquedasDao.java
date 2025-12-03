@@ -1,0 +1,157 @@
+package Modelo.Dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+
+public class BusquedasDao extends Conexion {
+
+    private JTable generarTabla(ResultSet rs) throws SQLException {
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData meta = rs.getMetaData();
+
+        int columnas = meta.getColumnCount();
+
+        // Agregar columnas
+        for (int i = 1; i <= columnas; i++) {
+            modelo.addColumn(meta.getColumnLabel(i));
+        }
+
+        // Agregar filas dinámicamente
+        while (rs.next()) {
+            Object fila[] = new Object[columnas];
+            for (int i = 0; i < columnas; i++) {
+                fila[i] = rs.getObject(i + 1);
+            }
+            modelo.addRow(fila);
+        }
+
+        return new JTable(modelo);
+    }
+
+    private JTable ejecutarConsulta(String sql, Object... params) {
+        JTable tabla = new JTable();
+
+        try (Connection cn = getConexion();
+             PreparedStatement pst = cn.prepareStatement(sql)) {
+
+            // Agregar parámetros
+            for (int i = 0; i < params.length; i++) {
+                pst.setObject(i + 1, params[i]);
+            }
+
+            ResultSet rs = pst.executeQuery();
+            tabla = generarTabla(rs);
+
+        } catch (SQLException e) {
+            System.err.println("Error en consulta -> " + e);
+            JOptionPane.showMessageDialog(null, "Error ejecutando consulta",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return tabla;
+    }
+
+    public JTable valoresTotalesServicios() {
+        String sql = """
+            SELECT ts.nombre_servicio AS tipo, t.nivel AS categoria,
+                   SUM(s.valor_servicio) AS total
+            FROM servicio s
+            JOIN tiposervicio ts ON s.tipo_servicio = ts.id_servicio
+            JOIN tarifa t ON s.tarifa = t.id_tarifa
+            GROUP BY tipo, categoria
+            ORDER BY tipo, categoria
+        """;
+        return ejecutarConsulta(sql);
+    }
+
+    public JTable cantidadServiciosPorMes() {
+        String sql = """
+            SELECT EXTRACT(MONTH FROM fecha_servicio) AS mes,
+                   ts.nombre_servicio AS tipo,
+                   COUNT(*) AS cantidad
+            FROM servicio s
+            JOIN tiposervicio ts ON s.tipo_servicio = ts.id_servicio
+            GROUP BY mes, tipo
+            ORDER BY mes
+        """;
+        return ejecutarConsulta(sql);
+    }
+
+    public JTable clientesPorPeriodo(String inicio, String fin) {
+        String sql = """
+            SELECT c.id_cliente, c.nombre, c.direccion,
+                   n.nacionalidad, g.genero,
+                   s.fecha_servicio, s.valor_servicio
+            FROM cliente c
+            JOIN servicio s ON c.id_cliente = s.id_cliente
+            JOIN nacionalidad n ON c.nacionalidad = n.id_nacionalidad
+            JOIN genero g ON c.genero = g.id_genero
+            WHERE s.fecha_servicio BETWEEN ? AND ?
+            ORDER BY s.valor_servicio DESC
+        """;
+        return ejecutarConsulta(sql, inicio, fin);
+    }
+
+    public JTable valoresPorMedioPago() {
+        String sql = """
+            SELECT mp.nombre_medio_pago AS medio_pago,
+                   SUM(s.valor_servicio) AS total
+            FROM servicio s
+            JOIN mediopago mp ON s.medio_pago = mp.id_medio_pago
+            GROUP BY medio_pago
+        """;
+        return ejecutarConsulta(sql);
+    }
+
+    public JTable promedioPorNacionalidad() {
+        String sql = """
+            SELECT n.nacionalidad,
+                   AVG(s.valor_servicio) AS promedio
+            FROM cliente c
+            JOIN servicio s ON c.id_cliente = s.id_cliente
+            JOIN nacionalidad n ON c.nacionalidad = n.id_nacionalidad
+            GROUP BY n.nacionalidad
+        """;
+        return ejecutarConsulta(sql);
+    }
+
+    public JTable conductoresPorPeriodo(String inicio, String fin) {
+        String sql = """
+            SELECT d.id_conductor, d.nombre, d.direccion,
+                   n.nacionalidad, g.genero,
+                   s.fecha_servicio, s.valor_servicio
+            FROM conductor d
+            JOIN servicio s ON d.id_conductor = s.id_conductor
+            JOIN nacionalidad n ON d.nacionalidad = n.id_nacionalidad
+            JOIN genero g ON d.genero = g.id_genero
+            WHERE s.fecha_servicio BETWEEN ? AND ?
+        """;
+        return ejecutarConsulta(sql, inicio, fin);
+    }
+
+    public JTable serviciosPorGenero(int id_genero) {
+        String sql = """
+            SELECT g.genero,
+                   COUNT(*) AS cantidad
+            FROM servicio s
+            JOIN cliente c ON s.id_cliente = c.id_cliente
+            JOIN genero g ON c.genero = g.id_genero
+            JOIN tiposervicio ts ON s.tipo_servicio = ts.id_servicio
+            WHERE ts.nombre_servicio = 'pasajeros'
+                  AND g.id_genero = ?
+            GROUP BY g.genero
+        """;
+        return ejecutarConsulta(sql, id_genero);
+    }
+
+    public JTable consultaLibre(String sql) {
+        return ejecutarConsulta(sql);
+    }
+}
+
