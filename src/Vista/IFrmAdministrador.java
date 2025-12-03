@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -85,14 +86,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.TabPane = TabPane;
     }
 
-    public JButton getBtnAnteriorBA() {
-        return btnAnteriorBA;
-    }
-
-    public void setBtnAnteriorBA(JButton btnAnteriorBA) {
-        this.btnAnteriorBA = btnAnteriorBA;
-    }
-
     public JButton getBtnAnteriorCliente() {
         return btnAnteriorCliente;
     }
@@ -123,6 +116,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
     public void setBtnAnteriorVehiculosVehiculos(JButton btnAnteriorVehiculosVehiculos) {
         this.btnAnteriorVehiculosVehiculos = btnAnteriorVehiculosVehiculos;
+    }
+
+    public JButton getBtnBA() {
+        return btnBA;
+    }
+
+    public void setBtnBA(JButton btnBA) {
+        this.btnBA = btnBA;
     }
 
     public JButton getBtnBorrarCliente() {
@@ -277,14 +278,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnMasDetallesServicios = btnMasDetallesServicios;
     }
 
-    public JButton getBtnSiguienteBA() {
-        return btnSiguienteBA;
-    }
-
-    public void setBtnSiguienteBA(JButton btnSiguienteBA) {
-        this.btnSiguienteBA = btnSiguienteBA;
-    }
-
     public JButton getBtnSiguienteCliente() {
         return btnSiguienteCliente;
     }
@@ -317,14 +310,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnSiguienteVehiculos = btnSiguienteVehiculos;
     }
 
-    public JButton getBtnTelefonosBA() {
-        return btnBA;
-    }
-
-    public void setBtnTelefonosBA(JButton btnTelefonosBA) {
-        this.btnBA = btnTelefonosBA;
-    }
-
     public JButton getBtnTelefonosCliente() {
         return btnTelefonosCliente;
     }
@@ -355,6 +340,22 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
     public void setCmbBusquedas(JComboBox<String> cmbBusquedas) {
         this.cmbBusquedas = cmbBusquedas;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTextArea getjTextArea1() {
+        return jTextArea1;
+    }
+
+    public void setjTextArea1(JTextArea jTextArea1) {
+        this.jTextArea1 = jTextArea1;
     }
 
     public JLabel getLblBA() {
@@ -681,8 +682,8 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         return tbClienServ;
     }
 
-    public void setTbClienServ(JTable tbClienServ) {      
-        this.tbClienServ = tbClienServ;       
+    public void setTbClienServ(JTable tbClienServ) {
+        this.tbClienServ = tbClienServ;
     }
 
     public JTable getTbClientes() {
@@ -692,26 +693,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     public void setTbClientes(JTable tbClientes) {
         this.tbClientes = tbClientes;
     }
-
-    public JButton getBtnBA() {
-        return btnBA;
-    }
-
-    public void setBtnBA(JButton btnBA) {
-        this.btnBA = btnBA;
-    }
-
-    public JTable getTbConsultas() {
-        return tbConsultas;
-    }
-
-    public void setTbConsultas(JTable tbConsultas) {
-        this.tbConsultas = tbConsultas;
-    }
-
-
-
-   
 
     public JTable getTbConduServ() {
         return tbConduServ;
@@ -727,6 +708,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
     public void setTbConductores(JTable tbConductores) {
         this.tbConductores = tbConductores;
+    }
+
+    public JTable getTbConsultas() {
+        return tbConsultas;
+    }
+
+    public void setTbConsultas(JTable tbConsultas) {
+        this.tbConsultas = tbConsultas;
     }
 
     public JTable getTbServRec() {
@@ -759,14 +748,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
     public void setTxtGanaciasAnio(JTextField txtGanaciasAnio) {
         this.txtGanaciasAnio = txtGanaciasAnio;
-    }
-
-    public JLabel getTxtMostrandoBA() {
-        return txtMostrandoBA;
-    }
-
-    public void setTxtMostrandoBA(JLabel txtMostrandoBA) {
-        this.txtMostrandoBA = txtMostrandoBA;
     }
 
     public JLabel getTxtMostrandoClientes() {
@@ -825,9 +806,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.txtUbicacion = txtUbicacion;
     }
 
-   
-
-   
 
 
     /**
@@ -925,19 +903,18 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         SeparadorTServicios = new javax.swing.JSeparator();
         btnMasDetallesServicios = new javax.swing.JButton();
         pnlBusquedaAvanzada = new javax.swing.JPanel();
-        btnAnteriorBA = new javax.swing.JButton();
-        btnSiguienteBA = new javax.swing.JButton();
         separadorBA = new javax.swing.JSeparator();
         scTablaBA = new javax.swing.JScrollPane();
         tbConsultas = new javax.swing.JTable();
         lblBA = new javax.swing.JLabel();
         SeparadorTBA = new javax.swing.JSeparator();
         btnBA = new javax.swing.JButton();
-        txtMostrandoBA = new javax.swing.JLabel();
         cmbBusquedas = new javax.swing.JComboBox<>();
         rdbFrecuentes = new javax.swing.JRadioButton();
         rdbAvanzadas = new javax.swing.JRadioButton();
         txtSQL = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         pnlConfiguracion = new javax.swing.JPanel();
         separadorConfiguracion = new javax.swing.JSeparator();
         lblConfiguracion = new javax.swing.JLabel();
@@ -1084,14 +1061,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblServRec, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                            .addComponent(lblServRec, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                             .addComponent(scTablaServRec, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                                 .addComponent(lblClienServ, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                                .addComponent(lblGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                                 .addGap(229, 229, 229))
                             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1259,7 +1236,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                             .addComponent(btnEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBorrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCrearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTelefonosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                            .addComponent(btnTelefonosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlClientesLayout.createSequentialGroup()
@@ -1268,7 +1245,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                                 .addComponent(btnAnteriorCliente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteCliente))
-                            .addComponent(scTablaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)))
+                            .addComponent(scTablaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)))
                     .addComponent(SeparadorTCliente))
                 .addGap(17, 17, 17))
         );
@@ -1428,7 +1405,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                                 .addComponent(btnAnteriorConductor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteConductor))
-                            .addComponent(scTablaConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)))
+                            .addComponent(scTablaConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)))
                     .addComponent(SeparadorTConductor))
                 .addGap(17, 17, 17))
         );
@@ -1574,7 +1551,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                                 .addComponent(btnAnteriorVehiculosVehiculos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteVehiculos))
-                            .addComponent(scTablaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)))
+                            .addComponent(scTablaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)))
                     .addComponent(SeparadorTVehiculos))
                 .addGap(17, 17, 17))
         );
@@ -1723,7 +1700,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                                 .addComponent(btnAnteriorServicios)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSiguienteServicios))
-                            .addComponent(scTablaServicios, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)))
+                            .addComponent(scTablaServicios, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)))
                     .addComponent(SeparadorTServicios))
                 .addGap(17, 17, 17))
         );
@@ -1762,17 +1739,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         TabPane.addTab("Servicios", pnlServicios);
 
         pnlBusquedaAvanzada.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnAnteriorBA.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnAnteriorBA.setText("Anterior");
-        btnAnteriorBA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnteriorBAActionPerformed(evt);
-            }
-        });
-
-        btnSiguienteBA.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnSiguienteBA.setText("Siguiente");
 
         separadorBA.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -1826,9 +1792,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
             }
         });
 
-        txtMostrandoBA.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        txtMostrandoBA.setText("Mostrando 1 de 50");
-
         cmbBusquedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Valores totales de los servicios realizados diferenciando si corresponden a transporte de pasajeros o alimentos y la categoría a la que corresponde", "Cantidad de servicios de pasajeros y de alimentos por mes", "Datos de los clientes que han solicitado servicios durante un período de tiempo organizados de mayor a menor", "Valores totales de los servicios de acuerdo con su medio de pago", "Promedio de valor total de servicio de clientes dependiendo la nacionalidad", "Datos de conductores que han realizado servicios durante un periodo", "Cantidad de servicios de pasajeros de un género determinado" }));
 
         rdbFrecuentes.setText("Busquedas Frecuentes");
@@ -1842,6 +1805,11 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
         txtSQL.setText("SELECT * FROM empleados");
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("1. Valores totales de los servicios realizados diferenciando si corresponden a transporte de pasajeros o alimentos y la categoría a la que corresponde.\n2. Cantidad de servicios de pasajeros y de alimentos por mes,\n3. Datos de los clientes que han solicitado servicios durante un período de tiempo organizados de mayor a menor,\n4. Valores totales de los servicios de acuerdo con su medio de pago,\n5. Promedio de valor total de servicio de clientes dependiendo la nacionalidad,\n6. Datos de conductores que han realizado servicios durante un periodo,\n7. Cantidad de servicios de pasajeros de un género determinado\n");
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout pnlBusquedaAvanzadaLayout = new javax.swing.GroupLayout(pnlBusquedaAvanzada);
         pnlBusquedaAvanzada.setLayout(pnlBusquedaAvanzadaLayout);
         pnlBusquedaAvanzadaLayout.setHorizontalGroup(
@@ -1851,29 +1819,21 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SeparadorTBA)
-                    .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
-                        .addComponent(txtMostrandoBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAnteriorBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSiguienteBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(520, 520, 520))
-                    .addComponent(lblBA)
-                    .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
-                        .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
-                                .addComponent(rdbFrecuentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(37, 37, 37))
-                            .addComponent(cmbBusquedas, 0, 1, Short.MAX_VALUE))
-                        .addGap(239, 239, 239)
-                        .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
-                                .addComponent(rdbAvanzadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(65, 65, 65))
-                            .addComponent(txtSQL))
-                        .addGap(161, 161, 161))
                     .addComponent(scTablaBA)
-                    .addComponent(btnBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                        .addComponent(lblBA)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                        .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(rdbFrecuentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rdbAvanzadas, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtSQL, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                            .addComponent(cmbBusquedas, 0, 1, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)))
                 .addGap(12, 12, 12))
         );
         pnlBusquedaAvanzadaLayout.setVerticalGroup(
@@ -1883,24 +1843,22 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                 .addComponent(lblBA)
                 .addGap(18, 18, 18)
                 .addComponent(SeparadorTBA, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdbFrecuentes)
-                    .addComponent(rdbAvanzadas))
-                .addGap(7, 7, 7)
-                .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbBusquedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBA)
+                .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
+                        .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rdbFrecuentes)
+                            .addComponent(cmbBusquedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rdbAvanzadas)
+                            .addComponent(txtSQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(scTablaBA, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addGroup(pnlBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMostrandoBA)
-                    .addComponent(btnAnteriorBA)
-                    .addComponent(btnSiguienteBA))
-                .addGap(15, 15, 15))
+                .addComponent(btnBA)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scTablaBA, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(pnlBusquedaAvanzadaLayout.createSequentialGroup()
                 .addComponent(separadorBA, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -1934,7 +1892,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                     .addGroup(pnlConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlConfiguracionLayout.createSequentialGroup()
                             .addComponent(lblConfiguracion)
-                            .addGap(0, 689, Short.MAX_VALUE))
+                            .addGap(0, 698, Short.MAX_VALUE))
                         .addGroup(pnlConfiguracionLayout.createSequentialGroup()
                             .addComponent(SeparadorTConfiguracion)
                             .addGap(17, 17, 17))
@@ -2046,10 +2004,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbAvanzadasActionPerformed
 
-    private void btnAnteriorBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorBAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAnteriorBAActionPerformed
-
     private void txtRecaudoUMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecaudoUMesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRecaudoUMesActionPerformed
@@ -2064,7 +2018,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator SeparadorTServicios;
     private javax.swing.JSeparator SeparadorTVehiculos;
     private javax.swing.JTabbedPane TabPane;
-    private javax.swing.JButton btnAnteriorBA;
     private javax.swing.JButton btnAnteriorCliente;
     private javax.swing.JButton btnAnteriorConductor;
     private javax.swing.JButton btnAnteriorServicios;
@@ -2089,7 +2042,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditarServicios;
     private javax.swing.JButton btnEditarVehiculos;
     private javax.swing.JButton btnMasDetallesServicios;
-    private javax.swing.JButton btnSiguienteBA;
     private javax.swing.JButton btnSiguienteCliente;
     private javax.swing.JButton btnSiguienteConductor;
     private javax.swing.JButton btnSiguienteServicios;
@@ -2098,6 +2050,8 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnTelefonosConductor;
     private javax.swing.JButton btnVehiculosConductor;
     private javax.swing.JComboBox<String> cmbBusquedas;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblBA;
     private javax.swing.JLabel lblClienServ;
     private javax.swing.JLabel lblCliente;
@@ -2147,7 +2101,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JTable tbServicios;
     private javax.swing.JTable tbVehiculos;
     private javax.swing.JTextField txtGanaciasAnio;
-    private javax.swing.JLabel txtMostrandoBA;
     private javax.swing.JLabel txtMostrandoClientes;
     private javax.swing.JLabel txtMostrandoConductor;
     private javax.swing.JLabel txtMostrandoServicios;

@@ -37,6 +37,54 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
         this.btnAddMod = btnAddMod;
     }
 
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JComboBox<String> getjComboBox1() {
+        return jComboBox1;
+    }
+
+    public void setjComboBox1(JComboBox<String> jComboBox1) {
+        this.jComboBox1 = jComboBox1;
+    }
+
+    public JList<String> getjList1() {
+        return jList1;
+    }
+
+    public void setjList1(JList<String> jList1) {
+        this.jList1 = jList1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JLabel getLblAddModCliente() {
+        return lblAddModCliente;
+    }
+
+    public void setLblAddModCliente(JLabel lblAddModCliente) {
+        this.lblAddModCliente = lblAddModCliente;
+    }
+
+    public JPanel getPnlAddModCliente() {
+        return pnlAddModCliente;
+    }
+
+    public void setPnlAddModCliente(JPanel pnlAddModCliente) {
+        this.pnlAddModCliente = pnlAddModCliente;
+    }
+
  
 
     /**

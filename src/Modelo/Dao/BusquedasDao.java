@@ -141,20 +141,20 @@ public class BusquedasDao {
         return ejecutarConsulta(sql, inicio, fin);
     }
 
-    public JTable serviciosPorGenero(int id_genero) {
-        String sql = """
-            SELECT g.genero AS nombre_genero,
-                    COUNT(*) AS cantidad_servicios
-            FROM servicio s
-            JOIN cliente c ON s.id_cliente = c.id_cliente
-            JOIN genero g ON c.genero = g.id_genero
-            JOIN tiposervicio ts ON s.id_tipo_servicio = ts.id_tipo_servicio
-            WHERE ts.nombre_tipo_servicio = 'pasajeros'
-                    AND g.id_genero = ?
-            GROUP BY nombre_genero
-        """;
-        return ejecutarConsulta(sql, id_genero);
-    }
+    public JTable serviciosPorGenero() {
+    String sql = """
+        SELECT g.genero AS nombre_genero,
+               COUNT(*) AS cantidad_servicios
+        FROM servicio s
+        JOIN cliente c ON s.id_cliente = c.id_cliente
+        JOIN genero g ON c.genero = g.id_genero
+        JOIN tiposervicio ts ON s.id_tipo_servicio = ts.id_tipo_servicio
+        WHERE ts.nombre_tipo_servicio = 'pasajeros'
+        GROUP BY nombre_genero
+        ORDER BY cantidad_servicios DESC
+    """;
+    return ejecutarConsulta(sql);
+}
 
     public JTable consultaLibre(String sql) {
         return ejecutarConsulta(sql);

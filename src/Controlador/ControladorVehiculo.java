@@ -12,6 +12,7 @@ import Modelo.Dao.DaoVehiculo;
 import Modelo.Dao.DaoVehiculoTipoServicio;
 import Modelo.VehiculoTipoServicio;
 import Vista.Crear.IFrmAddModConductor;
+import Vista.Crear.IFrmVehiculosConductor;
 import Vista.IFrmAdministrador;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -105,6 +106,9 @@ public class ControladorVehiculo extends ControladorAdministrador{
             } else {
                 ctrlP.frm.getLblAvisos().setText("AVISO -> Seleccione una fila para borrar.");
             }
-        } 
+        } else if (e.getSource().equals(ifrm.getBtnBuscarConductorVehiculo())){
+            ControladorVehiculoConductor cont = new ControladorVehiculoConductor(new IFrmVehiculosConductor(), ctrlP, new Conductor());
+            cont.iniciar();
+        }
     }
 }
