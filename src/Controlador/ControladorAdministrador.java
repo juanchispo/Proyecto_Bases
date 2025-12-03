@@ -12,6 +12,7 @@ import javax.swing.table.TableModel;
 import Modelo.Dao.*;
 import Modelo.Persona;
 import Modelo.Conductor;
+import Modelo.Servicio;
 import Modelo.VehiculoTipoServicio;
 import Modelo.imagenes.ImgTabla;
 import Vista.Crear.IFrmAddModCliente;
@@ -31,14 +32,17 @@ public class ControladorAdministrador extends Controlador{
     ArrayList<Cliente> clientes;
     ArrayList<Conductor> conductores;
     ArrayList<VehiculoTipoServicio> vehiculos;
+    ArrayList<Servicio> servicios;
     int pgClientes, pgConductores, pgVehiculos, pgServicios, pgBA;
     AtomicInteger rsClientes, rsConductores, rsVehiculos, rsServicios, rsBA;
 
-    public ControladorAdministrador(ControladorPrincipal ctrlP,IFrmAdministrador ifrm, ArrayList<Cliente> clientes, ArrayList<VehiculoTipoServicio> vehiculos, int pgClientes, int pgConductores, int pgVehiculos, int pgServicios, int pgBA, AtomicInteger rsClientes, AtomicInteger rsConductores, AtomicInteger rsVehiculos, AtomicInteger rsServicios, AtomicInteger rsBA) {
-        this.ctrlP = ctrlP;
+    public ControladorAdministrador(IFrmAdministrador ifrm, ControladorPrincipal ctrlP, ArrayList<Cliente> clientes, ArrayList<Conductor> conductores, ArrayList<VehiculoTipoServicio> vehiculos, ArrayList<Servicio> servicios, int pgClientes, int pgConductores, int pgVehiculos, int pgServicios, int pgBA, AtomicInteger rsClientes, AtomicInteger rsConductores, AtomicInteger rsVehiculos, AtomicInteger rsServicios, AtomicInteger rsBA) {
         this.ifrm = ifrm;
+        this.ctrlP = ctrlP;
         this.clientes = clientes;
+        this.conductores = conductores;
         this.vehiculos = vehiculos;
+        this.servicios = servicios;
         this.pgClientes = pgClientes;
         this.pgConductores = pgConductores;
         this.pgVehiculos = pgVehiculos;
@@ -51,16 +55,13 @@ public class ControladorAdministrador extends Controlador{
         this.rsBA = rsBA;
     }
     
-    public void imagenesTabla(){
-        
-    }
-    
     public ControladorAdministrador(ControladorPrincipal ctrlP, IFrmAdministrador ifrm) {
         this.ctrlP = ctrlP;
         this.ifrm = ifrm;
         this.clientes = new ArrayList<>();
         this.conductores = new ArrayList<>();
         this.vehiculos = new ArrayList<>();
+        this.servicios = new ArrayList<>();
         this.pgClientes = 1;
         this.pgConductores = 1;
         this.pgVehiculos = 1;
@@ -110,9 +111,18 @@ public class ControladorAdministrador extends Controlador{
             actualizarTbCliente();
             actualizarTbConductores();
             actualizarTbVehiculos();
+            actualizarTbServicios();
+            actualizarTbServiPri();
         }
     }
 
+    public void actualizarTbServiPri(){
+        DaoServicio daoS = new DaoServicio();
+        TableModel tb = ifrm.getTbServRec().getModel();
+        tb = daoS.obtenerServiciosTableModel(tb);
+        ifrm.getTbServRec().setModel(tb);
+    }
+    
     public void actualizarTbVehiculos(){
         DaoVehiculoTipoServicio daoVTS = new DaoVehiculoTipoServicio();
 
@@ -124,8 +134,23 @@ public class ControladorAdministrador extends Controlador{
             datos[i] = vehiculos.get(i).getDatos();
         }
         llenarTabla(ifrm.getTbVehiculos().getModel(), datos);
-        ifrm.getTxtMostrandoVehiculos().setText("Mostrando " + pgVehiculos +" de "+ calcularPaginas(rsVehiculos, 15));
+        ifrm.getTxtMostrandoVehiculos().setText("Mostrando " + pgServicios +" de "+ calcularPaginas(rsServicios, 15));
     }
+    
+    public void actualizarTbServicios(){
+        DaoServicio daoS = new DaoServicio();
+
+        servicios = daoS.listar((pgServicios-1)*15, 15, rsServicios); 
+        
+        Object[][] datos = new Object[servicios.size()][4]; 
+
+        for (int i = 0; i < servicios.size(); i++) {
+            datos[i] = servicios.get(i).getDatos();
+        }
+        llenarTabla(ifrm.getTbServicios().getModel(), datos);
+        ifrm.getTxtMostrandoServicios().setText("Mostrando " + pgServicios +" de "+ calcularPaginas(rsServicios, 15));
+    }
+
 
     
     @Override

@@ -1,47 +1,23 @@
 package Modelo.Dao;
 
+import Modelo.Cliente;
+import Modelo.Conductor;
+import Modelo.MedioPago;
 import Modelo.Servicio;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import Modelo.Tarifa;
+import Modelo.TipoServicio;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class DaoServicio {
 
     private final Conexion conn = new Conexion();
 
-    // AGREGAR → INSERT
-    public boolean agregar(Servicio s) {
-        Connection cnx = null;
-        String sql = "INSERT INTO servicio (id_servicio, valor_servicio, direccion_ori, direccion_des, "
-                + "id_conductor, id_cliente, tipo_servicio, medio_pago, tarifa) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try {
-            cnx = conn.getConexion();
-            try (PreparedStatement pst = cnx.prepareStatement(sql)) {
-                pst.setInt(1, s.getId_servicio());
-                pst.setDouble(2, s.getValor_servicio());
-                pst.setString(3, s.getDireccion_ori());
-                pst.setString(4, s.getDireccion_des());
-                pst.setInt(5, s.getId_conductor());
-                pst.setInt(6, s.getId_cliente());
-                pst.setString(7, s.getTipo_servicio());
-                pst.setString(8, s.getMedio_pago());
-                pst.setString(9, s.getTarifa());
-
-                pst.executeUpdate();
-                return true;
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error INSERT Servicio -> " + ex);
-            mensaje("Error al agregar Servicio", "INSERT ERROR");
-            return false;
-        } finally {
-            conn.cerrarConexion(cnx);
-        }
-    }
 
     // ELIMINAR → DELETE
     public boolean eliminar(int id_servicio) {
@@ -66,74 +42,8 @@ public class DaoServicio {
     }
 
     // ACTUALIZAR → UPDATE
-    public boolean actualizar(Servicio s) {
-        Connection cnx = null;
-        String sql = "UPDATE servicio SET valor_servicio = ?, direccion_ori = ?, direccion_des = ?, "
-                + "id_conductor = ?, id_cliente = ?, tipo_servicio = ?, "
-                + "medio_pago = ?, tarifa = ? "
-                + "WHERE id_servicio = ?";
-
-        try {
-            cnx = conn.getConexion();
-            try (PreparedStatement pst = cnx.prepareStatement(sql)) {
-                pst.setDouble(1, s.getValor_servicio());
-                pst.setString(2, s.getDireccion_ori());
-                pst.setString(3, s.getDireccion_des());
-                pst.setInt(4, s.getId_conductor());
-                pst.setInt(5, s.getId_cliente());
-                pst.setString(6, s.getTipo_servicio());
-                pst.setString(7, s.getMedio_pago());
-                pst.setString(8, s.getTarifa());
-                pst.setInt(9, s.getId_servicio());
-
-                pst.executeUpdate();
-                return true;
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error UPDATE Servicio -> " + ex);
-            mensaje("Error al actualizar Servicio", "UPDATE ERROR");
-            return false;
-        } finally {
-            conn.cerrarConexion(cnx);
-        }
-    }
-
+   
     // CONSULTAR → SELECT
-    public boolean consultar(Servicio s) {
-        Connection cnx = null;
-        String sql = "SELECT * FROM servicio WHERE id_servicio = ?";
-
-        try {
-            cnx = conn.getConexion();
-            try (PreparedStatement pst = cnx.prepareStatement(sql)) {
-                pst.setInt(1, s.getId_servicio());
-
-                try (ResultSet rst = pst.executeQuery()) {
-                    if (rst.next()) {
-                        s.setId_servicio(rst.getInt("id_servicio"));
-                        s.setValor_servicio(rst.getDouble("valor_servicio"));
-                        s.setDireccion_ori(rst.getString("direccion_ori"));
-                        s.setDireccion_des(rst.getString("direccion_des"));
-                        s.setId_conductor(rst.getInt("id_conductor"));
-                        s.setId_cliente(rst.getInt("id_cliente"));
-                        s.setTipo_servicio(rst.getString("tipo_servicio"));
-                        s.setMedio_pago(rst.getString("medio_pago"));
-                        s.setTarifa(rst.getString("tarifa"));
-
-                        return true;
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error SELECT Servicio -> " + ex);
-            mensaje("Error al consultar Servicio", "SELECT ERROR");
-            return false;
-        } finally {
-            conn.cerrarConexion(cnx);
-        }
-
-        return false;
-    }
 
     public String obtenerGananciasUltimoMes() {
 
@@ -156,7 +66,135 @@ public class DaoServicio {
 
         return "0";
     }
+    
 
+    public ArrayList<Servicio> listar(int offset, int limit, AtomicInteger resultados) {
+        ArrayList<Servicio> lista = new ArrayList<>();
+        Connection cnx = null;
+
+        String sql
+                = "SELECT S.id_servicio, S.valor_servicio, S.direccion_ori, "
+                + "S.direccion_des, S.fecha_servicio, S.id_conductor, "
+                + "C.nombre AS nombre_conductor, S.id_cliente, CL.nombre AS nombre_cliente, "
+                + "S.id_tipo_servicio, TS.nombre_tipo_servicio, "
+                + "S.medio_pago AS id_medio_pago, MP.nombre_medio_pago, S.tarifa AS "
+                + "id_tarifa, T.nivel AS nivel_tarifa, T.valor_tarifa, COUNT(*) OVER() AS total_registros "
+                + "FROM Servicio AS S LEFT JOIN Conductor AS C ON S.id_conductor = C.id_conductor "
+                + "LEFT JOIN Cliente AS CL ON S.id_cliente = CL.id_cliente "
+                + "LEFT JOIN TipoServicio AS TS ON S.id_tipo_servicio = TS.id_tipo_servicio "
+                + "LEFT JOIN MedioPago AS MP ON S.medio_pago = MP.id_medio_pago "
+                + "LEFT JOIN Tarifa AS T ON S.tarifa = T.id_tarifa "
+                + "ORDER BY S.fecha_servicio DESC, S.id_servicio "
+                + "LIMIT ? OFFSET ?";
+
+        try {
+            cnx = conn.getConexion();
+            try (PreparedStatement pst = cnx.prepareStatement(sql)) {
+
+                pst.setInt(1, limit);
+                pst.setInt(2, offset);
+
+                try (ResultSet rs = pst.executeQuery()) {
+                    while (rs.next()) {
+                        Servicio serv = new Servicio();
+                        serv.setId_servicio(rs.getInt("id_servicio"));
+                        serv.setDireccion_des(rs.getString("direccion_des"));
+                        serv.setDireccion_ori(rs.getString("direccion_ori"));
+
+                        Cliente cl = new Cliente();
+                        cl.setId(rs.getInt("id_cliente"));
+                        cl.setNombre(rs.getString("nombre_cliente"));
+                        serv.setCliente(cl);
+
+                        Conductor co = new Conductor();
+                        co.setId(rs.getInt("id_conductor"));
+                        co.setNombre(rs.getString("nombre_conductor"));
+                        serv.setConductor(co);
+
+                        TipoServicio tip = new TipoServicio(rs.getInt("id_tipo_servicio"), rs.getString("nombre_tipo_servicio"));
+                        serv.setTipo_servicio(tip);
+
+                        MedioPago med = new MedioPago(rs.getInt("id_medio_pago"), rs.getString("nombre_medio_pago"));
+                        serv.setMedio_pago(med);
+
+                        Tarifa tar = new Tarifa(rs.getInt("id_tarifa"), rs.getString("nivel_tarifa"), rs.getString("valor_tarifa"));
+                        serv.setTarifa(tar);
+
+                        lista.add(serv);
+                        resultados.set(rs.getInt("total_registros"));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error SELECT Servicios: " + e.getMessage());
+        } finally {
+            conn.cerrarConexion(cnx);
+        }
+        return lista;
+    }
+
+    public DefaultTableModel obtenerServiciosTableModel(TableModel tb) {
+        Connection cnx = null;
+        String sql = "SELECT S.id_servicio, C.nombre AS nombre_conductor,"
+                + " CL.nombre AS nombre_cliente, S.valor_servicio "
+                + "FROM Servicio AS S INNER JOIN Conductor AS C "
+                + "ON S.id_conductor = C.id_conductor INNER JOIN Cliente "
+                + "AS CL ON S.id_cliente = CL.id_cliente ORDER BY S.fecha_servicio DESC LIMIT 16";
+
+        DefaultTableModel tableModel = (DefaultTableModel) tb;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Vector<String> columnNames = new Vector<>();
+        for (int i = 0; i < tableModel.getColumnCount(); i++) {
+            columnNames.add(tableModel.getColumnName(i));
+        }
+
+        if (columnNames.isEmpty()) {
+            columnNames.add("id_servicio");
+            columnNames.add("nombre_conductor");
+            columnNames.add("nombre_cliente");
+            columnNames.add("valor_servicio");
+        }
+
+        cnx = conn.getConexion();
+        try {
+            ps = cnx.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            Vector<Vector<Object>> data = new Vector<>();
+
+            while (rs.next()) {
+                Vector<Object> vector = new Vector<>();
+
+                for (int i = 1; i <= columnCount; i++) {
+                    vector.add(rs.getObject(i));
+                }
+                data.add(vector);
+            }
+
+            tableModel = new DefaultTableModel(data, columnNames);
+
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el TableModel de servicios: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            conn.cerrarConexion(cnx);
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return tableModel;
+    }
+    
+    
     public String[] obtenerMesMasGanancias() {
 
         String sql
