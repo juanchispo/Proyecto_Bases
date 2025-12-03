@@ -58,7 +58,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblConstrasena" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtConstrasena" alignment="0" max="32767" attributes="0"/>
                               <Component id="cmbAdministrador" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -78,7 +78,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblConstrasena" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtConstrasena" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -96,7 +96,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="lblConstrasena">
+        <Component class="javax.swing.JTextField" name="txtConstrasena">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="MS PGothic" size="12" style="0"/>

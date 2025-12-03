@@ -32,13 +32,15 @@ public class IFrmRegistro extends javax.swing.JInternalFrame {
         this.cmbAdministrador = cmbAdministrador;
     }
 
-    public JTextField getLblConstrasena() {
-        return lblConstrasena;
+    public JTextField getTxtConstrasena() {
+        return txtConstrasena;
     }
 
-    public void setLblConstrasena(JTextField lblConstrasena) {
-        this.lblConstrasena = lblConstrasena;
+    public void setTxtConstrasena(JTextField txtConstrasena) {
+        this.txtConstrasena = txtConstrasena;
     }
+
+
 
     public JLabel getLblContrasena() {
         return lblContrasena;
@@ -105,7 +107,7 @@ public class IFrmRegistro extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         pnlRegistro = new javax.swing.JPanel();
-        lblConstrasena = new javax.swing.JTextField();
+        txtConstrasena = new javax.swing.JTextField();
         cmbAdministrador = new javax.swing.JComboBox<>();
         lblUsuario = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
@@ -116,7 +118,7 @@ public class IFrmRegistro extends javax.swing.JInternalFrame {
 
         pnlRegistro.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblConstrasena.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        txtConstrasena.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
 
         cmbAdministrador.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         cmbAdministrador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Conductor", "Cliente" }));
@@ -162,7 +164,7 @@ public class IFrmRegistro extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNombre)
-                            .addComponent(lblConstrasena)
+                            .addComponent(txtConstrasena)
                             .addComponent(cmbAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(pnlImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
@@ -176,7 +178,7 @@ public class IFrmRegistro extends javax.swing.JInternalFrame {
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblConstrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtConstrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblContrasena))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -211,12 +213,12 @@ public class IFrmRegistro extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JComboBox<String> cmbAdministrador;
-    private javax.swing.JTextField lblConstrasena;
     private javax.swing.JLabel lblContrasena;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel pnlImagen;
     private javax.swing.JPanel pnlRegistro;
+    private javax.swing.JTextField txtConstrasena;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
