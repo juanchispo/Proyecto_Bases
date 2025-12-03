@@ -344,13 +344,13 @@ public class IFrmAddModServicioDetalles extends javax.swing.JInternalFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Caracteristica", "Valor"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -360,18 +360,22 @@ public class IFrmAddModServicioDetalles extends javax.swing.JInternalFrame {
         pnlAddModClienteLayout.setHorizontalGroup(
             pnlAddModClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAddModClienteLayout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addComponent(btnAddMod)
-                .addContainerGap(457, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAddModClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlAddModClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(SeparadorAddModCliente, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlAddModClienteLayout.createSequentialGroup()
-                        .addComponent(lblAddModCliente)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(66, 66, 66))
+                .addGroup(pnlAddModClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAddModClienteLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(pnlAddModClienteLayout.createSequentialGroup()
+                        .addGroup(pnlAddModClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(SeparadorAddModCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlAddModClienteLayout.createSequentialGroup()
+                                .addComponent(lblAddModCliente)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(66, 66, 66))))
+            .addGroup(pnlAddModClienteLayout.createSequentialGroup()
+                .addGap(323, 323, 323)
+                .addComponent(btnAddMod)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlAddModClienteLayout.setVerticalGroup(
             pnlAddModClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,10 +385,10 @@ public class IFrmAddModServicioDetalles extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SeparadorAddModCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnAddMod)
-                .addContainerGap())
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
