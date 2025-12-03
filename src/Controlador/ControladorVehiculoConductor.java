@@ -27,7 +27,7 @@ public class ControladorVehiculoConductor extends Controlador {
     public void llenarCmb() {
         DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
         DaoVehiculoConductor dao = new DaoVehiculoConductor();
-        ifrm.getjComboBox1().setModel(dao.obtenerPlacasVehiculos());
+        ifrm.getVehiculos().setModel(dao.obtenerPlacasVehiculos());
     }
 
     @Override
@@ -42,9 +42,11 @@ public class ControladorVehiculoConductor extends Controlador {
     public void llenarLista() {
         DaoVehiculoConductor dao = new DaoVehiculoConductor();
         DefaultListModel<String> lista = new DefaultListModel<>();        
-        ifrm.getjList1().setModel(dao.listarConductores());
+        ifrm.getConductores().setModel(dao.listarConductores());
         llenarCmb();
     }
+    
+    
 
     public boolean validarPlaca(String idPlaca) {
         return idPlaca != null && !idPlaca.trim().isEmpty();
@@ -54,7 +56,9 @@ public class ControladorVehiculoConductor extends Controlador {
     public void actionPerformed(ActionEvent e) {
         DaoVehiculoConductor dao = new DaoVehiculoConductor();
 
-        if (e.getSource().equals(ifrm.getBtnAddMod())) {
+        if (e.getSource().equals(ifrm.getAgregar())) {
+            llenarLista();
+        } else if (e.getSource().equals(ifrm.getVer())) {
             llenarLista();
         }
     }

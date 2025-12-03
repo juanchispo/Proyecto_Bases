@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -191,6 +192,50 @@ public class DaoVehiculoConductor {
         }
 
         return modelo;
+    }
+    
+    public ArrayList<Vehiculo> obtenerVehiculosPorConductor(int idConductor) {
+        // Utilizamos List en lugar de DefaultListModel para tener un retorno de datos puro,
+        // sin dependencias de la UI (Swing).
+        ArrayList<Vehiculo> vehiculosAsociados = new ArrayList<>();
+        Connection con = null;
+        
+        // Consulta SQL para obtener los datos del Vehículo
+        // Se une VehiculoConductor con Vehiculo para obtener los datos de la placa
+        String sql = "SELECT V.placa, V.modelo, V.marca " +
+                     "FROM Vehiculo V " +
+                     "JOIN VehiculoConductor VC ON V.placa = VC.placa_vehiculo " +
+                     "WHERE VC.id_conductor = ?";
+
+        try {
+            con = conexionBD.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                
+                // Establece el parámetro id_conductor
+                ps.setInt(1, idConductor);
+                
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        Vehiculo vehiculo = new Vehiculo();
+                        vehiculo.setPlaca(rs.getString("placa"));
+                        vehiculo.setModelo(rs.getString("modelo"));
+                        
+                        // Carga el objeto Marca completo utilizando DaoMarca
+                        int idMarca = rs.getInt("marca");
+                        // Se asume que this.marcaDao es una instancia válida de DaoMarca.
+                        vehiculo.setMarca(this.marcaDao.consultar(idMarca)); 
+                        
+                        vehiculosAsociados.add(vehiculo);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener vehículos por conductor: " + e.getMessage());
+        } finally {
+            conexionBD.cerrarConexion(con);
+        }
+
+        return vehiculosAsociados;
     }
 
 }

@@ -21,6 +21,30 @@ import javax.swing.JTextField;
  */
 public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
 
+    public JButton getAgregar() {
+        return Agregar;
+    }
+
+    public void setAgregar(JButton Agregar) {
+        this.Agregar = Agregar;
+    }
+
+    public JButton getBorrar() {
+        return Borrar;
+    }
+
+    public void setBorrar(JButton Borrar) {
+        this.Borrar = Borrar;
+    }
+
+    public JList<String> getConductores() {
+        return Conductores;
+    }
+
+    public void setConductores(JList<String> Conductores) {
+        this.Conductores = Conductores;
+    }
+
     public JSeparator getSeparadorAddModCliente() {
         return SeparadorAddModCliente;
     }
@@ -29,36 +53,20 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
         this.SeparadorAddModCliente = SeparadorAddModCliente;
     }
 
-    public JButton getBtnAddMod() {
-        return btnAddMod;
+    public JList<String> getVehiculosCon() {
+        return VehiculosCon;
     }
 
-    public void setBtnAddMod(JButton btnAddMod) {
-        this.btnAddMod = btnAddMod;
+    public void setVehiculosCon(JList<String> VehiculosCon) {
+        this.VehiculosCon = VehiculosCon;
     }
 
-    public JButton getjButton1() {
-        return jButton1;
+    public JButton getVer() {
+        return Ver;
     }
 
-    public void setjButton1(JButton jButton1) {
-        this.jButton1 = jButton1;
-    }
-
-    public JComboBox<String> getjComboBox1() {
-        return jComboBox1;
-    }
-
-    public void setjComboBox1(JComboBox<String> jComboBox1) {
-        this.jComboBox1 = jComboBox1;
-    }
-
-    public JList<String> getjList1() {
-        return jList1;
-    }
-
-    public void setjList1(JList<String> jList1) {
-        this.jList1 = jList1;
+    public void setVer(JButton Ver) {
+        this.Ver = Ver;
     }
 
     public JScrollPane getjScrollPane1() {
@@ -67,6 +75,14 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
 
     public void setjScrollPane1(JScrollPane jScrollPane1) {
         this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
     }
 
     public JLabel getLblAddModCliente() {
@@ -84,6 +100,15 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
     public void setPnlAddModCliente(JPanel pnlAddModCliente) {
         this.pnlAddModCliente = pnlAddModCliente;
     }
+
+    public JComboBox<String> getVehiculos() {
+        return vehiculos;
+    }
+
+    public void setVehiculos(JComboBox<String> vehiculos) {
+        this.vehiculos = vehiculos;
+    }
+
 
  
 
@@ -106,11 +131,14 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
         pnlAddModCliente = new javax.swing.JPanel();
         lblAddModCliente = new javax.swing.JLabel();
         SeparadorAddModCliente = new javax.swing.JSeparator();
-        btnAddMod = new javax.swing.JButton();
+        Agregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        Conductores = new javax.swing.JList<>();
+        vehiculos = new javax.swing.JComboBox<>();
+        Borrar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        VehiculosCon = new javax.swing.JList<>();
+        Ver = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -120,19 +148,29 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
         lblAddModCliente.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
         lblAddModCliente.setText("Vehiculos Conductor");
 
-        btnAddMod.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnAddMod.setText("AGREGAR");
+        Agregar.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        Agregar.setText("AGREGAR");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        Conductores.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(Conductores);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        vehiculos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("BORRAR");
+        Borrar.setText("BORRAR");
+
+        VehiculosCon.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(VehiculosCon);
+
+        Ver.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        Ver.setText("VER");
 
         javax.swing.GroupLayout pnlAddModClienteLayout = new javax.swing.GroupLayout(pnlAddModCliente);
         pnlAddModCliente.setLayout(pnlAddModClienteLayout);
@@ -143,18 +181,20 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
                 .addGroup(pnlAddModClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlAddModClienteLayout.createSequentialGroup()
                         .addComponent(SeparadorAddModCliente)
-                        .addGap(144, 144, 144))
+                        .addContainerGap())
                     .addGroup(pnlAddModClienteLayout.createSequentialGroup()
                         .addComponent(lblAddModCliente)
                         .addGap(0, 117, Short.MAX_VALUE))
                     .addGroup(pnlAddModClienteLayout.createSequentialGroup()
                         .addGroup(pnlAddModClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(btnAddMod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Borrar, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(vehiculos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2)
+                            .addComponent(Ver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane1)
+                        .addGap(19, 19, 19))))
         );
         pnlAddModClienteLayout.setVerticalGroup(
             pnlAddModClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,16 +203,20 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
                 .addComponent(lblAddModCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SeparadorAddModCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlAddModClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlAddModClienteLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAddMod)
-                        .addGap(22, 22, 22)
-                        .addComponent(jButton1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(vehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Ver)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Agregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Borrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,13 +235,16 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Agregar;
+    private javax.swing.JButton Borrar;
+    private javax.swing.JList<String> Conductores;
     private javax.swing.JSeparator SeparadorAddModCliente;
-    private javax.swing.JButton btnAddMod;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> VehiculosCon;
+    private javax.swing.JButton Ver;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAddModCliente;
     private javax.swing.JPanel pnlAddModCliente;
+    private javax.swing.JComboBox<String> vehiculos;
     // End of variables declaration//GEN-END:variables
 }
