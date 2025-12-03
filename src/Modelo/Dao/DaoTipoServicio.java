@@ -7,91 +7,105 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class DaoTipoServicio extends Conexion {
+public class DaoTipoServicio {
+
+    private final Conexion conn = new Conexion();
 
     // AGREGAR → INSERT
     public boolean agregar(TipoServicio ts) {
-        Connection cnx = getConexion();
-        String stc = "INSERT INTO tipo_servicio (id_conductor, telefono) VALUES (?, ?)";
+        Connection cnx = null;
+        String stc = "INSERT INTO tiposervicio (id_tipo_servicio, nombre_tipo_servicio) VALUES (?, ?)";
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, ts.getId_conductor());
-            pst.setString(2, ts.getTelefono());
+            cnx = conn.getConexion();
+            try (PreparedStatement pst = cnx.prepareStatement(stc)) {
+                pst.setInt(1, ts.getId_servicio());
+                pst.setString(2, ts.getNombreServicio());
 
-            pst.executeUpdate();
-            return true;
-
+                pst.executeUpdate();
+                return true;
+            }
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el INSERT -> " + ex);
             mensaje("Error al ejecutar el INSERT", "Agregar!!!");
+            return false;
+        } finally {
+            conn.cerrarConexion(cnx);
         }
-        return false;
     }
 
     // ELIMINAR → DELETE
-    public boolean eliminar(int id_conductor) {
-        Connection cnx = getConexion();
-        String stc = "DELETE FROM tipo_servicio WHERE id_conductor = ?";
+    public boolean eliminar(int id_tipo_servicio) {
+        Connection cnx = null;
+        String stc = "DELETE FROM tiposervicio WHERE id_tipo_servicio = ?";
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, id_conductor);
+            cnx = conn.getConexion();
+            try (PreparedStatement pst = cnx.prepareStatement(stc)) {
+                pst.setInt(1, id_tipo_servicio);
 
-            pst.executeUpdate();
-            return true;
-
+                pst.executeUpdate();
+                return true;
+            }
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el DELETE -> " + ex);
             mensaje("Error al ejecutar el DELETE", "Eliminar!!!");
+            return false;
+        } finally {
+            conn.cerrarConexion(cnx);
         }
-        return false;
     }
 
     // ACTUALIZAR → UPDATE
     public boolean actualizar(TipoServicio ts) {
-        Connection cnx = getConexion();
-        String stc = "UPDATE tipo_servicio SET telefono = ? "
-                   + "WHERE id_conductor = ?";
+        Connection cnx = null;
+        String stc = "UPDATE tiposervicio SET nombre_tipo_servicio = ? "
+                + "WHERE id_tipo_servicio = ?";
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setString(1, ts.getTelefono());
-            pst.setInt(2, ts.getId_conductor());
+            cnx = conn.getConexion();
+            try (PreparedStatement pst = cnx.prepareStatement(stc)) {
+                pst.setString(1, ts.getNombreServicio());
+                pst.setInt(2, ts.getId_servicio());
 
-            pst.executeUpdate();
-            return true;
-
+                pst.executeUpdate();
+                return true;
+            }
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el UPDATE -> " + ex);
             mensaje("Error al ejecutar el UPDATE", "Actualizar!!!");
+            return false;
+        } finally {
+            conn.cerrarConexion(cnx);
         }
-        return false;
     }
 
     // CONSULTAR → SELECT
-    public boolean consultar(TipoServicio ts) {
-        Connection cnx = getConexion();
-        String stc = "SELECT * FROM tipo_servicio WHERE id_conductor = ?";
+    public TipoServicio consultar(int id) {
+        Connection cnx = null;
+        String stc = "SELECT * FROM tiposervicio WHERE id_tipo_servicio = ?";
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, ts.getId_conductor());
+            cnx = conn.getConexion();
+            try (PreparedStatement pst = cnx.prepareStatement(stc)) {
+                pst.setInt(1, id);
 
-            ResultSet rst = pst.executeQuery();
-
-            if (rst.next()) {
-                ts.setId_conductor(rst.getInt("id_conductor"));
-                ts.setTelefono(rst.getString("telefono"));
-                return true;
+                try (ResultSet rst = pst.executeQuery()) {
+                    if (rst.next()) {
+                        TipoServicio t = new TipoServicio(rst.getInt("id_tipo_servicio"), rst.getString("nombre_tipo_servicio"));
+                        return t;
+                    }
+                }
             }
-
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el SELECT -> " + ex);
             mensaje("Error al ejecutar el SELECT", "Consultar!!!");
+        } finally {
+            conn.cerrarConexion(cnx);
         }
-        return false;
+        return null;
     }
+
     public void mensaje(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title, 1);
     }

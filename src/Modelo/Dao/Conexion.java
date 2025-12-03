@@ -23,4 +23,16 @@ public class Conexion {
         }
         return cnx;
     }
+    
+    public void cerrarConexion(Connection cnx) {
+        if (cnx != null) {
+            try {
+                if (!cnx.isClosed()) {
+                    cnx.close();
+                }
+            } catch (SQLException ex) {
+                System.err.println("Error al cerrar la conexión a la BD -> " + ex.getMessage());
+            }
+        }
+    }
 }

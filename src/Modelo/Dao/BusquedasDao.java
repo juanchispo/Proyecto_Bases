@@ -9,7 +9,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
-public class BusquedasDao extends Conexion {
+public class BusquedasDao {
+
+    private final Conexion conn = new Conexion();
 
     private JTable generarTabla(ResultSet rs) throws SQLException {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -17,12 +19,10 @@ public class BusquedasDao extends Conexion {
 
         int columnas = meta.getColumnCount();
 
-        // Agregar columnas
         for (int i = 1; i <= columnas; i++) {
             modelo.addColumn(meta.getColumnLabel(i));
         }
 
-        // Agregar filas dinámicamente
         while (rs.next()) {
             Object fila[] = new Object[columnas];
             for (int i = 0; i < columnas; i++) {
@@ -36,22 +36,28 @@ public class BusquedasDao extends Conexion {
 
     private JTable ejecutarConsulta(String sql, Object... params) {
         JTable tabla = new JTable();
+        Connection cn = null;
 
-        try (Connection cn = getConexion();
-             PreparedStatement pst = cn.prepareStatement(sql)) {
+        try {
+            cn = conn.getConexion();
+            
+            try (PreparedStatement pst = cn.prepareStatement(sql)) { 
 
-            // Agregar parámetros
-            for (int i = 0; i < params.length; i++) {
-                pst.setObject(i + 1, params[i]);
+                for (int i = 0; i < params.length; i++) {
+                    pst.setObject(i + 1, params[i]);
+                }
+
+                try (ResultSet rs = pst.executeQuery()) {
+                    tabla = generarTabla(rs);
+                }
             }
 
-            ResultSet rs = pst.executeQuery();
-            tabla = generarTabla(rs);
-
         } catch (SQLException e) {
-            System.err.println("Error en consulta -> " + e);
+            System.err.println("Error en consulta -> " + e.getMessage());
             JOptionPane.showMessageDialog(null, "Error ejecutando consulta",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            conn.cerrarConexion(cn);
         }
 
         return tabla;
@@ -154,4 +160,3 @@ public class BusquedasDao extends Conexion {
         return ejecutarConsulta(sql);
     }
 }
-

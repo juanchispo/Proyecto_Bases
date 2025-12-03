@@ -5,93 +5,107 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-public class DaoTelefonoConductor extends Conexion {
+public class DaoTelefonoConductor {
+
+    private final Conexion conn = new Conexion();
 
     // AGREGAR → INSERT
     public boolean agregar(int id_conductor, String telefono) {
-        Connection cnx = getConexion();
+        Connection cnx = null;
         String sql = "INSERT INTO telefonoconductor (id_conductor, telefono) VALUES (?, ?)";
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(sql);
-            pst.setInt(1, id_conductor);
-            pst.setString(2, telefono);
+            cnx = conn.getConexion();
+            try (PreparedStatement pst = cnx.prepareStatement(sql)) {
+                pst.setInt(1, id_conductor);
+                pst.setString(2, telefono);
 
-            pst.executeUpdate();
-            return true;
-
+                pst.executeUpdate();
+                return true;
+            }
         } catch (SQLException ex) {
             System.err.println("Error INSERT TelefonoConductor -> " + ex);
             mensaje("Error al agregar TelefonoConductor", "INSERT ERROR");
+            return false;
+        } finally {
+            conn.cerrarConexion(cnx);
         }
-        return false;
     }
 
     // ELIMINAR → DELETE
     public boolean eliminar(int id_conductor, String telefono) {
-        Connection cnx = getConexion();
+        Connection cnx = null;
         String sql = "DELETE FROM telefonoconductor WHERE id_conductor = ? AND telefono = ?";
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(sql);
-            pst.setInt(1, id_conductor);
-            pst.setString(2, telefono);
-            pst.executeUpdate();
-            System.out.println(pst.toString());
-            return true;
-
+            cnx = conn.getConexion();
+            try (PreparedStatement pst = cnx.prepareStatement(sql)) {
+                pst.setInt(1, id_conductor);
+                pst.setString(2, telefono);
+                pst.executeUpdate();
+                return true;
+            }
         } catch (SQLException ex) {
             System.err.println("Error DELETE TelefonoConductor -> " + ex);
             mensaje("Error al eliminar TelefonoConductor", "DELETE ERROR");
+            return false;
+        } finally {
+            conn.cerrarConexion(cnx);
         }
-        return false;
     }
 
     // ACTUALIZAR → UPDATE
     public boolean actualizar(int id_conductor, String telefonoNuevo, String telefonoAntiguo) {
-        Connection cnx = getConexion();
+        Connection cnx = null;
         String sql = "UPDATE telefonoconductor SET telefono = ? WHERE id_conductor = ? AND telefono = ?";
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(sql);
-            pst.setString(1, telefonoNuevo);
-            pst.setInt(2, id_conductor);
-            pst.setString(3, telefonoAntiguo);
+            cnx = conn.getConexion();
+            try (PreparedStatement pst = cnx.prepareStatement(sql)) {
+                pst.setString(1, telefonoNuevo);
+                pst.setInt(2, id_conductor);
+                pst.setString(3, telefonoAntiguo);
 
-            pst.executeUpdate();
-            return true;
-
+                pst.executeUpdate();
+                return true;
+            }
         } catch (SQLException ex) {
             System.err.println("Error UPDATE TelefonoConductor -> " + ex);
             mensaje("Error al actualizar TelefonoConductor", "UPDATE ERROR");
+            return false;
+        } finally {
+            conn.cerrarConexion(cnx);
         }
-        return false;
     }
 
     // CONSULTAR → SELECT
-    public ArrayList consultar(Conductor conductor) {
-        Connection cnx = getConexion();
-        String sql = "SELECT * FROM telefonoconductor WHERE id_conductor = ?";
+    public ArrayList<String> consultar(Conductor conductor) {
+        Connection cnx = null;
+        String sql = "SELECT telefono FROM telefonoconductor WHERE id_conductor = ?";
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(sql);
-            pst.setInt(1, conductor.getId());
+            cnx = conn.getConexion();
+            try (PreparedStatement pst = cnx.prepareStatement(sql)) {
+                pst.setInt(1, conductor.getId());
 
-            ResultSet rst = pst.executeQuery();
+                try (ResultSet rst = pst.executeQuery()) {
 
-            while (rst.next()) {
-                conductor.setId(rst.getInt("id_conductor"));
-                conductor.getTelefonos().add(rst.getString("telefono"));
+                    while (rst.next()) {
+                        // Se asume que conductor.getTelefonos() retorna un ArrayList<String>
+                        conductor.getTelefonos().add(rst.getString("telefono"));
+                    }
+                }
             }
-
         } catch (SQLException ex) {
             System.err.println("Error SELECT TelefonoConductor -> " + ex);
             mensaje("Error al consultar TelefonoConductor", "SELECT ERROR");
+        } finally {
+            conn.cerrarConexion(cnx);
         }
+        // Se corrige el tipo de retorno para ser explícito (ArrayList<String>)
         return conductor.getTelefonos();
     }
 

@@ -21,6 +21,8 @@ import Controlador.ControladorPrincipal;
 import Modelo.Conductor;
 import Modelo.Genero;
 import Modelo.Nacionalidad;
+import Modelo.Vehiculo;
+import Modelo.VehiculoTipoServicio;
 import Modelo.imagenes.ImgTabla;
 import Vista.Crear.IFrmAddModCliente;
 import Vista.Crear.IFrmAddModConductor;
@@ -39,13 +41,15 @@ public class ControladorAdministrador extends Controlador{
     ControladorPrincipal ctrlP;
     ArrayList<Cliente> clientes;
     ArrayList<Conductor> conductores;
+    ArrayList<Vehiculo> vehiculos;
     int pgClientes, pgConductores, pgVehiculos, pgServicios, pgBA;
     AtomicInteger rsClientes, rsConductores, rsVehiculos, rsServicios, rsBA;
 
-    public ControladorAdministrador(ControladorPrincipal ctrlP,IFrmAdministrador ifrm, ArrayList<Cliente> clientes, int pgClientes, int pgConductores, int pgVehiculos, int pgServicios, int pgBA, AtomicInteger rsClientes, AtomicInteger rsConductores, AtomicInteger rsVehiculos, AtomicInteger rsServicios, AtomicInteger rsBA) {
+    public ControladorAdministrador(ControladorPrincipal ctrlP,IFrmAdministrador ifrm, ArrayList<Cliente> clientes, ArrayList<Vehiculo> vehiculos, int pgClientes, int pgConductores, int pgVehiculos, int pgServicios, int pgBA, AtomicInteger rsClientes, AtomicInteger rsConductores, AtomicInteger rsVehiculos, AtomicInteger rsServicios, AtomicInteger rsBA) {
         this.ctrlP = ctrlP;
         this.ifrm = ifrm;
         this.clientes = clientes;
+        this.vehiculos = vehiculos;
         this.pgClientes = pgClientes;
         this.pgConductores = pgConductores;
         this.pgVehiculos = pgVehiculos;
@@ -67,6 +71,7 @@ public class ControladorAdministrador extends Controlador{
         this.ifrm = ifrm;
         this.clientes = new ArrayList<>();
         this.conductores = new ArrayList<>();
+        this.vehiculos = new ArrayList<>();
         this.pgClientes = 1;
         this.pgConductores = 1;
         this.pgVehiculos = 1;
@@ -82,6 +87,8 @@ public class ControladorAdministrador extends Controlador{
     public ControladorAdministrador() {
         this.ifrm = new IFrmAdministrador();
         this.clientes = new ArrayList<>();
+        this.conductores = new ArrayList<>();
+        this.vehiculos = new ArrayList<>();
         this.pgClientes = 1;
         this.pgConductores = 1;
         this.pgVehiculos = 1;
@@ -113,8 +120,43 @@ public class ControladorAdministrador extends Controlador{
             ctrlP.frm.getLblAvisos().setText("AVISO -> Conexion exitosa con la Base de Datos.");
             actualizarTbCliente();
             actualizarTbConductores();
+            actualizarTbVehiculos();
         }
     }
+
+    public void actualizarTbVehiculos(){
+        DaoVehiculo daoV = new DaoVehiculo();
+        DaoVehiculoTipoServicio daoVTS = new DaoVehiculoTipoServicio();
+
+        vehiculos = daoV.ConsultarTodos(); 
+
+        rsVehiculos.set(vehiculos.size()); 
+
+        Object[][] datos = new Object[vehiculos.size()][4]; 
+
+        for (int i = 0; i < vehiculos.size(); i++) {
+            Vehiculo v = vehiculos.get(i);
+
+            ArrayList<VehiculoTipoServicio> servicios = daoVTS.ConsultarPorPlaca(v.getPlaca());
+
+            StringBuilder sbServicios = new StringBuilder();
+            for (VehiculoTipoServicio vts : servicios) {
+                sbServicios.append(vts.getTipoServicio().getNombreServicio()).append(", ");
+            }
+            String serviciosStr = (sbServicios.length() > 0) ? 
+                                  sbServicios.substring(0, sbServicios.length() - 2) : 
+                                  "N/A";
+
+            datos[i][0] = v.getPlaca();
+            datos[i][1] = v.getModelo();
+            datos[i][2] = v.getMarca().getMarca(); 
+            datos[i][3] = serviciosStr; 
+        }
+
+        llenarTabla(ifrm.getTbVehiculos().getModel(), datos);
+        ifrm.getTxtMostrandoVehiculos().setText("Mostrando " + pgVehiculos +" de "+ calcularPaginas(rsVehiculos, 15)); // Asumo getTxtMostrandoVehiculos()
+    }
+
     
     @Override
     public void iniciar() {        
@@ -250,7 +292,56 @@ public class ControladorAdministrador extends Controlador{
             IFrmAddModConductor ifrmR = new IFrmAddModConductor();
             ControladorAddConductor contC = new ControladorAddConductor(ifrmR, ctrlP);
             contC.iniciar(); 
-        } 
+        } else if (e.getSource().equals(ifrm.getBtnBuscarVehiculos())){ // Asumo getBtnBuscarVehiculo()
+        actualizarTbVehiculos();
+    } else if (e.getSource().equals(ifrm.getBtnAnteriorVehiculosVehiculos())){ // Asumo getBtnAnteriorVehiculo()
+        pgVehiculos = reducirPagina(pgVehiculos, rsVehiculos);
+        actualizarTbVehiculos();
+    } else if (e.getSource().equals(ifrm.getBtnSiguienteVehiculos())){ // Asumo getBtnSiguienteVehiculo()
+        pgVehiculos = aumentarPagina(pgVehiculos, rsVehiculos);
+        actualizarTbVehiculos();
+    } else if (e.getSource().equals(ifrm.getBtnCrearVehiculos())){ // Asumo getBtnCrearVehiculo()
+        // NOTA: Debes crear IFrmAddModVehiculo y ControladorAddVehiculo
+        // IFrmAddModVehiculo ifrmR = new IFrmAddModVehiculo();
+        // ControladorAddVehiculo contV = new ControladorAddVehiculo(ifrmR, ctrlP);
+        // contV.iniciar();
+        // Simulación:
+        ctrlP.frm.getLblAvisos().setText("AVISO -> Iniciar IFrmAddModVehiculo para CREAR.");
+        actualizarTbVehiculos();
+    } else if (e.getSource().equals(ifrm.getBtnEditarVehiculos())){ // Asumo getBtnEditarVehiculo()
+        int index = ifrm.getTbVehiculos().getSelectedRow();
+        if (index >= 0) {
+            // NOTA: Debes crear IFrmAddModVehiculo y ControladorModVehiculo
+            // IFrmAddModVehiculo ifrmR = new IFrmAddModVehiculo();
+            // ControladorModVehiculo contV = new ControladorModVehiculo(ifrmR, ctrlP, vehiculos.get(index));
+            // contV.iniciar();
+            // Simulación:
+            ctrlP.frm.getLblAvisos().setText("AVISO -> Iniciar IFrmAddModVehiculo para EDITAR.");
+            actualizarTbVehiculos();
+        } else {
+            ctrlP.frm.getLblAvisos().setText("AVISO -> Seleccione una fila para editar.");
+        }
+    } else if (e.getSource().equals(ifrm.getBtnBorrarVehiculos())){ 
+        int indice = ifrm.getTbVehiculos().getSelectedRow();
+        if (indice >= 0) {
+            String placa = String.valueOf(ifrm.getTbVehiculos().getValueAt(indice, 0));
+            
+            int confirmacion = JOptionPane.showConfirmDialog(ifrm, 
+                    "¿Está seguro que desea eliminar el vehículo con placa " + placa + "?", 
+                    "Confirmación para eliminar Vehículo", 0);
+            
+            if (confirmacion == 0) {
+                DaoVehiculo daoV = new DaoVehiculo();
+                boolean eliminado = daoV.Eliminar(placa);
+                
+                String msg = eliminado ? "Vehículo eliminado correctamente." : "Error al eliminar vehículo.";
+                ctrlP.frm.getLblAvisos().setText("Aviso -> " + msg);
+                actualizarTbVehiculos();
+            }
+        } else {
+            ctrlP.frm.getLblAvisos().setText("AVISO -> Seleccione una fila para borrar.");
+        }
+    } 
     }
     
 }

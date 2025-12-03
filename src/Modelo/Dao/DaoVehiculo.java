@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class DaoVehiculo extends Conexion  {
+public class DaoVehiculo { 
 
-    private Conexion conexionBD;
-    private DaoMarca marcaDao; // Dependencia para cargar la Marca
+    private final Conexion conexionBD;
+    private final DaoMarca marcaDao; 
 
     public DaoVehiculo() {
         this.conexionBD = new Conexion();
@@ -22,24 +22,22 @@ public class DaoVehiculo extends Conexion  {
     // --- 1. INSERTAR (Crear) ---
     public boolean Insertar(Vehiculo vehiculo) {
         Connection con = null;
-        PreparedStatement ps = null;
         String sql = "INSERT INTO Vehiculo (placa, modelo, marca) VALUES (?, ?, ?)";
         boolean exito = false;
 
         try {
-            conexionBD.getConexion();
-            con = conexionBD.getConexion();
-            ps = con.prepareStatement(sql);
+            con = conexionBD.getConexion(); 
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, vehiculo.getPlaca());
+                ps.setString(2, vehiculo.getModelo());
+                ps.setInt(3, vehiculo.getMarca().getId_marca());
 
-            ps.setString(1, vehiculo.getPlaca());
-            ps.setString(2, vehiculo.getModelo());
-            ps.setInt(3, vehiculo.getMarca().getId_marca()); // Asumo Marca.getId()
-
-            exito = ps.executeUpdate() > 0;
+                exito = ps.executeUpdate() > 0;
+            }
         } catch (SQLException e) {
             System.err.println("Error al insertar vehículo: " + e.getMessage());
         } finally {
-            cerrarRecursos(con, ps, null);
+            conexionBD.cerrarConexion(con); 
         }
         return exito;
     }
@@ -48,93 +46,87 @@ public class DaoVehiculo extends Conexion  {
     public ArrayList<Vehiculo> ConsultarTodos() {
         ArrayList<Vehiculo> vehiculos = new ArrayList<>();
         Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
         String sql = "SELECT placa, modelo, marca FROM Vehiculo";
 
         try {
-            conexionBD.getConexion();
-            con = conexionBD.getConexion();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
+            con = conexionBD.getConexion(); 
+            try (PreparedStatement ps = con.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-                String marcaId = rs.getString("marca");
-                
-                // DELEGACIÓN: Cargar el objeto Marca completo
-                Marca marcaCompleta = marcaDao.consultar(Integer.parseInt(marcaId));
-                
-                Vehiculo v = new Vehiculo();
-                v.setPlaca(rs.getString("placa"));
-                v.setModelo(rs.getString("modelo"));
-                v.setMarca(marcaCompleta);
+                while (rs.next()) {
+                    int marcaId = rs.getInt("marca");
 
-                vehiculos.add(v);
+                    Marca marcaCompleta = marcaDao.consultar(marcaId);
+
+                    Vehiculo v = new Vehiculo();
+                    v.setPlaca(rs.getString("placa"));
+                    v.setModelo(rs.getString("modelo"));
+                    v.setMarca(marcaCompleta);
+
+                    vehiculos.add(v);
+                }
             }
         } catch (SQLException e) {
             System.err.println("Error al consultar vehículos: " + e.getMessage());
         } finally {
-            cerrarRecursos(con, ps, rs);
+            conexionBD.cerrarConexion(con);
         }
         return vehiculos;
     }
-    
-    // Método auxiliar para FacturaProductoDao
+
+    // Método auxiliar (Consultar por Placa)
     public Vehiculo ConsultarPorId(String placa) {
         Vehiculo vehiculo = null;
         Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
         String sql = "SELECT placa, modelo, marca FROM Vehiculo WHERE placa = ?";
 
         try {
-            conexionBD.getConexion();
             con = conexionBD.getConexion();
-            ps = con.prepareStatement(sql);
-            
-            ps.setString(1, placa);
-            rs = ps.executeQuery();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
 
-            if (rs.next()) {
-                String marcaId = rs.getString("marca");
-                
-                Marca marcaCompleta = marcaDao.consultar(Integer.parseInt(marcaId));
-                
-                vehiculo = new Vehiculo();
-                vehiculo.setPlaca(rs.getString("placa"));
-                vehiculo.setModelo(rs.getString("modelo"));
-                vehiculo.setMarca(marcaCompleta);
+                ps.setString(1, placa);
+                try (ResultSet rs = ps.executeQuery()) {
+
+                    if (rs.next()) {
+                        int marcaId = rs.getInt("marca");
+
+                        Marca marcaCompleta = marcaDao.consultar(marcaId);
+
+                        vehiculo = new Vehiculo();
+                        vehiculo.setPlaca(rs.getString("placa"));
+                        vehiculo.setModelo(rs.getString("modelo"));
+                        vehiculo.setMarca(marcaCompleta);
+                    }
+                }
             }
         } catch (SQLException e) {
             System.err.println("Error al consultar vehículo por placa: " + e.getMessage());
         } finally {
-            cerrarRecursos(con, ps, rs);
+            conexionBD.cerrarConexion(con);
         }
         return vehiculo;
     }
 
-
     // --- 3. ACTUALIZAR ---
     public boolean Actualizar(Vehiculo vehiculo) {
         Connection con = null;
-        PreparedStatement ps = null;
         String sql = "UPDATE Vehiculo SET modelo = ?, marca = ? WHERE placa = ?";
         boolean exito = false;
 
         try {
-            conexionBD.getConexion();
             con = conexionBD.getConexion();
-            ps = con.prepareStatement(sql);
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, vehiculo.getModelo());
-            ps.setInt(2, vehiculo.getMarca().getId_marca());
-            ps.setString(3, vehiculo.getPlaca()); // Cláusula WHERE
+                ps.setString(1, vehiculo.getModelo());
+                ps.setInt(2, vehiculo.getMarca().getId_marca());
+                ps.setString(3, vehiculo.getPlaca()); 
 
-            exito = ps.executeUpdate() > 0;
+                exito = ps.executeUpdate() > 0;
+            }
         } catch (SQLException e) {
             System.err.println("Error al actualizar vehículo: " + e.getMessage());
         } finally {
-            cerrarRecursos(con, ps, null);
+            conexionBD.cerrarConexion(con);
         }
         return exito;
     }
@@ -142,34 +134,22 @@ public class DaoVehiculo extends Conexion  {
     // --- 4. ELIMINAR ---
     public boolean Eliminar(String placa) {
         Connection con = null;
-        PreparedStatement ps = null;
         String sql = "DELETE FROM Vehiculo WHERE placa = ?";
         boolean exito = false;
 
         try {
-            conexionBD.getConexion();
             con = conexionBD.getConexion();
-            ps = con.prepareStatement(sql);
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, placa);
+                ps.setString(1, placa);
 
-            exito = ps.executeUpdate() > 0;
+                exito = ps.executeUpdate() > 0;
+            }
         } catch (SQLException e) {
             System.err.println("Error al eliminar vehículo: " + e.getMessage());
         } finally {
-            cerrarRecursos(con, ps, null);
+            conexionBD.cerrarConexion(con);
         }
         return exito;
-    }
-    
-    // Método auxiliar (debe estar en la clase)
-    private void cerrarRecursos(Connection con, PreparedStatement ps, ResultSet rs) {
-        try {
-            if (rs != null) rs.close();
-            if (ps != null) ps.close();
-            if (con != null) con.close(); 
-        } catch (SQLException e) {
-            System.err.println("Error al cerrar recursos: " + e.getMessage());
-        }
     }
 }
