@@ -51,4 +51,8 @@ public class Vehiculo {
         datos[2] = this.marca.getMarca();    
         return datos;
     }
+
+    int getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

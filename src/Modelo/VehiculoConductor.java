@@ -1,6 +1,4 @@
-
 package Modelo;
-
 
 public class VehiculoConductor {
     private Vehiculo vehiculo;
@@ -26,5 +24,12 @@ public class VehiculoConductor {
     public void setConductor(Conductor conductor) {
         this.conductor = conductor;
     }
-    
+
+    public int getId_placa() {
+        return vehiculo.getId();   
+    }
+
+    public int getId_conductor() {
+        return conductor.getId();  
+    }
 }
