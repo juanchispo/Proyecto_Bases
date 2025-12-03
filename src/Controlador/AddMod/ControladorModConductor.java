@@ -1,14 +1,16 @@
-package Controlador;
+package Controlador.AddMod;
 
-import Modelo.Cliente;
-import Modelo.Dao.DaoCliente;
+import Controlador.Controlador;
+import Controlador.ControladorPrincipal;
+import Modelo.Conductor;
+import Modelo.Dao.DaoConductor;
 import Modelo.Dao.DaoGenero;
 import Modelo.Dao.DaoNacionalidad;
-import Modelo.Dao.DaoTelefonoCliente;
+import Modelo.Dao.DaoTelefonoConductor;
 import Modelo.Dao.DaoTelefonoConductor;
 import Modelo.Genero;
 import Modelo.Nacionalidad;
-import Vista.Crear.IFrmAddModCliente;
+import Vista.Crear.IFrmAddModConductor;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -18,26 +20,26 @@ import javax.swing.JOptionPane;
  *
  * @author Dyl
  */
-public class ControladorModCliente extends Controlador{
-    IFrmAddModCliente ifrm;
+public class ControladorModConductor extends Controlador{
+    IFrmAddModConductor ifrm;
     ControladorPrincipal ctrlP;
-    Cliente cliente;
+    Conductor conductor;
 
-    public ControladorModCliente(IFrmAddModCliente ifrm, ControladorPrincipal ctrlP, Cliente cliente) {
+    public ControladorModConductor(IFrmAddModConductor ifrm, ControladorPrincipal ctrlP, Conductor conductor) {
         this.ifrm = ifrm;
         this.ctrlP = ctrlP;
-        this.cliente = cliente;
+        this.conductor = conductor;
     }
     
     public void llenarTxt(){
-        ifrm.getTxtDireccion().setText(cliente.getDireccion());
-        ifrm.getTxtId().setText(String.valueOf(cliente.getId()));
-        ifrm.getTxtNombre().setText(cliente.getNombre());
+        ifrm.getTxtDireccion().setText(conductor.getDireccion());
+        ifrm.getTxtId().setText(String.valueOf(conductor.getId()));
+        ifrm.getTxtNombre().setText(conductor.getNombre());
     }
     
     public void llenarCmb(){
         DefaultComboBoxModel<String> listaT = new DefaultComboBoxModel<>();
-        for (String telefono : cliente.getTelefonos()) {
+        for (String telefono : conductor.getTelefonos()) {
             listaT.addElement(String.valueOf(telefono));
         }
         ifrm.getCmbTelefonos().setModel(listaT);      
@@ -49,7 +51,7 @@ public class ControladorModCliente extends Controlador{
         }
         ifrm.getCmbNacionalidad().setModel(listaN);
         for (int i = 0; i < listaN.getSize(); i++) {
-            if (cliente.getNacionalidad().getNacionalidad().equals(listaN.getElementAt(i)))
+            if (conductor.getNacionalidad().getNacionalidad().equals(listaN.getElementAt(i)))
                 ifrm.getCmbNacionalidad().setSelectedIndex(i);
         }
                 
@@ -60,7 +62,7 @@ public class ControladorModCliente extends Controlador{
         }
         ifrm.getCmbGenero().setModel(listaG);
         for (int i = 0; i < listaG.getSize(); i++) {
-            if (cliente.getGenero().getGenero().equals(listaG.getElementAt(i)))
+            if (conductor.getGenero().getGenero().equals(listaG.getElementAt(i)))
                 ifrm.getCmbGenero().setSelectedIndex(i);
         }
     }
@@ -69,9 +71,9 @@ public class ControladorModCliente extends Controlador{
     @Override
     public void iniciar() {
         inicializarBotones(ifrm);
-        String titulo = "MODIFICACION DE CLIENTE";
+        String titulo = "MODIFICACION DE CONDUCTOR";
         ifrm.getTxtId().setEditable(false);
-        ifrm.getLblAddModCliente().setText(titulo);
+        ifrm.getLblAddModConductor().setText(titulo);
         ifrm.getBtnAddMod().setText("Editar");
         ctrlP.getFrm().getEscritorio().add(ifrm);
         llenarTxt();
@@ -80,10 +82,10 @@ public class ControladorModCliente extends Controlador{
     }
     
     public void llenarLista(){
-        DaoTelefonoCliente daot = new DaoTelefonoCliente();
-        cliente.setTelefonos(daot.consultar(cliente));
+        DaoTelefonoConductor daot = new DaoTelefonoConductor();
+        conductor.setTelefonos(daot.consultar(conductor));
         DefaultListModel<String> lista = new DefaultListModel<>();
-        for (String telefono : cliente.getTelefonos()) {
+        for (String telefono : conductor.getTelefonos()) {
             lista.addElement(String.valueOf(telefono));
         }
         ifrm.getLsTelefonos().setModel(lista);
@@ -97,13 +99,13 @@ public class ControladorModCliente extends Controlador{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(ifrm.getBtnAddMod())){
-            cliente.setNombre(ifrm.getTxtNombre().getText());
-            cliente.setDireccion(ifrm.getTxtDireccion().getText());
+            conductor.setNombre(ifrm.getTxtNombre().getText());
+            conductor.setDireccion(ifrm.getTxtDireccion().getText());
             System.out.println(String.valueOf(ifrm.getCmbNacionalidad().getSelectedItem()));
-            cliente.setNacionalidad(new Nacionalidad(ifrm.getCmbNacionalidad().getSelectedIndex() + 1, String.valueOf(ifrm.getCmbNacionalidad().getSelectedItem())));
-            cliente.setGenero(new Genero(ifrm.getCmbGenero().getSelectedIndex() + 1, String.valueOf(ifrm.getCmbGenero().getSelectedItem())));
-            DaoCliente daoc = new DaoCliente();
-            boolean actualizar = daoc.actualizar(cliente);
+            conductor.setNacionalidad(new Nacionalidad(ifrm.getCmbNacionalidad().getSelectedIndex() + 1, String.valueOf(ifrm.getCmbNacionalidad().getSelectedItem())));
+            conductor.setGenero(new Genero(ifrm.getCmbGenero().getSelectedIndex() + 1, String.valueOf(ifrm.getCmbGenero().getSelectedItem())));
+            DaoConductor daoc = new DaoConductor();
+            boolean actualizar = daoc.actualizar(conductor);
             if (actualizar) {
                 ifrm.dispose();
                 ctrlP.getFrm().getEscritorio().remove(ifrm);
@@ -113,22 +115,22 @@ public class ControladorModCliente extends Controlador{
         }
         if (e.getSource().equals(ifrm.getBtnAddTelefonos())){ 
             if (validarTelefono(ifrm.getTxtTelefono().getText())) {
-                    DaoTelefonoCliente daot = new DaoTelefonoCliente();
-                    daot.agregar(cliente.getId(), ifrm.getTxtTelefono().getText());                                  
+                    DaoTelefonoConductor daot = new DaoTelefonoConductor();
+                    daot.agregar(conductor.getId(), ifrm.getTxtTelefono().getText());                                  
             }
             llenarLista();
         } else if (e.getSource().equals(ifrm.getBtnBorrarTelefonos())){
             if ((JOptionPane.showConfirmDialog(ifrm, "Desea eliminar el telefono?", "Confirmacion Eliminar Telefono", 0)) == 0) {
-                DaoTelefonoCliente daot = new DaoTelefonoCliente();
-                daot.eliminar(cliente.getId(), ifrm.getLsTelefonos().getSelectedValue());
+                DaoTelefonoConductor daot = new DaoTelefonoConductor();
+                daot.eliminar(conductor.getId(), ifrm.getLsTelefonos().getSelectedValue());
             }               
             llenarLista();
         } else if (e.getSource().equals(ifrm.getBtnEditTelefonos())){
             if ((JOptionPane.showConfirmDialog(ifrm, "Desea editar el telefono?", "Confirmacion Editar Telefono", 0)) == 0) {
-                DaoTelefonoCliente daot = new DaoTelefonoCliente();
-                daot.actualizar(cliente.getId(), ifrm.getTxtNueNumero().getText(), String.valueOf(ifrm.getCmbTelefonos().getSelectedItem()));
+                DaoTelefonoConductor daot = new DaoTelefonoConductor();
+                daot.actualizar(conductor.getId(), ifrm.getTxtNueNumero().getText(), String.valueOf(ifrm.getCmbTelefonos().getSelectedItem()));
             }   
             llenarLista();        
         }
-    }    
+    }     
 }
