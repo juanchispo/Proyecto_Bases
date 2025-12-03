@@ -12,8 +12,7 @@ public class main {
 
     public static void main(String args[]) {
         ControladorPrincipal contP = new ControladorPrincipal();
-        ControladorPrincipal cp = new ControladorPrincipal();
-        cp.iniciar();
+        
         contP.iniciar();
     }
 }

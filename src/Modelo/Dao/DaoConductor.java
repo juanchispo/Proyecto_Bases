@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
 
@@ -184,8 +185,7 @@ public class DaoConductor {
         ArrayList<String[]> resultados = new ArrayList<>();
         try {
             cnx = conn.getConexion();
-            try (PreparedStatement pst = cnx.prepareStatement(stc);
-                 ResultSet rst = pst.executeQuery()) {
+            try (PreparedStatement pst = cnx.prepareStatement(stc); ResultSet rst = pst.executeQuery()) {
 
                 while (rst.next()) {
                     String[] fila = new String[]{
@@ -203,6 +203,31 @@ public class DaoConductor {
         }
 
         return resultados.toArray(new String[resultados.size()][3]);
+    }
+
+    public HashMap<Integer, String> obtenerConductores() {
+        HashMap<Integer, String> mapaConductores = new HashMap<>();
+        Connection con = null;
+        String sql = "SELECT id_conductor, nombre FROM Conductor ORDER BY nombre";
+
+        try {
+            Connection cnx = conn.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    mapaConductores.put(
+                            rs.getInt("id_conductor"),
+                            rs.getString("nombre")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al cargar conductores: " + e.getMessage());
+        } finally {
+            conn.cerrarConexion(con);
+        }
+
+        return mapaConductores;
     }
 
     public void mensaje(String msg, String title) {
