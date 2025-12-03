@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class ControladorVehiculoConductor extends Controlador {
     private IFrmVehiculosConductor ifrm;
     private ControladorPrincipal ctrP;
+    private ArrayList<Vehiculo> vehiculos; 
     private Conductor conductor;
 
     public ControladorVehiculoConductor(IFrmVehiculosConductor ifrm, ControladorPrincipal ctrP, Conductor conductor) {
@@ -59,6 +60,7 @@ public class ControladorVehiculoConductor extends Controlador {
         if (e.getSource().equals(ifrm.getAgregar())) {
             llenarLista();
         } else if (e.getSource().equals(ifrm.getVer())) {
+            ifrm.getVehiculosCon();
             llenarLista();
         }
     }
