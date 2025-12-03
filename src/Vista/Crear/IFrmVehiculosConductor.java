@@ -73,7 +73,7 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
         lblAddModCliente.setText("Vehiculos Conductor");
 
         btnAddMod.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnAddMod.setText("CREAR");
+        btnAddMod.setText("AGREGAR");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -84,7 +84,7 @@ public class IFrmVehiculosConductor extends javax.swing.JInternalFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("jButton1");
+        jButton1.setText("BORRAR");
 
         javax.swing.GroupLayout pnlAddModClienteLayout = new javax.swing.GroupLayout(pnlAddModCliente);
         pnlAddModCliente.setLayout(pnlAddModClienteLayout);

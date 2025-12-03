@@ -318,11 +318,11 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     }
 
     public JButton getBtnTelefonosBA() {
-        return btnTelefonosBA;
+        return btnBA;
     }
 
     public void setBtnTelefonosBA(JButton btnTelefonosBA) {
-        this.btnTelefonosBA = btnTelefonosBA;
+        this.btnBA = btnTelefonosBA;
     }
 
     public JButton getBtnTelefonosCliente() {
@@ -693,13 +693,25 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.tbClientes = tbClientes;
     }
 
-    public JTable getTbClientes1() {
-        return tbClientes1;
+    public JButton getBtnBA() {
+        return btnBA;
     }
 
-    public void setTbClientes1(JTable tbClientes1) {
-        this.tbClientes1 = tbClientes1;
+    public void setBtnBA(JButton btnBA) {
+        this.btnBA = btnBA;
     }
+
+    public JTable getTbConsultas() {
+        return tbConsultas;
+    }
+
+    public void setTbConsultas(JTable tbConsultas) {
+        this.tbConsultas = tbConsultas;
+    }
+
+
+
+   
 
     public JTable getTbConduServ() {
         return tbConduServ;
@@ -917,10 +929,10 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         btnSiguienteBA = new javax.swing.JButton();
         separadorBA = new javax.swing.JSeparator();
         scTablaBA = new javax.swing.JScrollPane();
-        tbClientes1 = new javax.swing.JTable();
+        tbConsultas = new javax.swing.JTable();
         lblBA = new javax.swing.JLabel();
         SeparadorTBA = new javax.swing.JSeparator();
-        btnTelefonosBA = new javax.swing.JButton();
+        btnBA = new javax.swing.JButton();
         txtMostrandoBA = new javax.swing.JLabel();
         cmbBusquedas = new javax.swing.JComboBox<>();
         rdbFrecuentes = new javax.swing.JRadioButton();
@@ -1767,9 +1779,9 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         scTablaBA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         scTablaBA.setFocusable(false);
 
-        tbClientes1.setAutoCreateRowSorter(true);
-        tbClientes1.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        tbClientes1.setModel(new javax.swing.table.DefaultTableModel(
+        tbConsultas.setAutoCreateRowSorter(true);
+        tbConsultas.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        tbConsultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -1799,18 +1811,18 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbClientes1.setToolTipText("");
-        tbClientes1.setShowGrid(false);
-        scTablaBA.setViewportView(tbClientes1);
+        tbConsultas.setToolTipText("");
+        tbConsultas.setShowGrid(false);
+        scTablaBA.setViewportView(tbConsultas);
 
         lblBA.setFont(new java.awt.Font("MS PGothic", 0, 24)); // NOI18N
         lblBA.setText("Busqueda Avanzada");
 
-        btnTelefonosBA.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
-        btnTelefonosBA.setText("Consultar");
-        btnTelefonosBA.addActionListener(new java.awt.event.ActionListener() {
+        btnBA.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
+        btnBA.setText("Consultar");
+        btnBA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTelefonosBAActionPerformed(evt);
+                btnBAActionPerformed(evt);
             }
         });
 
@@ -1861,7 +1873,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                             .addComponent(txtSQL))
                         .addGap(161, 161, 161))
                     .addComponent(scTablaBA)
-                    .addComponent(btnTelefonosBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
         pnlBusquedaAvanzadaLayout.setVerticalGroup(
@@ -1880,7 +1892,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
                     .addComponent(cmbBusquedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTelefonosBA)
+                .addComponent(btnBA)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(scTablaBA, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
@@ -2026,9 +2038,9 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMasDetallesServiciosActionPerformed
 
-    private void btnTelefonosBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelefonosBAActionPerformed
+    private void btnBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTelefonosBAActionPerformed
+    }//GEN-LAST:event_btnBAActionPerformed
 
     private void rdbAvanzadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAvanzadasActionPerformed
         // TODO add your handling code here:
@@ -2057,6 +2069,7 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAnteriorConductor;
     private javax.swing.JButton btnAnteriorServicios;
     private javax.swing.JButton btnAnteriorVehiculosVehiculos;
+    private javax.swing.JButton btnBA;
     private javax.swing.JButton btnBorrarCliente;
     private javax.swing.JButton btnBorrarConductor;
     private javax.swing.JButton btnBorrarServicios;
@@ -2081,7 +2094,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSiguienteConductor;
     private javax.swing.JButton btnSiguienteServicios;
     private javax.swing.JButton btnSiguienteVehiculos;
-    private javax.swing.JButton btnTelefonosBA;
     private javax.swing.JButton btnTelefonosCliente;
     private javax.swing.JButton btnTelefonosConductor;
     private javax.swing.JButton btnVehiculosConductor;
@@ -2128,9 +2140,9 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator separadorVehiculos;
     private javax.swing.JTable tbClienServ;
     private javax.swing.JTable tbClientes;
-    private javax.swing.JTable tbClientes1;
     private javax.swing.JTable tbConduServ;
     private javax.swing.JTable tbConductores;
+    private javax.swing.JTable tbConsultas;
     private javax.swing.JTable tbServRec;
     private javax.swing.JTable tbServicios;
     private javax.swing.JTable tbVehiculos;

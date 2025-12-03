@@ -28,7 +28,8 @@ public class ControladorVehiculo extends ControladorAdministrador{
     int pgVehiculos;
     AtomicInteger rsVehiculos;
     
-    public ControladorVehiculo(IFrmAdministrador ifrm) {
+    public ControladorVehiculo(IFrmAdministrador ifrm, ControladorPrincipal ctrlP) {
+        super.ctrlP = ctrlP;
         this.ifrm = ifrm;
         this.rsVehiculos = new AtomicInteger();
         this.pgVehiculos = 1;

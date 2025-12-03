@@ -101,6 +101,7 @@ public class ControladorPgPrincipal extends Controlador{
     
     @Override
     public void iniciar() {
+        actualizarTbServiPri();
         cargarGananciasUltimoMes();
         cargarClienteMasServicios();
         cargarConductorMasServicios();

@@ -205,6 +205,30 @@ public class DaoVehiculoConductor {
 
         return modelo;
     }
+    
+    //actualizar .
+    public boolean actualizarConductor(int idActual, int idNuevo) {
+    Connection con = null;
+    String sql = "UPDATE Conductor SET id_conductor = ? WHERE id_conductor = ?";
+    boolean exito = false;
+
+    try {
+        Connection cnx = conn.getConexion();
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idNuevo);
+            ps.setInt(2, idActual);
+
+            exito = ps.executeUpdate() > 0;
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al actualizar ID de conductor: " + e.getMessage());
+    } finally {
+        conn.cerrarConexion(con);
+    }
+
+    return exito;
+}
+
 
     public void mensaje(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title, 1);

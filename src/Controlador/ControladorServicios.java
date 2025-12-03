@@ -26,7 +26,8 @@ public class ControladorServicios extends ControladorAdministrador{
     int pgServicios;
     AtomicInteger rsServicios;
     
-    public ControladorServicios(IFrmAdministrador ifrm) {
+    public ControladorServicios(IFrmAdministrador ifrm, ControladorPrincipal ctrlP) {
+        super.ctrlP = ctrlP;
         this.ifrm = ifrm;
         this.rsServicios = new AtomicInteger();
         this.pgServicios = 1;

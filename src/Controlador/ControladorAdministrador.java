@@ -31,8 +31,8 @@ import javax.swing.JOptionPane;
  * @author Dyl
  */
 public class ControladorAdministrador extends Controlador{
-    IFrmAdministrador ifrm;
-    ControladorPrincipal ctrlP;
+    protected IFrmAdministrador ifrm;
+    protected ControladorPrincipal ctrlP;
  
     
 
@@ -58,15 +58,17 @@ public class ControladorAdministrador extends Controlador{
 
     private void inicializarControladores(){
         ControladorPgPrincipal cnP = new ControladorPgPrincipal(ifrm);
-        ControladorCliente cnC = new ControladorCliente(ifrm);
-        ControladorConductor cnCC = new ControladorConductor(ifrm);
-        ControladorVehiculo cnV = new ControladorVehiculo(ifrm);
-        ControladorServicios cnS = new ControladorServicios(ifrm);
+        ControladorCliente cnC = new ControladorCliente(ifrm, ctrlP);
+        ControladorConductor cnCC = new ControladorConductor(ifrm, ctrlP);
+        ControladorVehiculo cnV = new ControladorVehiculo(ifrm, ctrlP);
+        ControladorServicios cnS = new ControladorServicios(ifrm, ctrlP);
+        ControladorBusqueda cB = new ControladorBusqueda(ifrm);
         cnP.iniciar();
         cnC.iniciar();
         cnCC.iniciar();
         cnV.iniciar();
         cnS.iniciar();
+        cB.iniciar();
     }
     
     @Override
