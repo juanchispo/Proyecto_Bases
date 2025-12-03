@@ -2,25 +2,31 @@
 package Modelo;
 
 public class Vehiculo {
-   private int placa;
+   private String placa;
    private String modelo;
    private Marca marca;
-   private String tipo_servicio;
 
-    public Vehiculo(int placa, String modelo, Marca marca, String tipo_servicio) {
+    public Vehiculo(String placa, String modelo, Marca marca) {
         this.placa = placa;
         this.modelo = modelo;
         this.marca = marca;
-        this.tipo_servicio = tipo_servicio;
     }
 
-    public int getPlaca() {
+    public Vehiculo() {
+        this.placa = "";
+        this.modelo = "";
+        this.marca = null;
+    }
+
+    public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(int placa) {
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
+
+   
 
     public String getModelo() {
         return modelo;
@@ -36,16 +42,6 @@ public class Vehiculo {
 
     public void setMarca(Marca marca) {
         this.marca = marca;
-    }
-
-  
-
-    public String getTipo_servicio() {
-        return tipo_servicio;
-    }
-
-    public void setTipo_servicio(String tipo_servicio) {
-        this.tipo_servicio = tipo_servicio;
     }
    
    

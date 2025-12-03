@@ -69,27 +69,26 @@ public class DaoMarca extends Conexion {
     }
 
     // CONSULTAR → SELECT
-    public boolean consultar(Marca m) {
+    public Marca consultar(int id) {
         Connection cnx = getConexion();
         String stc = "SELECT * FROM Marca WHERE id_marca = ?";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, m.getId_marca());
+            pst.setInt(1, id);
 
             ResultSet rst = pst.executeQuery();
-
+            
             if (rst.next()) {
-                m.setId_marca(rst.getInt("id_marca"));
-                m.setMarca(rst.getString("marca"));
-                return true;
+                Marca marca = new Marca(rst.getInt("id_marca"), rst.getString("marca"));
+                return marca;
             }
 
         } catch (SQLException ex) {
             System.err.println("Error al ejecutar el SELECT -> " + ex);
             mensaje("Error al ejecutar el SELECT", "Consultar Marca");
         }
-        return false;
+        return null;
     }
 
     public void mensaje(String msg, String title) {

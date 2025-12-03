@@ -6,102 +6,170 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class DaoVehiculo extends Conexion {
+public class DaoVehiculo extends Conexion  {
 
-    // AGREGAR → INSERT
-    public boolean agregar(Vehiculo v) {
-        Connection cnx = getConexion();
-        String stc = "INSERT INTO Vehiculo (placa, modelo, marca, tipo_servicio) "
-                   + "VALUES (?, ?, ?, ?)";
+    private Conexion conexionBD;
+    private DaoMarca marcaDao; // Dependencia para cargar la Marca
 
-        try {
-            PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, v.getPlaca());
-            pst.setString(2, v.getModelo());
-            pst.setInt(3, v.getMarca().getId_marca());
-            pst.setString(4, v.getTipo_servicio());
-
-            pst.executeUpdate();
-            return true;
-
-        } catch (SQLException ex) {
-            System.err.println("Error al ejecutar el INSERT -> " + ex);
-            mensaje("Error al ejecutar el INSERT", "Agregar!!!");
-        }
-        return false;
+    public DaoVehiculo() {
+        this.conexionBD = new Conexion();
+        this.marcaDao = new DaoMarca();
     }
 
-    // ELIMINAR → DELETE
-    public boolean eliminar(int placa) {
-        Connection cnx = getConexion();
-        String stc = "DELETE FROM Vehiculo WHERE placa = ?";
+    // --- 1. INSERTAR (Crear) ---
+    public boolean Insertar(Vehiculo vehiculo) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "INSERT INTO Vehiculo (placa, modelo, marca) VALUES (?, ?, ?)";
+        boolean exito = false;
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, placa);
+            conexionBD.getConexion();
+            con = conexionBD.getConexion();
+            ps = con.prepareStatement(sql);
 
-            pst.executeUpdate();
-            return true;
+            ps.setString(1, vehiculo.getPlaca());
+            ps.setString(2, vehiculo.getModelo());
+            ps.setInt(3, vehiculo.getMarca().getId_marca()); // Asumo Marca.getId()
 
-        } catch (SQLException ex) {
-            System.err.println("Error al ejecutar el DELETE -> " + ex);
-            mensaje("Error al ejecutar el DELETE", "Eliminar!!!");
+            exito = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al insertar vehículo: " + e.getMessage());
+        } finally {
+            cerrarRecursos(con, ps, null);
         }
-        return false;
+        return exito;
     }
 
-    // ACTUALIZAR → UPDATE
-    public boolean actualizar(Vehiculo v) {
-        Connection cnx = getConexion();
-        String stc = "UPDATE Vehiculo SET modelo = ?, marca = ?, tipo_servicio = ? "
-                   + "WHERE placa = ?";
+    // --- 2. CONSULTAR (Listar Todos) ---
+    public ArrayList<Vehiculo> ConsultarTodos() {
+        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT placa, modelo, marca FROM Vehiculo";
 
         try {
-            PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setString(1, v.getModelo());
-            pst.setInt(2, v.getMarca().getId_marca());
-            pst.setString(3, v.getTipo_servicio());
-            pst.setInt(4, v.getPlaca());
+            conexionBD.getConexion();
+            con = conexionBD.getConexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
 
-            pst.executeUpdate();
-            return true;
+            while (rs.next()) {
+                String marcaId = rs.getString("marca");
+                
+                // DELEGACIÓN: Cargar el objeto Marca completo
+                Marca marcaCompleta = marcaDao.consultar(Integer.parseInt(marcaId));
+                
+                Vehiculo v = new Vehiculo();
+                v.setPlaca(rs.getString("placa"));
+                v.setModelo(rs.getString("modelo"));
+                v.setMarca(marcaCompleta);
 
-        } catch (SQLException ex) {
-            System.err.println("Error al ejecutar el UPDATE -> " + ex);
-            mensaje("Error al ejecutar el UPDATE", "Actualizar!!!");
-        }
-        return false;
-    }
-
-    // CONSULTAR → SELECT
-    public boolean consultar(Vehiculo v) {
-        Connection cnx = getConexion();
-        String stc = "SELECT * FROM Vehiculo WHERE placa = ?";
-
-        try {
-            PreparedStatement pst = cnx.prepareStatement(stc);
-            pst.setInt(1, v.getPlaca());
-
-            ResultSet rst = pst.executeQuery();
-
-            if (rst.next()) {
-                v.setPlaca(rst.getInt("placa"));
-                v.setModelo(rst.getString("modelo"));
-                v.setMarca( new Marca(rst.getInt("marca"), ""));
-                v.setTipo_servicio(rst.getString("tipo_servicio"));
-                return true;
+                vehiculos.add(v);
             }
-
-        } catch (SQLException ex) {
-            System.err.println("Error al ejecutar el SELECT -> " + ex);
-            mensaje("Error al ejecutar el SELECT", "Consultar!!!");
+        } catch (SQLException e) {
+            System.err.println("Error al consultar vehículos: " + e.getMessage());
+        } finally {
+            cerrarRecursos(con, ps, rs);
         }
-        return false;
+        return vehiculos;
+    }
+    
+    // Método auxiliar para FacturaProductoDao
+    public Vehiculo ConsultarPorId(String placa) {
+        Vehiculo vehiculo = null;
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT placa, modelo, marca FROM Vehiculo WHERE placa = ?";
+
+        try {
+            conexionBD.getConexion();
+            con = conexionBD.getConexion();
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, placa);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String marcaId = rs.getString("marca");
+                
+                Marca marcaCompleta = marcaDao.consultar(Integer.parseInt(marcaId));
+                
+                vehiculo = new Vehiculo();
+                vehiculo.setPlaca(rs.getString("placa"));
+                vehiculo.setModelo(rs.getString("modelo"));
+                vehiculo.setMarca(marcaCompleta);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al consultar vehículo por placa: " + e.getMessage());
+        } finally {
+            cerrarRecursos(con, ps, rs);
+        }
+        return vehiculo;
     }
 
-    public void mensaje(String msg, String title) {
-        JOptionPane.showMessageDialog(null, msg, title, 1);
+
+    // --- 3. ACTUALIZAR ---
+    public boolean Actualizar(Vehiculo vehiculo) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "UPDATE Vehiculo SET modelo = ?, marca = ? WHERE placa = ?";
+        boolean exito = false;
+
+        try {
+            conexionBD.getConexion();
+            con = conexionBD.getConexion();
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, vehiculo.getModelo());
+            ps.setInt(2, vehiculo.getMarca().getId_marca());
+            ps.setString(3, vehiculo.getPlaca()); // Cláusula WHERE
+
+            exito = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar vehículo: " + e.getMessage());
+        } finally {
+            cerrarRecursos(con, ps, null);
+        }
+        return exito;
+    }
+
+    // --- 4. ELIMINAR ---
+    public boolean Eliminar(String placa) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM Vehiculo WHERE placa = ?";
+        boolean exito = false;
+
+        try {
+            conexionBD.getConexion();
+            con = conexionBD.getConexion();
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, placa);
+
+            exito = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar vehículo: " + e.getMessage());
+        } finally {
+            cerrarRecursos(con, ps, null);
+        }
+        return exito;
+    }
+    
+    // Método auxiliar (debe estar en la clase)
+    private void cerrarRecursos(Connection con, PreparedStatement ps, ResultSet rs) {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (con != null) con.close(); 
+        } catch (SQLException e) {
+            System.err.println("Error al cerrar recursos: " + e.getMessage());
+        }
     }
 }
