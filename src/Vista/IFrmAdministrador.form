@@ -104,7 +104,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblPrincipal" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                                      <Component id="lblServRec" alignment="0" pref="277" max="32767" attributes="0"/>
+                                      <Component id="lblServRec" alignment="0" pref="280" max="32767" attributes="0"/>
                                       <Component id="scTablaServRec" alignment="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
@@ -112,7 +112,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblClienServ" min="-2" pref="196" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblGanancias" pref="98" max="32767" attributes="0"/>
+                                          <Component id="lblGanancias" pref="104" max="32767" attributes="0"/>
                                           <EmptySpace min="229" pref="229" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -408,7 +408,7 @@
                                       <Component id="btnEditarCliente" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnBorrarCliente" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnCrearCliente" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnTelefonosCliente" alignment="0" pref="111" max="32767" attributes="0"/>
+                                      <Component id="btnTelefonosCliente" alignment="0" pref="117" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -419,7 +419,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnSiguienteCliente" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="scTablaClientes" alignment="0" pref="684" max="32767" attributes="0"/>
+                                      <Component id="scTablaClientes" alignment="0" pref="687" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="SeparadorTCliente" alignment="0" max="32767" attributes="0"/>
@@ -668,7 +668,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnSiguienteConductor" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="scTablaConductores" alignment="0" pref="710" max="32767" attributes="0"/>
+                                      <Component id="scTablaConductores" alignment="0" pref="723" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="SeparadorTConductor" alignment="0" max="32767" attributes="0"/>
@@ -935,7 +935,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnSiguienteVehiculos" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="scTablaVehiculos" alignment="0" pref="696" max="32767" attributes="0"/>
+                                      <Component id="scTablaVehiculos" alignment="0" pref="709" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="SeparadorTVehiculos" alignment="0" max="32767" attributes="0"/>
@@ -1153,7 +1153,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnSiguienteServicios" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="scTablaServicios" alignment="0" pref="693" max="32767" attributes="0"/>
+                                      <Component id="scTablaServicios" alignment="0" pref="706" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="SeparadorTServicios" alignment="0" max="32767" attributes="0"/>
@@ -1390,35 +1390,25 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="SeparadorTBA" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtMostrandoBA" max="32767" attributes="0"/>
-                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnAnteriorBA" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnSiguienteBA" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="520" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lblBA" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="rdbFrecuentes" max="32767" attributes="0"/>
-                                          <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="cmbBusquedas" alignment="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="rdbAvanzadas" max="32767" attributes="0"/>
-                                          <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtSQL" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="scTablaBA" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnBA" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="lblBA" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="rdbFrecuentes" max="32767" attributes="0"/>
+                                      <Component id="rdbAvanzadas" pref="161" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtSQL" pref="182" max="32767" attributes="0"/>
+                                      <Component id="cmbBusquedas" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="450" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
@@ -1431,27 +1421,26 @@
                           <Component id="lblBA" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="SeparadorTBA" min="-2" pref="3" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="rdbFrecuentes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdbAvanzadas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cmbBusquedas" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtSQL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnBA" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="scTablaBA" min="-2" pref="145" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMostrandoBA" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAnteriorBA" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnSiguienteBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="rdbFrecuentes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbBusquedas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="rdbAvanzadas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtSQL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="jScrollPane1" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnBA" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="scTablaBA" min="-2" pref="193" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="separadorBA" min="-2" pref="375" max="-2" attributes="0"/>
@@ -1461,25 +1450,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnAnteriorBA">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="MS PGothic" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Anterior"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnteriorBAActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnSiguienteBA">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="MS PGothic" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Siguiente"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JSeparator" name="separadorBA">
                   <Properties>
                     <Property name="orientation" type="int" value="1"/>
@@ -1547,14 +1517,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBAActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtMostrandoBA">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="MS PGothic" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Mostrando 1 de 50"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JComboBox" name="cmbBusquedas">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1591,6 +1553,22 @@
                     <Property name="text" type="java.lang.String" value="SELECT * FROM empleados"/>
                   </Properties>
                 </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="jTextArea1">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="1. Valores totales de los servicios realizados diferenciando si corresponden a transporte de pasajeros o alimentos y la categor&#xed;a a la que corresponde.&#xa;2. Cantidad de servicios de pasajeros y de alimentos por mes,&#xa;3. Datos de los clientes que han solicitado servicios durante un per&#xed;odo de tiempo organizados de mayor a menor,&#xa;4. Valores totales de los servicios de acuerdo con su medio de pago,&#xa;5. Promedio de valor total de servicio de clientes dependiendo la nacionalidad,&#xa;6. Datos de conductores que han realizado servicios durante un periodo,&#xa;7. Cantidad de servicios de pasajeros de un g&#xe9;nero determinado&#xa;"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlConfiguracion">
@@ -1616,7 +1594,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblConfiguracion" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="689" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="698" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="SeparadorTConfiguracion" max="32767" attributes="0"/>
