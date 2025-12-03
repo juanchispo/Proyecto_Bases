@@ -159,26 +159,6 @@ public class DaoVehiculo {
         return exito;
     }
     
-    public DefaultComboBoxModel<String> obtenerPlacasVehiculos() {
-        DefaultComboBoxModel<String> modeloCombo = new DefaultComboBoxModel<>();
-        Connection con = null;
-        String sql = "SELECT placa FROM Vehiculo ORDER BY placa";
-
-        try {
-            con = conexionBD.getConexion();
-            try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
-
-                while (rs.next()) {
-                    modeloCombo.addElement(rs.getString("placa"));
-                }
-            }
-        } catch (SQLException e) {
-            System.err.println("Error al cargar placas de vehículos: " + e.getMessage());
-        } finally {
-            conexionBD.cerrarConexion(con);
-        }
-
-        return modeloCombo;
-    }
+   
 
 }

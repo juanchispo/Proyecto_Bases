@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 public class DaoVehiculoConductor {
@@ -103,6 +105,53 @@ public class DaoVehiculoConductor {
             conn.cerrarConexion(cnx);
         }
         return false;
+    }
+
+    public DefaultComboBoxModel<String> obtenerPlacasVehiculos() {
+        DefaultComboBoxModel<String> modeloCombo = new DefaultComboBoxModel<>();
+        Connection cnx = null;
+        String sql = "SELECT placa FROM Vehiculo ORDER BY placa";
+
+        try {
+            cnx = conn.getConexion();
+            try (PreparedStatement ps = cnx.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    modeloCombo.addElement(rs.getString("placa"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al cargar placas de vehículos: " + e.getMessage());
+        } finally {
+            conn.cerrarConexion(cnx);
+        }
+
+        return modeloCombo;
+    }
+
+    public HashMap<Integer, String> obtenerConductores() {
+        HashMap<Integer, String> mapaConductores = new HashMap<>();
+        Connection con = null;
+        String sql = "SELECT id_conductor, nombre FROM Conductor ORDER BY nombre";
+
+        try {
+            Connection cnx = conn.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    mapaConductores.put(
+                            rs.getInt("id_conductor"),
+                            rs.getString("nombre")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al cargar conductores: " + e.getMessage());
+        } finally {
+            conn.cerrarConexion(con);
+        }
+
+        return mapaConductores;
     }
 
     public void mensaje(String msg, String title) {
