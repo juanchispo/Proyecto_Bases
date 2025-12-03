@@ -35,6 +35,7 @@ public class ControladorModConductor extends Controlador{
         ifrm.getTxtDireccion().setText(conductor.getDireccion());
         ifrm.getTxtId().setText(String.valueOf(conductor.getId()));
         ifrm.getTxtNombre().setText(conductor.getNombre());
+        ifrm.getTxtFotografia().setText(conductor.getFotografia());
     }
     
     public void llenarCmb(){
@@ -104,6 +105,7 @@ public class ControladorModConductor extends Controlador{
             System.out.println(String.valueOf(ifrm.getCmbNacionalidad().getSelectedItem()));
             conductor.setNacionalidad(new Nacionalidad(ifrm.getCmbNacionalidad().getSelectedIndex() + 1, String.valueOf(ifrm.getCmbNacionalidad().getSelectedItem())));
             conductor.setGenero(new Genero(ifrm.getCmbGenero().getSelectedIndex() + 1, String.valueOf(ifrm.getCmbGenero().getSelectedItem())));
+            conductor.setFotografia(ifrm.getTxtFotografia().getText());
             DaoConductor daoc = new DaoConductor();
             boolean actualizar = daoc.actualizar(conductor);
             if (actualizar) {

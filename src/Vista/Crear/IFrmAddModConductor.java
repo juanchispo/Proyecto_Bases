@@ -21,6 +21,22 @@ import javax.swing.JTextField;
  */
 public class IFrmAddModConductor extends javax.swing.JInternalFrame {
 
+    public JLabel getLblFotografia() {
+        return lblFotografia;
+    }
+
+    public void setLblFotografia(JLabel lblFotografia) {
+        this.lblFotografia = lblFotografia;
+    }
+
+    public JTextField getTxtFotografia() {
+        return txtFotografia;
+    }
+
+    public void setTxtFotografia(JTextField txtFotografia) {
+        this.txtFotografia = txtFotografia;
+    }
+
     public JSeparator getSeparadorAddMod() {
         return SeparadorAddMod;
     }
@@ -236,6 +252,8 @@ public class IFrmAddModConductor extends javax.swing.JInternalFrame {
         btnEditTelefonos = new javax.swing.JButton();
         scLsTelefonos = new javax.swing.JScrollPane();
         lsTelefonos = new javax.swing.JList<>();
+        lblFotografia = new javax.swing.JLabel();
+        txtFotografia = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -312,6 +330,8 @@ public class IFrmAddModConductor extends javax.swing.JInternalFrame {
         lsTelefonos.setFont(new java.awt.Font("MS PGothic", 0, 12)); // NOI18N
         scLsTelefonos.setViewportView(lsTelefonos);
 
+        lblFotografia.setText("Fotografia");
+
         javax.swing.GroupLayout pnlAddModConductorLayout = new javax.swing.GroupLayout(pnlAddModConductor);
         pnlAddModConductor.setLayout(pnlAddModConductorLayout);
         pnlAddModConductorLayout.setHorizontalGroup(
@@ -338,7 +358,9 @@ public class IFrmAddModConductor extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(scLsTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlAddModConductorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblFotografia)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAddModConductorLayout.createSequentialGroup()
                                 .addGroup(pnlAddModConductorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnlAddModConductorLayout.createSequentialGroup()
@@ -365,9 +387,10 @@ public class IFrmAddModConductor extends javax.swing.JInternalFrame {
                                 .addComponent(txtNombre)
                                 .addGap(20, 20, 20))
                             .addGroup(pnlAddModConductorLayout.createSequentialGroup()
-                                .addGroup(pnlAddModConductorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlAddModConductorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                                    .addComponent(cmbGenero, javax.swing.GroupLayout.Alignment.LEADING, 0, 138, Short.MAX_VALUE)
+                                    .addComponent(txtFotografia, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(19, 19, 19))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAddModConductorLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -400,16 +423,24 @@ public class IFrmAddModConductor extends javax.swing.JInternalFrame {
                             .addComponent(btnAddTelefonos)
                             .addComponent(lblGenero)
                             .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBorrarTelefonos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditTelefonos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNueNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlAddModConductorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlAddModConductorLayout.createSequentialGroup()
+                                .addGap(0, 5, Short.MAX_VALUE)
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBorrarTelefonos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEditTelefonos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNueNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlAddModConductorLayout.createSequentialGroup()
+                                .addGroup(pnlAddModConductorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFotografia)
+                                    .addComponent(txtFotografia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(scLsTelefonos))
                 .addGap(18, 18, 18)
                 .addComponent(btnAddMod)
@@ -458,6 +489,7 @@ public class IFrmAddModConductor extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cmbTelefonos;
     private javax.swing.JLabel lblAddModConductor;
     private javax.swing.JLabel lblDireccion;
+    private javax.swing.JLabel lblFotografia;
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNacionalidad;
@@ -466,6 +498,7 @@ public class IFrmAddModConductor extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlAddModConductor;
     private javax.swing.JScrollPane scLsTelefonos;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtFotografia;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNueNumero;
