@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.Conductor;
 import Modelo.Dao.DaoVehiculoConductor;
+import Modelo.Vehiculo;
 import Modelo.VehiculoConductor;
 import Vista.Crear.IFrmVehiculosConductor;
 import java.awt.event.ActionEvent;
@@ -25,71 +26,143 @@ public class ControladorVehiculoConductor extends Controlador {
     }
 
     public void llenarCmb() {
-        DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
         DaoVehiculoConductor dao = new DaoVehiculoConductor();
-        for (VehiculoConductor vc : dao.consultar(conductor)) {
-            modelo.addElement(String.valueOf(vc.getId_placa()));
+        // Obtener placas de vehículos disponibles
+        DefaultComboBoxModel<String> modelo = dao.obtenerPlacasVehiculos();
+        
+        // Crear un nuevo modelo y copiar los elementos
+        DefaultComboBoxModel<String> lista = new DefaultComboBoxModel<>();
+        for (int i = 0; i < modelo.getSize(); i++) {
+            lista.addElement(modelo.getElementAt(i));
         }
-        ifrm.getCmbVehiculos().setModel(modelo);
+        
+        ifrm.getjComboBox1().setModel(lista);
     }
-
+    
     @Override
     public void iniciar() {
         inicializarBotones(ifrm);
-        ifrm.getLblVehiculos().setText("VEHÍCULOS DEL CONDUCTOR");
+        ifrm.getLblAddModCliente().setText("VEHÍCULOS DEL CONDUCTOR: " + conductor.getNombre());
         ctrP.getFrm().getEscritorio().add(ifrm);
         llenarLista();
         ifrm.setVisible(true);
     }
-
+    
     public void llenarLista() {
         DaoVehiculoConductor dao = new DaoVehiculoConductor();
+        
+        // Obtener conductores para mostrar en la lista
+        DefaultListModel<String> listaConductores = dao.listarConductores();
+        
+        // Crear nuevo modelo para vehículos del conductor
         DefaultListModel<String> lista = new DefaultListModel<>();
-        for (VehiculoConductor vc : dao.consultar(conductor)) {
-            lista.addElement("Placa ID: " + vc.getId_placa());
+        
+        // Obtener vehículos asignados a este conductor específico
+        DefaultListModel<String> vehiculosConductor = dao.obtenerVehiculosPorConductor(conductor.getIdConductor());
+        
+        // Copiar elementos al nuevo modelo
+        for (int i = 0; i < vehiculosConductor.getSize(); i++) {
+            lista.addElement(vehiculosConductor.getElementAt(i));
         }
-        ifrm.getLsVehiculos().setModel(lista);
+        
+        ifrm.getjList1().setModel(lista);
         llenarCmb();
     }
 
-    public boolean validarPlaca(String idPlaca) {
-        return idPlaca != null && !idPlaca.trim().isEmpty();
+    public boolean validarPlaca(String placa) {
+        DaoVehiculoConductor dao = new DaoVehiculoConductor();
+        return placa != null && !placa.trim().isEmpty() && dao.existePlaca(placa);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         DaoVehiculoConductor dao = new DaoVehiculoConductor();
-
-        if (e.getSource().equals(ifrm.getBtnAddVehiculo())) {
-            String idPlaca = ifrm.getTxtPlaca().getText().trim();
-            if (validarPlaca(idPlaca)) {
-                VehiculoConductor vc = new VehiculoConductor(Integer.parseInt(idPlaca), conductor.getId());
-                dao.agregar(vc);
-            }
-            llenarLista();
-
-        } else if (e.getSource().equals(ifrm.getBtnBorrarVehiculo())) {
-            if (JOptionPane.showConfirmDialog(ifrm, "¿Desea eliminar el vehículo?", "Confirmación Eliminar Vehículo", 0) == 0) {
-                String seleccion = ifrm.getLsVehiculos().getSelectedValue();
-                if (seleccion != null) {
-                    int idPlaca = Integer.parseInt(seleccion.replace("Placa ID: ", "").trim());
-                    dao.eliminar(new VehiculoConductor(idPlaca, conductor.getId()));
+        
+        // Botón AGREGAR - Asignar vehículo al conductor
+        if (e.getSource().equals(ifrm.getBtnAddMod())) { 
+            String placaSeleccionada = (String) ifrm.getjComboBox1().getSelectedItem();
+            
+            if (validarPlaca(placaSeleccionada)) {
+                // Verificar si la placa ya está asignada
+                if (dao.placaYaAsignada(placaSeleccionada)) {
+                    JOptionPane.showMessageDialog(ifrm, 
+                        "Esta placa ya está asignada a otro conductor", 
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
-            }
-            llenarLista();
-
-        } else if (e.getSource().equals(ifrm.getBtnEditVehiculo())) {
-            if (JOptionPane.showConfirmDialog(ifrm, "¿Desea editar el vehículo?", "Confirmación Editar Vehículo", 0) == 0) {
-                String nuevaPlaca = ifrm.getTxtNuevaPlaca().getText().trim();
-                String placaAnterior = String.valueOf(ifrm.getCmbVehiculos().getSelectedItem());
-                if (validarPlaca(nuevaPlaca) && placaAnterior != null) {
-                    dao.actualizar(
-                        new VehiculoConductor(Integer.parseInt(nuevaPlaca), conductor.getId()),
-                        new VehiculoConductor(Integer.parseInt(placaAnterior), conductor.getId())
-                    );
+                
+                // Obtener el vehículo completo por la placa
+                Vehiculo vehiculo = dao.consultarVehiculoPorPlaca(placaSeleccionada);
+                
+                if (vehiculo != null) {
+                    // Crear la relación Vehículo-Conductor
+                    VehiculoConductor vc = new VehiculoConductor(vehiculo, conductor);
+                    
+                    // Guardar en la base de datos
+                    if (dao.asignarVehiculoConductor(vc)) {
+                        JOptionPane.showMessageDialog(ifrm, 
+                            "Vehículo " + vehiculo.getPlaca() + " asignado al conductor " + conductor.getNombre(),
+                            "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(ifrm, 
+                            "Error al asignar el vehículo", 
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(ifrm, 
+                    "Placa inválida o no existe", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
             }
             llenarLista();
+            
+        // Botón BORRAR - Eliminar vehículo del conductor
+        } else if (e.getSource().equals(ifrm.getjButton1())) {
+            String seleccion = ifrm.getjList1().getSelectedValue();
+            
+            if (seleccion != null && !seleccion.trim().isEmpty()) {
+                // Extraer la placa del texto seleccionado
+                String placa = seleccion.split(" - ")[0];
+                
+                if (JOptionPane.showConfirmDialog(ifrm, 
+                    "¿Desea eliminar el vehículo " + placa + " del conductor " + conductor.getNombre() + "?", 
+                    "Confirmación Eliminar Vehículo", 
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    
+                    if (dao.eliminarVehiculoConductor(placa, conductor.getIdConductor())) {
+                        JOptionPane.showMessageDialog(ifrm, 
+                            "Vehículo eliminado correctamente",
+                            "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(ifrm, 
+                            "Error al eliminar el vehículo",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(ifrm, 
+                    "Seleccione un vehículo de la lista",
+                    "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+            llenarLista();
+            
+        // Si necesitas botón EDITAR (para cambiar vehículo asignado)
+        } else if (e.getSource().equals(ifrm.getBtnAddMod())) {
+            // Este sería para editar, pero normalmente en relaciones muchos a muchos
+            // se hace eliminando y agregando nuevo
+            JOptionPane.showMessageDialog(ifrm, 
+                "Para cambiar un vehículo, elimine el actual y agregue uno nuevo",
+                "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    // Método para manejar la selección en el ComboBox
+    public void actualizarInfoVehiculo(String placa) {
+        DaoVehiculoConductor dao = new DaoVehiculoConductor();
+        Vehiculo vehiculo = dao.consultarVehiculoPorPlaca(placa);
+        
+        if (vehiculo != null) {
+           
         }
     }
 }
