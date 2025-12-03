@@ -1,5 +1,6 @@
 package Modelo.Dao;
 
+import Modelo.Marca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import Modelo.VehiculoTipoServicio;
 import Modelo.Vehiculo;
 import Modelo.TipoServicio;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
 
 public class DaoVehiculoTipoServicio {
@@ -80,7 +82,46 @@ public class DaoVehiculoTipoServicio {
         }
         return lista;
     }
+    
+    public ArrayList<VehiculoTipoServicio> listar(int offset, int limit, AtomicInteger resultados) {
+        ArrayList<VehiculoTipoServicio> lista = new ArrayList<>();
+        Connection con = null;
+        String sql = "SELECT V.placa, V.modelo, M.id_marca, M.marca AS nombre_marca, "
+                + "VS.id_tipo_servicio, TS.nombre_tipo_servicio, COUNT(*) OVER() "
+                + "AS total_registros FROM Vehiculo AS "
+                + "V LEFT JOIN Marca AS M ON V.marca = M.id_marca LEFT JOIN "
+                + "VehiculoServicio AS VS ON V.placa = VS.id_placa LEFT JOIN "
+                + "TipoServicio AS TS ON VS.id_tipo_servicio = TS.id_tipo_servicio "
+                + "ORDER BY V.placa LIMIT ? OFFSET ?";
 
+        try {
+            con = conexionBD.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, limit);
+                ps.setInt(2, offset);
+                
+                
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        int servicioId = rs.getInt("id_tipo_servicio");
+                        Marca marca = new Marca(rs.getInt("id_marca"), rs.getString("nombre_marca"));
+                        Vehiculo vehiculo = new Vehiculo(rs.getString("placa"), rs.getString("modelo"), marca);
+                        TipoServicio servicio = new TipoServicio(rs.getInt("id_tipo_servicio"), rs.getString("nombre_tipo_servicio"));
+
+                        VehiculoTipoServicio vts = new VehiculoTipoServicio(vehiculo, servicio);
+                        lista.add(vts);
+                        resultados.set(rs.getInt("total_registros"));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al consultar Vehiculo-TipoServicio: " + e.getMessage());
+        } finally {
+            conexionBD.cerrarConexion(con);
+        }
+        return lista;
+    }
+    
     public boolean Eliminar(String placa, int servicioId) {
         Connection con = null;
         String sql = "DELETE FROM VehiculoServicio WHERE id_placa = ? AND id_tipo_servicio = ?";

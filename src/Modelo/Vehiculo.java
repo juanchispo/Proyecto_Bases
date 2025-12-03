@@ -44,5 +44,11 @@ public class Vehiculo {
         this.marca = marca;
     }
    
-   
+    public Object[] getDatos(){
+        Object [] datos = new Object[4];
+        datos[0] = this.placa;
+        datos[1] = this.modelo;
+        datos[2] = this.marca.getMarca();    
+        return datos;
+    }
 }

@@ -29,4 +29,9 @@ public class VehiculoTipoServicio {
         this.tipoServicio = tipoServicio;
     }
     
+    public Object[] getDatos(){
+        Object[] datos = vehiculo.getDatos();
+        datos[3] = tipoServicio.getNombreServicio();
+        return datos;
+    }
 }

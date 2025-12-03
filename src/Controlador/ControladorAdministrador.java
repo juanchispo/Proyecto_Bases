@@ -6,28 +6,17 @@ package Controlador;
 import java.lang.Math;
 import Modelo.Cliente;
 import Vista.IFrmAdministrador;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.util.Vector;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
-import javax.swing.JToggleButton;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import Modelo.Dao.*;
 import Modelo.Persona;
-import Controlador.ControladorPrincipal;
 import Modelo.Conductor;
-import Modelo.Genero;
-import Modelo.Nacionalidad;
-import Modelo.Vehiculo;
 import Modelo.VehiculoTipoServicio;
 import Modelo.imagenes.ImgTabla;
 import Vista.Crear.IFrmAddModCliente;
 import Vista.Crear.IFrmAddModConductor;
 import Vista.Crear.IFrmTelefonos;
-import java.awt.Container;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
@@ -41,11 +30,11 @@ public class ControladorAdministrador extends Controlador{
     ControladorPrincipal ctrlP;
     ArrayList<Cliente> clientes;
     ArrayList<Conductor> conductores;
-    ArrayList<Vehiculo> vehiculos;
+    ArrayList<VehiculoTipoServicio> vehiculos;
     int pgClientes, pgConductores, pgVehiculos, pgServicios, pgBA;
     AtomicInteger rsClientes, rsConductores, rsVehiculos, rsServicios, rsBA;
 
-    public ControladorAdministrador(ControladorPrincipal ctrlP,IFrmAdministrador ifrm, ArrayList<Cliente> clientes, ArrayList<Vehiculo> vehiculos, int pgClientes, int pgConductores, int pgVehiculos, int pgServicios, int pgBA, AtomicInteger rsClientes, AtomicInteger rsConductores, AtomicInteger rsVehiculos, AtomicInteger rsServicios, AtomicInteger rsBA) {
+    public ControladorAdministrador(ControladorPrincipal ctrlP,IFrmAdministrador ifrm, ArrayList<Cliente> clientes, ArrayList<VehiculoTipoServicio> vehiculos, int pgClientes, int pgConductores, int pgVehiculos, int pgServicios, int pgBA, AtomicInteger rsClientes, AtomicInteger rsConductores, AtomicInteger rsVehiculos, AtomicInteger rsServicios, AtomicInteger rsBA) {
         this.ctrlP = ctrlP;
         this.ifrm = ifrm;
         this.clientes = clientes;
@@ -125,36 +114,17 @@ public class ControladorAdministrador extends Controlador{
     }
 
     public void actualizarTbVehiculos(){
-        DaoVehiculo daoV = new DaoVehiculo();
         DaoVehiculoTipoServicio daoVTS = new DaoVehiculoTipoServicio();
 
-        vehiculos = daoV.ConsultarTodos(); 
-
-        rsVehiculos.set(vehiculos.size()); 
-
+        vehiculos = daoVTS.listar((pgVehiculos-1)*15, 15, rsVehiculos); 
+        
         Object[][] datos = new Object[vehiculos.size()][4]; 
 
         for (int i = 0; i < vehiculos.size(); i++) {
-            Vehiculo v = vehiculos.get(i);
-
-            ArrayList<VehiculoTipoServicio> servicios = daoVTS.ConsultarPorPlaca(v.getPlaca());
-
-            StringBuilder sbServicios = new StringBuilder();
-            for (VehiculoTipoServicio vts : servicios) {
-                sbServicios.append(vts.getTipoServicio().getNombreServicio()).append(", ");
-            }
-            String serviciosStr = (sbServicios.length() > 0) ? 
-                                  sbServicios.substring(0, sbServicios.length() - 2) : 
-                                  "N/A";
-
-            datos[i][0] = v.getPlaca();
-            datos[i][1] = v.getModelo();
-            datos[i][2] = v.getMarca().getMarca(); 
-            datos[i][3] = serviciosStr; 
+            datos[i] = vehiculos.get(i).getDatos();
         }
-
         llenarTabla(ifrm.getTbVehiculos().getModel(), datos);
-        ifrm.getTxtMostrandoVehiculos().setText("Mostrando " + pgVehiculos +" de "+ calcularPaginas(rsVehiculos, 15)); // Asumo getTxtMostrandoVehiculos()
+        ifrm.getTxtMostrandoVehiculos().setText("Mostrando " + pgVehiculos +" de "+ calcularPaginas(rsVehiculos, 15));
     }
 
     

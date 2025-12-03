@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
 
 public class DaoVehiculo { 
@@ -43,16 +44,19 @@ public class DaoVehiculo {
     }
 
     // --- 2. CONSULTAR (Listar Todos) ---
-    public ArrayList<Vehiculo> ConsultarTodos() {
+    public ArrayList<Vehiculo> listar(int offset, int limit, AtomicInteger resultados) {
         ArrayList<Vehiculo> vehiculos = new ArrayList<>();
         Connection con = null;
-        String sql = "SELECT placa, modelo, marca FROM Vehiculo";
+        String sql = "SELECT placa, modelo, marca, COUNT(*) OVER() AS total_registros FROM Vehiculo " + "LIMIT ? OFFSET ?";
 
         try {
             con = conexionBD.getConexion(); 
-            try (PreparedStatement ps = con.prepareStatement(sql);
-                 ResultSet rs = ps.executeQuery()) {
-
+            try (PreparedStatement ps = con.prepareStatement(sql)){
+                ps.setInt(1, limit);
+                ps.setInt(2, offset);
+                    
+                ResultSet rs = ps.executeQuery();
+                
                 while (rs.next()) {
                     int marcaId = rs.getInt("marca");
 
@@ -62,8 +66,10 @@ public class DaoVehiculo {
                     v.setPlaca(rs.getString("placa"));
                     v.setModelo(rs.getString("modelo"));
                     v.setMarca(marcaCompleta);
+                    
 
                     vehiculos.add(v);
+                    resultados.set(rs.getInt("total_registros"));
                 }
             }
         } catch (SQLException e) {
