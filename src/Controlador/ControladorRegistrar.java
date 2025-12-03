@@ -3,12 +3,15 @@
  */
 package Controlador;
 
+import java.sql.Connection;
+import Modelo.Dao.Conexion;
 import Modelo.imagenes.PanelLogo;
 import Vista.IFrmRegistro;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -18,7 +21,6 @@ import javax.swing.JPanel;
 public class ControladorRegistrar extends Controlador{
     private IFrmRegistro ifrm;
     private ControladorPrincipal ctrP;
-    private Boolean acceso = false;
     
     public ControladorRegistrar(ControladorPrincipal ctrP, IFrmRegistro ifrm) {
         this.ctrP = ctrP;
@@ -28,7 +30,9 @@ public class ControladorRegistrar extends Controlador{
 @Override
 public void iniciar() {
     inicializarBotones(ifrm);
-
+    
+    ifrm.getTxtNombre().setText("aventurerosbda");
+    ifrm.getTxtConstrasena().setText("123456");
     PanelLogo pn = new PanelLogo("src/img/aventureros sin fondo.png");
     pn.setPreferredSize(new Dimension(150, 200));
 
@@ -53,15 +57,29 @@ public void iniciar() {
 
     
     public boolean getAcceso(){
-        return acceso;
+        Conexion con = new Conexion();
+        con.setUsuario("postgres");
+        con.setNombreBD(ifrm.getTxtNombre().getText());
+        con.setContrasena(ifrm.getTxtConstrasena().getText());
+        Connection cxn = con.getConexion();
+        if (cxn == null){
+            return false;
+        } else {
+            con.cerrarConexion(cxn);
+            return true;
+        } 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(ifrm.getBtnIngresar())){
-            ctrP.iniciarFrmAdministrador();            
-            ifrm.dispose();
-            ctrP.getFrm().getEscritorio().remove(ifrm);
+            if (getAcceso()) {
+                ctrP.iniciarFrmAdministrador();            
+                ifrm.dispose();
+                ctrP.getFrm().getEscritorio().remove(ifrm);
+            } else {
+                JOptionPane.showMessageDialog(ifrm, "Fallo al conectarse a la base de datos.");
+            }
         }
     }
 }
