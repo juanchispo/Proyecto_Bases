@@ -21,7 +21,8 @@ public class ControladorConductor extends ControladorAdministrador{
     int pgConductores;
     AtomicInteger rsConductores;
     
-    public ControladorConductor(IFrmAdministrador ifrm) {
+    public ControladorConductor(IFrmAdministrador ifrm, ControladorPrincipal ctrlP) {
+        super.ctrlP = ctrlP;
         this.ifrm = ifrm;
         this.rsConductores = new AtomicInteger();
         this.pgConductores = 1;
