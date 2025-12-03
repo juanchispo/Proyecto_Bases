@@ -27,16 +27,13 @@ public class ControladorVehiculoConductor extends Controlador {
     public void llenarCmb() {
         DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
         DaoVehiculoConductor dao = new DaoVehiculoConductor();
-        for (VehiculoConductor vc : dao.consultar(conductor)) {
-            modelo.addElement(String.valueOf(vc.getId_placa()));
-        }
-        ifrm.getCmbVehiculos().setModel(modelo);
+        ifrm.getjComboBox1().setModel(dao.obtenerPlacasVehiculos());
     }
 
     @Override
     public void iniciar() {
         inicializarBotones(ifrm);
-        ifrm.getLblVehiculos().setText("VEHÍCULOS DEL CONDUCTOR");
+        ifrm.getLblAddModCliente().setText("VEHÍCULOS DEL CONDUCTOR");
         ctrP.getFrm().getEscritorio().add(ifrm);
         llenarLista();
         ifrm.setVisible(true);
@@ -44,11 +41,8 @@ public class ControladorVehiculoConductor extends Controlador {
 
     public void llenarLista() {
         DaoVehiculoConductor dao = new DaoVehiculoConductor();
-        DefaultListModel<String> lista = new DefaultListModel<>();
-        for (VehiculoConductor vc : dao.consultar(conductor)) {
-            lista.addElement("Placa ID: " + vc.getId_placa());
-        }
-        ifrm.getLsVehiculos().setModel(lista);
+        DefaultListModel<String> lista = new DefaultListModel<>();        
+        ifrm.getjList1().setModel(dao.listarConductores());
         llenarCmb();
     }
 
@@ -60,35 +54,7 @@ public class ControladorVehiculoConductor extends Controlador {
     public void actionPerformed(ActionEvent e) {
         DaoVehiculoConductor dao = new DaoVehiculoConductor();
 
-        if (e.getSource().equals(ifrm.getBtnAddVehiculo())) {
-            String idPlaca = ifrm.getTxtPlaca().getText().trim();
-            if (validarPlaca(idPlaca)) {
-                VehiculoConductor vc = new VehiculoConductor(Integer.parseInt(idPlaca), conductor.getId());
-                dao.agregar(vc);
-            }
-            llenarLista();
-
-        } else if (e.getSource().equals(ifrm.getBtnBorrarVehiculo())) {
-            if (JOptionPane.showConfirmDialog(ifrm, "¿Desea eliminar el vehículo?", "Confirmación Eliminar Vehículo", 0) == 0) {
-                String seleccion = ifrm.getLsVehiculos().getSelectedValue();
-                if (seleccion != null) {
-                    int idPlaca = Integer.parseInt(seleccion.replace("Placa ID: ", "").trim());
-                    dao.eliminar(new VehiculoConductor(idPlaca, conductor.getId()));
-                }
-            }
-            llenarLista();
-
-        } else if (e.getSource().equals(ifrm.getBtnEditVehiculo())) {
-            if (JOptionPane.showConfirmDialog(ifrm, "¿Desea editar el vehículo?", "Confirmación Editar Vehículo", 0) == 0) {
-                String nuevaPlaca = ifrm.getTxtNuevaPlaca().getText().trim();
-                String placaAnterior = String.valueOf(ifrm.getCmbVehiculos().getSelectedItem());
-                if (validarPlaca(nuevaPlaca) && placaAnterior != null) {
-                    dao.actualizar(
-                        new VehiculoConductor(Integer.parseInt(nuevaPlaca), conductor.getId()),
-                        new VehiculoConductor(Integer.parseInt(placaAnterior), conductor.getId())
-                    );
-                }
-            }
+        if (e.getSource().equals(ifrm.getBtnAddMod())) {
             llenarLista();
         }
     }

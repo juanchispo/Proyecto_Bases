@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -115,6 +116,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
     public void setBtnAnteriorVehiculosVehiculos(JButton btnAnteriorVehiculosVehiculos) {
         this.btnAnteriorVehiculosVehiculos = btnAnteriorVehiculosVehiculos;
+    }
+
+    public JButton getBtnBA() {
+        return btnBA;
+    }
+
+    public void setBtnBA(JButton btnBA) {
+        this.btnBA = btnBA;
     }
 
     public JButton getBtnBorrarCliente() {
@@ -301,14 +310,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.btnSiguienteVehiculos = btnSiguienteVehiculos;
     }
 
-    public JButton getBtnTelefonosBA() {
-        return btnBA;
-    }
-
-    public void setBtnTelefonosBA(JButton btnTelefonosBA) {
-        this.btnBA = btnTelefonosBA;
-    }
-
     public JButton getBtnTelefonosCliente() {
         return btnTelefonosCliente;
     }
@@ -339,6 +340,22 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
     public void setCmbBusquedas(JComboBox<String> cmbBusquedas) {
         this.cmbBusquedas = cmbBusquedas;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTextArea getjTextArea1() {
+        return jTextArea1;
+    }
+
+    public void setjTextArea1(JTextArea jTextArea1) {
+        this.jTextArea1 = jTextArea1;
     }
 
     public JLabel getLblBA() {
@@ -665,8 +682,8 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         return tbClienServ;
     }
 
-    public void setTbClienServ(JTable tbClienServ) {      
-        this.tbClienServ = tbClienServ;       
+    public void setTbClienServ(JTable tbClienServ) {
+        this.tbClienServ = tbClienServ;
     }
 
     public JTable getTbClientes() {
@@ -676,26 +693,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
     public void setTbClientes(JTable tbClientes) {
         this.tbClientes = tbClientes;
     }
-
-    public JButton getBtnBA() {
-        return btnBA;
-    }
-
-    public void setBtnBA(JButton btnBA) {
-        this.btnBA = btnBA;
-    }
-
-    public JTable getTbConsultas() {
-        return tbConsultas;
-    }
-
-    public void setTbConsultas(JTable tbConsultas) {
-        this.tbConsultas = tbConsultas;
-    }
-
-
-
-   
 
     public JTable getTbConduServ() {
         return tbConduServ;
@@ -711,6 +708,14 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
 
     public void setTbConductores(JTable tbConductores) {
         this.tbConductores = tbConductores;
+    }
+
+    public JTable getTbConsultas() {
+        return tbConsultas;
+    }
+
+    public void setTbConsultas(JTable tbConsultas) {
+        this.tbConsultas = tbConsultas;
     }
 
     public JTable getTbServRec() {
@@ -801,9 +806,6 @@ public class IFrmAdministrador extends javax.swing.JInternalFrame {
         this.txtUbicacion = txtUbicacion;
     }
 
-   
-
-   
 
 
     /**
